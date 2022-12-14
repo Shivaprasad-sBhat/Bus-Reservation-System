@@ -6,39 +6,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@Setter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Feedback {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Integer feedBackId;
 	
-	@Min(0)
+	@Min(value = 0 , message = "Can't set as 0")
+	@Max(value = 10 , message = "Can't set as greater than 10")
 	private Integer driverRating;
 	
-	@Min(0)
+	@Min(value = 0 , message = "Can't set as 0")
+	@Max(value = 10 , message = "Can't set as greater than 10")
 	private Integer serviceRating;
 	
-	@Min(0)
+	@Min(value = 0 , message = "Can't set as 0")
+	@Max(value = 10 , message = "Can't set as greater than 10")
 	private Integer overallRating;
-	
-	@NotNull
 	private String comments;
-	
+
 	private LocalDate feedBackDate;
 	
-/**	private User users;  **/
+	private User users;  
 	
-/**	private Bus bus **/
+	private Bus bus; 
 	
 }
