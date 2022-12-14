@@ -43,15 +43,7 @@ public class Bus {
 	@NotBlank(message = "bus name cannot set as blank")
 	private String busType;
 	
-	@NotNull(message = "routeTFrom cannot set as null")
-	@NotEmpty(message = "routeFrom cannot set as empty")
-	@NotBlank(message = "routeFrom cannot set as blank")
-	private String routeFrom;
-	
-	@NotNull(message = "routeTo cannot set as null")
-	@NotEmpty(message = "routeTo cannot set as empty")
-	@NotBlank(message = "routeTo cannot set as blank")
-	private String routeTo;
+	private Integer routeId;
 	
 	@Future(message = "Only future date is allowed")
 	@NotNull(message = "can't set as null")
