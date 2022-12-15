@@ -2,6 +2,7 @@ package com.masai.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,15 +32,15 @@ public class Feedback {
 	@Max(value = 10 , message = "Can't set as greater than 10")
 	private Integer serviceRating;
 	
-	@Min(value = 0 , message = "Can't set as 0")
+	@Min(value = 0 , message = "Can't set as less tahn 0")
 	@Max(value = 10 , message = "Can't set as greater than 10")
 	private Integer overallRating;
 	private String comments;
 
 	private LocalDate feedBackDate;
 	
+	@Embedded
 	private User users;  
 	
-	private Bus bus; 
 	
 }

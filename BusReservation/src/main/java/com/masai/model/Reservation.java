@@ -4,10 +4,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
@@ -43,8 +47,12 @@ public class Reservation {
 	@NotNull(message = "Can't set as Null")
 	private String destination;
 	
+	
+	@Embedded
 	private Bus bus;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userLoginId")
 	private User user;
 	
 }
