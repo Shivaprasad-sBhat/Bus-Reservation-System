@@ -1,6 +1,8 @@
 package com.masai.model;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -64,7 +67,9 @@ public class Bus {
 	@Min( value = 0 , message = "not availabel seat")
 	private Integer availableSeats;
 	
-	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="busId")
+	private List<Reservation> reservations = new ArrayList<>();
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "routeId")

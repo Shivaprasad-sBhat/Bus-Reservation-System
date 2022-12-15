@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -63,7 +65,10 @@ public class User {
 	@Email(message = "email format is incorrect")
 	private String email;
 	
-	@JsonIgnore
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "userId")
+//	private List<Feedback> feedbacks = new ArrayList<>();
+	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Reservation> reservationList = new ArrayList();
 	
