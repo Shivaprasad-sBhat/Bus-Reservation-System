@@ -39,8 +39,8 @@ public class Feedback {
 
 	private LocalDate feedBackDate;
 	
-	@Embedded
-	private User users;  
 	
+	
+	//private Integer userId;
 	
 }

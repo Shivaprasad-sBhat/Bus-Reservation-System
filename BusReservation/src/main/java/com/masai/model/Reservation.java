@@ -47,12 +47,12 @@ public class Reservation {
 	@NotNull(message = "Can't set as Null")
 	private String destination;
 	
-	
-	@Embedded
-	private Bus bus;
+	@NotNull(message = "Can't set as Null")
+	private Integer busId;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userLoginId")
+	@NotNull(message = "Can't set as Null")
 	private User user;
 	
 }
