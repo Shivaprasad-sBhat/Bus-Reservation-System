@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +31,7 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer reservationId;
 	
-	@NotNull(message = "Can't set as null")
+	@Value("Not Booked.")
 	private String reservationStatus;
 	
 	@NotNull(message = "Can't set as Null")
