@@ -34,21 +34,21 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer userLoginId;
 	
-	@NotNull(message = "user name cannot set as null")
-	@NotEmpty(message = "user name cannot set as empty")
-	@NotBlank(message = "user name cannot set as blank")
-	@Column(unique = true)
+//	@NotNull(message = "user name cannot set as null")
+//	@NotEmpty(message = "user name cannot set as empty")
+//	@NotBlank(message = "user name cannot set as blank")
+//	@Column(unique = true)
 	private String userName;
 	
-	@NotNull(message = "password cannot set as null")
-	@NotEmpty(message = "password cannot set as empty")
-	@NotBlank(message = "password cannot set as blank")
-    @Size(min =  8 , message = "password length should be minimum 8 charcters")
+//	@NotNull(message = "password cannot set as null")
+//	@NotEmpty(message = "password cannot set as empty")
+//	@NotBlank(message = "password cannot set as blank")
+//    @Size(min =  8 , message = "password length should be minimum 8 charcters")
 	private String password;
 	
-	@NotNull(message = "first name  cannot set as null")
-	@NotEmpty(message = "first name cannot set as empty")
-	@NotBlank(message = "first name cannot set as blank")
+//	@NotNull(message = "first name  cannot set as null")
+//	@NotEmpty(message = "first name cannot set as empty")
+//	@NotBlank(message = "first name cannot set as blank")
 	private String firstName;
 	
 	@NotNull(message = "last name cannot set as null")
@@ -56,19 +56,20 @@ public class User {
 	@NotBlank(message = "last name cannot set as blank")
 	private String lastName;
 	
-	@NotNull(message = "contact cannot set as null")
-	@NotEmpty(message = "contact cannot set as empty")
-	@NotBlank(message = "contact cannot set as blank")
+//	@NotNull(message = "contact cannot set as null")
+//	@NotEmpty(message = "contact cannot set as empty")
+//	@NotBlank(message = "contact cannot set as blank")
 	private long contact;
 	
-	@Column(unique = true)
-	@Email(message = "email format is incorrect")
+//	@Column(unique = true)
+//	@Email(message = "email format is incorrect")
 	private String email;
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "userId")
 //	private List<Feedback> feedbacks = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Reservation> reservationList = new ArrayList();
 	

@@ -7,7 +7,7 @@ import com.masai.model.Reservation;
 
 public interface ReservationService {
 
-	public Reservation addReservation(Reservation reservation) throws ReservationException ;
+	public Reservation addReservation(Reservation reservation,Integer busId) throws ReservationException ;
 	
 //	public Reservation  updateReservation(Reservation reservation) throws ReservationException ;
 	
