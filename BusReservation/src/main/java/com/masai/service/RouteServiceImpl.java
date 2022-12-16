@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.exception.RouteException;
 import com.masai.exception.UserException;
@@ -12,6 +13,7 @@ import com.masai.model.Bus;
 import com.masai.model.Route;
 import com.masai.repository.RouteDao;
 
+@Service
 public class RouteServiceImpl implements RouteService {
 	
 	
