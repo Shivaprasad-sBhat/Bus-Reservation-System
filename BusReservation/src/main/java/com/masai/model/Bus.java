@@ -74,4 +74,6 @@ public class Bus {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "routeId")
 	private Route routes;
+	
+	
 }

@@ -13,6 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.masai.model.Bus;
+import com.masai.model.User;
 
 @ControllerAdvice
 public class GlobalExceptionHandlerClass {
@@ -60,4 +61,17 @@ public class GlobalExceptionHandlerClass {
 		
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.OK);
 	}
+	
+	
+//	Exception handler for Use  Exception
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<ErrorDetails> userException(UserException us, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), us.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	
 }

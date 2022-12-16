@@ -54,5 +54,20 @@ public class Reservation {
 	@JoinColumn(name = "userLoginId")
 	@NotNull(message = "Can't set as Null")
 	private User user;
+
+	public Reservation( String reservationStatus, String reservationType, LocalDate travelDate,  LocalDateTime reservationDateAndTime,
+		 String source, 	String destination, Integer busId,User user) {
+		super();
+		this.reservationStatus = reservationStatus;
+		this.reservationType = reservationType;
+		this.travelDate = travelDate;
+		this.reservationDateAndTime = reservationDateAndTime;
+		this.source = source;
+		this.destination = destination;
+		this.busId = busId;
+		this.user = user;
+	}
+	
+	
 	
 }
