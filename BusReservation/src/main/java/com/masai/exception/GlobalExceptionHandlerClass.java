@@ -60,4 +60,23 @@ public class GlobalExceptionHandlerClass {
 		
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.OK);
 	}
+	
+	
+	@ExceptionHandler(RouteException.class)
+	public ResponseEntity<ErrorDetails> routeExceptionHandler(RouteException pe, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), pe.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<ErrorDetails> routeExceptionHandler(UserException pe, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), pe.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
 }
