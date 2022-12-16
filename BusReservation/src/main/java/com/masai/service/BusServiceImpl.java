@@ -19,16 +19,11 @@ public class BusServiceImpl implements BusService {
 	
 //	Method to save Bus in database.
 	@Override
-	public Bus addBus(Bus bus) throws BusException {
+	public Bus addBus(Bus bus) {
 
-		Optional<Bus> busFind = busDao.findById(bus.getBusId());
-	
-		if(busFind.isPresent()) {
-			throw new BusException("Cannot add Bus because already a Bus is Present with id: "+bus.getBusId());
-		}else {
+
 			Bus savedBus = busDao.save(bus);
 			return savedBus;
-		}
 		
 	}
 

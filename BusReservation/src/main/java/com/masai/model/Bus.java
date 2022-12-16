@@ -51,12 +51,12 @@ public class Bus {
 	private String busType;
 	
 	
-	@Future(message = "Only future date is allowed")
-	@NotNull(message = "can't set as null")
+//	@Future(message = "Only future date is allowed")
+//	@NotNull(message = "can't set as null")
 	private LocalTime arrivalTime;
 	
-	@Future(message = "Only future date is allowed")
-	@NotNull(message = "can't set as null")
+//	@Future(message = "Only future date is allowed")
+//	@NotNull(message = "can't set as null")
 	private LocalTime departureTime;
 	
 	

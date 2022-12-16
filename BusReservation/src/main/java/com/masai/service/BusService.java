@@ -8,7 +8,7 @@ import com.masai.model.Bus;
 
 public interface BusService {
 	
-	public Bus addBus(Bus bus) throws BusException;
+	public Bus addBus(Bus bus);
 	public Bus updateBus(Bus bus) throws BusException;
 	public Bus deleteBus(Integer busId) throws BusException;
 	public Bus viewBus(Integer busId) throws BusException;
