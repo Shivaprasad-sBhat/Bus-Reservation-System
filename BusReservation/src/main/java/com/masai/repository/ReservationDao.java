@@ -11,5 +11,4 @@ import com.masai.model.Reservation;
 @Repository
 public interface ReservationDao extends JpaRepository<Reservation, Integer>{
 	
-
 }

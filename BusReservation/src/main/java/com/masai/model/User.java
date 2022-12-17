@@ -51,9 +51,9 @@ public class User {
 //	@NotBlank(message = "first name cannot set as blank")
 	private String firstName;
 	
-	@NotNull(message = "last name cannot set as null")
-	@NotEmpty(message = "last name cannot set as empty")
-	@NotBlank(message = "last name cannot set as blank")
+//	@NotNull(message = "last name cannot set as null")
+//	@NotEmpty(message = "last name cannot set as empty")
+//	@NotBlank(message = "last name cannot set as blank")
 	private String lastName;
 	
 //	@NotNull(message = "contact cannot set as null")

@@ -1,5 +1,8 @@
 package com.masai.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,25 +72,25 @@ public class ReservationController {
 	
 	
 	
-//	@GetMapping("viewReservations/{userId}")
-//	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId) {
-//		
-//		List<Reservation> viewReservations = rService.viewReservations(userId);
-//		
-//		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
-//	}
-//	
-//	
-//	
-//	
-//	@GetMapping("viewReservationsbyDate/{userId}/{date}")
-//	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("userId")Integer userId,@PathVariable("date") LocalDate date) {
-//		
-//		List<Reservation> viewReservations = rService.viewReservationsByDate(userId,date);
-//		
-//		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
-//		
-//	}
-//	
+	@GetMapping("viewReservations/{userId}")
+	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId) {
+		
+		List<Reservation> viewReservations = rService.viewReservations(userId);
+		
+		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
+	}
+	
+	
+	
+	
+	@GetMapping("viewReservationsbyDate/{userId}/{date}")
+	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("userId")Integer userId,@PathVariable("date") String date) {
+		
+		List<Reservation> viewReservations = rService.viewReservationsByDate(userId,date);
+		
+		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
+		
+	}
+	
 	
 }

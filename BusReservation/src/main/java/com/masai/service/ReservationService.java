@@ -1,5 +1,8 @@
 package com.masai.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import com.masai.exception.ReservationException;
 import com.masai.model.Reservation;
 
@@ -15,7 +18,7 @@ public interface ReservationService {
 	
 	public Reservation  viewReservationDetail(Integer reservationId) throws ReservationException ;
 	
-//	public List<Reservation>  viewReservations(Integer userID) throws ReservationException ;
-//	
-//	public List<Reservation>  viewReservationsByDate(Integer userID,LocalDate date) throws ReservationException ;
+	public List<Reservation>  viewReservations(Integer userID) throws ReservationException ;
+	
+	public List<Reservation>  viewReservationsByDate(Integer userID,String date) throws ReservationException ;
 }

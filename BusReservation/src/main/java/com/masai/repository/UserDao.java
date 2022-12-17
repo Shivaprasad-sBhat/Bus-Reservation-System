@@ -10,7 +10,5 @@ import com.masai.model.User;
 
 public interface UserDao  extends JpaRepository<User, Integer>{
 //
-//	public List<Reservation> finByUserLoginId(Integer userId);
-//	
-//	public List<Reservation> finByUserLoginIdAndTravelDate(Integer userId,LocalDate date );
+
 }
