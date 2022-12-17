@@ -12,6 +12,7 @@ import com.masai.exception.UserException;
 import com.masai.model.Bus;
 import com.masai.model.Route;
 import com.masai.repository.RouteDao;
+import com.masai.repository.SessionDao;
 
 @Service
 public class RouteServiceImpl implements RouteService {
@@ -19,9 +20,13 @@ public class RouteServiceImpl implements RouteService {
 	
 	@Autowired
 	private RouteDao rDao;
+	
+	@Autowired
+	private SessionDao sDao;
 
 	@Override
 	public Route addRoute(Route route, String key) throws RouteException, UserException {
+		
 		
 		Route newRoute = rDao.findByRouteFromAndRouteTo(route.getRouteFrom(), route.getRouteTo());
 		

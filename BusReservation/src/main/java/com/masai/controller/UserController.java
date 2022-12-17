@@ -69,7 +69,6 @@ public class UserController {
 	}
 	
 	@GetMapping("/getAllUser")
-	@CrossOrigin
 	public ResponseEntity<List<User>> getAllUser(){
 		
 		List<User> us = uService.viewAllUser();
