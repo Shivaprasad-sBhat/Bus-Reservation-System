@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.BusException;
+import com.masai.exception.RouteException;
 import com.masai.model.Bus;
 import com.masai.model.Route;
 import com.masai.repository.BusDao;
+import com.masai.repository.RouteDao;
 
 @Service
 public class BusServiceImpl implements BusService {
@@ -17,33 +19,39 @@ public class BusServiceImpl implements BusService {
 	@Autowired
 	BusDao busDao;
 	
+	@Autowired
 	private RouteDao rDao;
 	
 	
 //	Method to save Bus in database.
 	@Override
-	public Bus addBus(Bus bus) {
+	public Bus addBus(Bus bus) throws BusException, RouteException {
 
-
-			
-			
-			
-			Route route = bus.getRoutes();
-			
-		Route routes =	rDao.findById(route.getRouteId());
+	
+		Route route = bus.getRoutes();
 		
 		
+		
+		Route routes =	rDao.findById(3).orElseThrow(()-> new RouteException("Route not found.."));
+		
+		System.out.println(routes);
 		routes.getBus().add(bus);
+		List<Bus> busList = routes.getBus();
+		busList.add(bus);
+		
+		routes.setBus(busList);
 		
 		rDao.save(route);
-		
 		bus.setRoutes(routes);
+		
+		
+		
 		
 		Bus savedBus = busDao.save(bus);
 		
-			
-			
-			
+		if(savedBus ==null)
+			throw new BusException("Bus not saved..");
+		
 			return savedBus;
 		
 	}
@@ -70,6 +78,9 @@ public class BusServiceImpl implements BusService {
 		
 		if(opt.isPresent()) {
 			Bus bus = opt.get();
+			
+			
+			
 			busDao.delete(bus);
 			return bus;
 		}else {

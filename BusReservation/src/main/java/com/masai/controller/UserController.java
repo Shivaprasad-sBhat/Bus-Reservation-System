@@ -26,7 +26,7 @@ public class UserController {
 	private UserService uService;
 	
 	
-	@PostMapping("/create")
+	@PostMapping("/createUser")
 	public ResponseEntity<User> createUser( @Valid @RequestBody User user) {
 		
 	     User us = uService.createUser(user);
@@ -36,7 +36,7 @@ public class UserController {
 	}
 	
 	
-	@PutMapping("/update")
+	@PutMapping("/updateUser")
 	public ResponseEntity<User> updateUser(@Valid @RequestBody User user , @RequestParam("key")  String key){
 		
 		User us = uService.updateUser(user, key);
@@ -48,7 +48,7 @@ public class UserController {
 	
 	
 	
-	@DeleteMapping("/user")
+	@DeleteMapping("/deleteUser")
 	public ResponseEntity<User> deleteUser(@RequestParam("id") int userId, @RequestParam("key")  String key){
 		
 		User us = uService.deleteUser(userId, key);
@@ -58,7 +58,7 @@ public class UserController {
 		
 	}
 	
-	@GetMapping("/user")
+	@GetMapping("/getUserByid")
 	public ResponseEntity<User> getUserByid(@RequestParam("id") int userId){		
 		User us = uService.viewUser(userId);
 		
@@ -67,7 +67,7 @@ public class UserController {
 		
 	}
 	
-	@GetMapping("/users")
+	@GetMapping("/getAllUser")
 	public ResponseEntity<List<User>> getAllUser(){
 		
 		List<User> us = uService.viewAllUser();

@@ -38,8 +38,8 @@ public class Route {
 	@NotNull(message = "can't set as null")
 	private Integer distance;
 	
-	
-	@JsonIgnore
+//	
+//	@JsonIgnore
 	@OneToMany(mappedBy = "routes",cascade = CascadeType.ALL)
 	private List<Bus> bus = new ArrayList<>();
 	

@@ -2,6 +2,8 @@ package com.masai.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FeedBackDao extends JpaRepository<FeedBackDao, Integer> {
+import com.masai.model.Feedback;
+
+public interface FeedBackDao extends JpaRepository<Feedback, Integer> {
 
 }
