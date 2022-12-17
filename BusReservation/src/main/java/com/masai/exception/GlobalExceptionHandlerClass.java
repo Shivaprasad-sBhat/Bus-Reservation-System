@@ -52,7 +52,7 @@ public class GlobalExceptionHandlerClass {
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.OK);
 	}
 	
-//	Exception handler for Bus  Exception
+//	Exception handler for Reservation  Exception
 	@ExceptionHandler(ReservationException.class)
 	public ResponseEntity<ErrorDetails> reservationExceptionHandler(ReservationException re, WebRequest req){
 		
@@ -91,7 +91,14 @@ public class GlobalExceptionHandlerClass {
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
 	
-	
+//	Exception handler for Route  Exception
+	@ExceptionHandler(RouteException.class)
+	public ResponseEntity<ErrorDetails> adminException(RouteException re, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), re.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
 	
 	
 	

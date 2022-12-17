@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.BusException;
 import com.masai.exception.ReservationException;
+import com.masai.exception.UserException;
 import com.masai.model.Bus;
+import com.masai.model.CurrentSession;
 import com.masai.model.Reservation;
 import com.masai.model.User;
 import com.masai.repository.BusDao;
@@ -41,13 +43,13 @@ public class ReservationServiceImpl implements ReservationService{
 
 	// Seat reservation
 	@Override
-	public Reservation addReservation(Reservation reservation,Integer busId) throws ReservationException{
+	public Reservation addReservation(Reservation reservation,Integer busId,String uuid) throws ReservationException{
 	
 		
 		
 	Bus bus =	bDao.findById(busId).orElseThrow(() -> new ReservationException("Bus not found."));
-	
-	User user = uDao.findById(11).orElseThrow(() ->new ReservationException("User details not found."));
+	CurrentSession user1 = sDao.findByUuid(uuid);
+	User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
 	
 	if(reservation.getReservationDateAndTime().isBefore(LocalDateTime.now()))
 		throw new ReservationException("Plese enter future date");
@@ -62,8 +64,8 @@ public class ReservationServiceImpl implements ReservationService{
 			reservation.setBus(bus);
 			reservation.setReservationStatus("Reservation Confirmed");
 			reservation.setReservationDateAndTime(LocalDateTime.now());
-//			reservation.setSource(bus.getRoutes().getRouteFrom());
-//			reservation.setDestination(bus.getRoutes().getRouteTo());
+			reservation.setSource(bus.getRoutes().getRouteFrom());
+			reservation.setDestination(bus.getRoutes().getRouteTo());
 			
 			
 			List<Reservation> reservationList = user.getReservationList();
@@ -83,7 +85,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 
 //	@Override
-//	public Reservation updateReservation(Reservation reservation) throws ReservationException {
+//	public Reservation updateReservation(Reservation reservation,String uuid) throws ReservationException {
 //		
 //	return null;
 //		
@@ -91,13 +93,13 @@ public class ReservationServiceImpl implements ReservationService{
 //	}
 
 	@Override
-	public Reservation deleteReservation(Integer reservationId) throws ReservationException {
+	public Reservation deleteReservation(Integer reservationId,String uuid) throws ReservationException {
 		
 		Reservation reservations = rDao.findById(reservationId).orElseThrow(() -> new ReservationException("Reservation details not found."));
 
 		
-		//here need to edit current session user and exception 
-		User user = uDao.findById(11).orElseThrow(() ->new ReservationException("User details not found."));
+		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
 		
 		List<Reservation> reservationList =user.getReservationList();
 		
@@ -136,20 +138,36 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public Reservation viewReservationDetail(Integer reservationId) throws ReservationException {
+	public Reservation viewReservationDetail(Integer reservationId,String uuid) throws ReservationException {
+		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
 		
-		return rDao.findById(reservationId).orElseThrow(() -> new ReservationException("Reservation details not found."));
+		List<Reservation> rList = user.getReservationList();
+		
+		Reservation resrvation=null;
+		boolean flag=true;
+		for(int i=0;i<rList.size();i++) {
+			
+			if(rList.get(i).getReservationId()==reservationId) {
+				flag=false;
+				resrvation = rList.get(i);
+				break;
+			}
+		}
+		
+		if(flag)
+			throw new ReservationException("Reservation details not found.");
+		else
+			return resrvation;
 		
 	}
 
 	@Override
-	public List<Reservation> viewReservations(Integer userID) throws ReservationException {
+	public List<Reservation> viewReservations(Integer userID,String uuid) throws ReservationException {
 		
-		
-	User user = uDao.findById(userID).orElseThrow(()-> new ReservationException("User not found"));
+		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
 	
-	
-		
 		List<Reservation> reservationsList = user.getReservationList();
 		
 		if(reservationsList.isEmpty()) {
@@ -165,9 +183,11 @@ public class ReservationServiceImpl implements ReservationService{
 	
 
 	@Override
-	public List<Reservation> viewReservationsByDate(Integer userID,String date) throws ReservationException {
+	public List<Reservation> viewReservationsByDate(String uuid,String date) throws ReservationException {
 
-		User user = uDao.findById(userID).orElseThrow(()-> new ReservationException("User not found"));
+		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
+		
 	
 		List<Reservation> reservationsList = user.getReservationList();
 		
@@ -183,8 +203,6 @@ public class ReservationServiceImpl implements ReservationService{
 	
 				LocalDate dt1 = LocalDate.parse(date);
 				
-			//	DateFormat dateformat = new DateFormat("dd-mm-yyyy");
-			//	String newdate = dateformat.format(date);
 				
 				if(r.getTravelDate().equals(dt1)) {
 					reservationList.add(r);

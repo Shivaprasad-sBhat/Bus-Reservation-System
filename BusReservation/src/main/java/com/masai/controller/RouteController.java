@@ -22,7 +22,6 @@ import com.masai.model.Route;
 import com.masai.service.RouteServiceImpl;
 
 @RestController
-
 public class RouteController {
 
 	@Autowired

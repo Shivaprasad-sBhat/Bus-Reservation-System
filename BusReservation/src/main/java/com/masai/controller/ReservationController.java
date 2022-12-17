@@ -27,10 +27,10 @@ public class ReservationController {
 	@Autowired
 	private ReservationService rService;
 	
-	@PostMapping("seatReservation/{id}")
-	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("id") Integer busId) throws ReservationException {
+	@PostMapping("seatReservation/{busid}/{uuid}")
+	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("uuid") String uuid) throws ReservationException {
 		
-		Reservation bookedReservation = rService.addReservation(reservation,busId);
+		Reservation bookedReservation = rService.addReservation(reservation,busId,uuid);
 		
 		return new ResponseEntity<Reservation>(bookedReservation, HttpStatus.CREATED);
 		
@@ -49,10 +49,10 @@ public class ReservationController {
 	
 	
 	
-	@DeleteMapping ("deleteReservations/{reservationId}")
-	public ResponseEntity<Reservation>  deleteReservation(@PathVariable("reservationId") Integer reservationId) throws ReservationException {
+	@DeleteMapping ("deleteReservations/{reservationId}/{uuid}")
+	public ResponseEntity<Reservation>  deleteReservation(@PathVariable("reservationId") Integer reservationId,@PathVariable("uuid") String uuid) throws ReservationException {
 		
-		Reservation deleteReservation = rService.deleteReservation(reservationId);
+		Reservation deleteReservation = rService.deleteReservation(reservationId,uuid);
 		
 		return new ResponseEntity<Reservation>(deleteReservation, HttpStatus.ACCEPTED);
 		
@@ -60,10 +60,10 @@ public class ReservationController {
 	
 	
 	
-	@GetMapping("viewReservationsDetails/{reservationId}")
-	public ResponseEntity<Reservation>  viewReservationDetail(@PathVariable("reservationId") Integer reservationId) {
+	@GetMapping("viewReservationsDetails/{reservationId}/{uuid}")
+	public ResponseEntity<Reservation>  viewReservationDetail(@PathVariable("reservationId") Integer reservationId,@PathVariable("uuid") String uuid) {
 		
-			Reservation viewReservation = rService.viewReservationDetail(reservationId);
+			Reservation viewReservation = rService.viewReservationDetail(reservationId,uuid);
 		
 		return new ResponseEntity<Reservation>(viewReservation, HttpStatus.ACCEPTED);
 		
@@ -72,10 +72,10 @@ public class ReservationController {
 	
 	
 	
-	@GetMapping("viewReservations/{userId}")
-	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId) {
+	@GetMapping("viewReservations/{userId}/{uuid}")
+	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId,@PathVariable("uuid") String uuid) {
 		
-		List<Reservation> viewReservations = rService.viewReservations(userId);
+		List<Reservation> viewReservations = rService.viewReservations(userId,uuid);
 		
 		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
 	}
@@ -83,10 +83,10 @@ public class ReservationController {
 	
 	
 	
-	@GetMapping("viewReservationsbyDate/{userId}/{date}")
-	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("userId")Integer userId,@PathVariable("date") String date) {
+	@GetMapping("viewReservationsbyDate/{uuid}/{date}")
+	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("uuid") String uuid,@PathVariable("date") String date) {
 		
-		List<Reservation> viewReservations = rService.viewReservationsByDate(userId,date);
+		List<Reservation> viewReservations = rService.viewReservationsByDate(uuid,date);
 		
 		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
 		
