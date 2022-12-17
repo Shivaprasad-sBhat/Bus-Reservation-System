@@ -67,9 +67,9 @@ public class Bus {
 	@Min( value = 0 , message = "not availabel seat")
 	private Integer availableSeats;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="busId")
-	private List<Reservation> reservations = new ArrayList<>();
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="busId")
+//	private List<Reservation> reservations = new ArrayList<>();
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "routeId")

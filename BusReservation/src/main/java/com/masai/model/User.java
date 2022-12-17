@@ -69,7 +69,7 @@ public class User {
 //	@JoinColumn(name = "userId")
 //	private List<Feedback> feedbacks = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-	private List<Reservation> reservationList = new ArrayList();
-	
+//	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+//	private List<Reservation> reservationList = new ArrayList();
+//	
 }
