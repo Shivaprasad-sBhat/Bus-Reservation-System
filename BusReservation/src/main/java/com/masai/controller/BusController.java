@@ -57,7 +57,7 @@ public class BusController {
 	@GetMapping("/viewbus/{id}")
 	public ResponseEntity<Bus> viewBus(@PathVariable("id") Integer busId){
 		
-		Bus foundBus = busServices.deleteBus(busId);
+		Bus foundBus = busServices.viewBus(busId);
 		
 		return new ResponseEntity<Bus>(foundBus,HttpStatus.OK);
 	}

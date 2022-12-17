@@ -16,6 +16,7 @@ import com.masai.model.Reservation;
 import com.masai.model.User;
 import com.masai.repository.BusDao;
 import com.masai.repository.ReservationDao;
+import com.masai.repository.SessionDao;
 import com.masai.repository.UserDao;
 
 import net.bytebuddy.utility.RandomString;
@@ -34,14 +35,14 @@ public class ReservationServiceImpl implements ReservationService{
 
 	
 	
-//	@Autowired
-//	private SessionDao sDao;
-//	
-//	String key = sDao.findUUid;
-//	
+	@Autowired
+	private SessionDao sDao;
+	
+
 	// Seat reservation
 	@Override
-	public Reservation addReservation(Reservation reservation,Integer busId ) throws ReservationException{
+	public Reservation addReservation(Reservation reservation,Integer busId) throws ReservationException{
+	
 		
 		
 	Bus bus =	bDao.findById(busId).orElseThrow(() -> new ReservationException("Bus not found."));

@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,11 +29,15 @@ public class Feedback {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Integer feedBackId;
 	
+	@NotNull(message = "can't set as null")
 	private Integer driverRating;
 	
+	@NotNull(message = "can't set as null")
 	private Integer serviceRating;
 	
+	@NotNull(message = "can't set as null")
 	private Integer overallRating;
+	
 	private String comments;
 
 	private LocalDate feedBackDate;
