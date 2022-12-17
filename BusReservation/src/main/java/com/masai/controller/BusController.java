@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,11 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.model.Bus;
 import com.masai.service.BusServiceImpl;
 
-@Controller
+@RestController
 @RequestMapping("/busservices")
 public class BusController {
 
@@ -28,9 +28,10 @@ public class BusController {
 	
 	
 	@PostMapping("/savebus")
-	public ResponseEntity<Bus> saveBus(@Valid @RequestBody Bus bus){
+	public ResponseEntity<Bus> saveBus( @RequestBody Bus bus){
 		
 		Bus savedBus = busServices.addBus(bus);
+		
 		
 		return new ResponseEntity<Bus>(savedBus,HttpStatus.CREATED);
 		
@@ -57,7 +58,7 @@ public class BusController {
 	@GetMapping("/viewbus/{id}")
 	public ResponseEntity<Bus> viewBus(@PathVariable("id") Integer busId){
 		
-		Bus foundBus = busServices.deleteBus(busId);
+		Bus foundBus = busServices.viewBus(busId);
 		
 		return new ResponseEntity<Bus>(foundBus,HttpStatus.OK);
 	}

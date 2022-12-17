@@ -3,28 +3,53 @@ package com.masai.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.PersistenceException;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.BusException;
 import com.masai.model.Bus;
+import com.masai.model.Route;
 import com.masai.repository.BusDao;
+import com.masai.repository.RouteDao;
 
 @Service
 public class BusServiceImpl implements BusService {
 
 	@Autowired
-	BusDao busDao;
+	private BusDao busDao;
 	
+	@Autowired
+	private RouteDao routeDao;
 	
 //	Method to save Bus in database.
 	@Override
-	public Bus addBus(Bus bus) {
+	public Bus addBus(Bus bus) throws BusException {
 
+		System.out.println(bus.getRoutes().getRouteId());
 
-			Bus savedBus = busDao.save(bus);
-			return savedBus;
 		
+		Optional<Route> opt  = routeDao.findById(bus.getRoutes().getRouteId());
+		
+		if(opt.isPresent()) {
+			Route route = opt.get();
+			System.out.println(route);
+			
+			List<Bus> buses = route.getBus();
+			
+			buses.add(bus);
+			
+			bus.setRoutes(route);
+			
+			Bus savedBus = busDao.save(bus);
+			
+			return savedBus;
+		}else {
+			throw new BusException("here");
+		}
+					
 	}
 
 // Method to update Bus
@@ -76,7 +101,12 @@ public class BusServiceImpl implements BusService {
 	@Override
 	public List<Bus> viewBusByType(String busType) throws BusException {
 
-		List<Bus> buses = busDao.findByBusType(busType);
+		System.out.println(busType);
+//		busType.stripLeading().stripTrailing()
+		
+		List<Bus> buses = busDao.findByBusType("ac");
+		
+		
 		
 		if(buses.isEmpty()) {
 			throw new BusException("No bus found with type "+busType);

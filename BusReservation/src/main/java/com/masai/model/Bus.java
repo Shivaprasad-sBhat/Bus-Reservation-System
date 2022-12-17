@@ -12,12 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,38 +32,40 @@ public class Bus {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer busId;
 	
-	@NotNull(message = "bus name cannot set as null")
-	@NotEmpty(message = "bus name cannot set as empty")
-	@NotBlank(message = "bus name cannot set as blank")
+//	@NotNull(message = "bus name cannot set as null")
+//	@NotEmpty(message = "bus name cannot set as empty")
+//	@NotBlank(message = "bus name cannot set as blank")
 	private String busName;
 	
-	@NotNull(message = "driver name cannot set as null")
-	@NotEmpty(message = "driver name cannot set as empty")
-	@NotBlank(message = "driver name cannot set as blank")
+//	@NotNull(message = "driver name cannot set as null")
+//	@NotEmpty(message = "driver name cannot set as empty")
+//	@NotBlank(message = "driver name cannot set as blank")
 	private String driverName;
 
-	@NotNull(message = "bus type cannot set as null")
-	@NotEmpty(message = "bus type cannot set as empty")
-	@NotBlank(message = "bus type cannot set as blank")
+//	@NotNull(message = "bus type cannot set as null")
+//	@NotEmpty(message = "bus type cannot set as empty")
+//	@NotBlank(message = "bus type cannot set as blank")
 	private String busType;
 	
 	
-	@Future(message = "Only future date is allowed")
-	@NotNull(message = "can't set as null")
+//	@Future(message = "Only future date is allowed")
+//	@NotNull(message = "can't set as null")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalTime arrivalTime;
 	
-	@Future(message = "Only future date is allowed")
-	@NotNull(message = "can't set as null")
+//	@Future(message = "Only future date is allowed")
+//	@NotNull(message = "can't set as null")
+//	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalTime departureTime;
 	
 	
-	@NotNull(message = "can't set as null")
-	@Min(value = 30 , message = "seat min 30")
-	@Max(value = 60 , message = "seat max 60")
+//	@NotNull(message = "can't set as null")
+//	@Min(value = 30 , message = "seat min 30")
+//	@Max(value = 60 , message = "seat max 60")
 	private Integer seats;
-	
-	@NotNull(message = "cannt set as null")
-	@Min( value = 0 , message = "not availabel seat")
+//	
+//	@NotNull(message = "cannt set as null")
+//	@Min( value = 0 , message = "not availabel seat")
 	private Integer availableSeats;
 	
 	@OneToMany(cascade=CascadeType.ALL)

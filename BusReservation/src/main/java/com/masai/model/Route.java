@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,13 +28,13 @@ public class Route {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer routeId;
 	
-	@NotNull(message = "can't set as null")
+//	@NotNull(message = "can't set as null")
 	private String routeFrom;
 	
-	@NotNull(message = "can't set as null")
+//	@NotNull(message = "can't set as null")
 	private String routeTo;
 	
-	@NotNull(message = "can't set as null")
+//	@NotNull(message = "can't set as null")
 	private Integer distance;
 	
 	
