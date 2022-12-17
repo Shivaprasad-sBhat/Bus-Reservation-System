@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.BusException;
@@ -30,9 +31,9 @@ public class BusController {
 	
 	
 	@PostMapping("/savebus")
-	public ResponseEntity<Bus> saveBus(@Valid @RequestBody Bus bus) throws BusException, RouteException{
+	public ResponseEntity<Bus> saveBus(@Valid @RequestBody Bus bus, @RequestParam("rid") int rid) throws BusException, RouteException{
 		
-		Bus savedBus = busServices.addBus(bus);
+		Bus savedBus = busServices.addBus(bus , rid);
 		
 		return new ResponseEntity<Bus>(savedBus,HttpStatus.CREATED);
 		

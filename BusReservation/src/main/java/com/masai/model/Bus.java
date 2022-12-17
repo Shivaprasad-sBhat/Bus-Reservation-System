@@ -54,6 +54,7 @@ public class Bus {
 	
 	private LocalTime arrivalTime;
 	
+	
 
 	@NotNull(message = "can't set as null")
 	private LocalTime departureTime;
@@ -63,7 +64,7 @@ public class Bus {
 	@Min(value = 30 , message = "seat min 30")
 	@Max(value = 60 , message = "seat max 60")
 	private Integer seats;
-	
+
 	@NotNull(message = "cannt set as null")
 	@Min( value = 0 , message = "not availabel seat")
 	private Integer availableSeats;

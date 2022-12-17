@@ -25,34 +25,24 @@ public class BusServiceImpl implements BusService {
 	
 //	Method to save Bus in database.
 	@Override
-	public Bus addBus(Bus bus) throws BusException, RouteException {
+	public Bus addBus(Bus bus , int routeId) throws BusException, RouteException {
 
-	
-		Route route = bus.getRoutes();
+		Optional<Route> route = rDao.findById(routeId);
 		
+			if(route.isPresent() ){
+			
+				 Route ro = route.get();
+				 
+				 ro.getBus().add(bus);
+				 
+				 bus.setRoutes(ro);
+				
+				return busDao.save(bus);
+		}
+			
+			else
+				throw new RouteException("No route available");
 		
-		
-		Route routes =	rDao.findById(3).orElseThrow(()-> new RouteException("Route not found.."));
-		
-		System.out.println(routes);
-		routes.getBus().add(bus);
-		List<Bus> busList = routes.getBus();
-		busList.add(bus);
-		
-		routes.setBus(busList);
-		
-		rDao.save(route);
-		bus.setRoutes(routes);
-		
-		
-		
-		
-		Bus savedBus = busDao.save(bus);
-		
-		if(savedBus ==null)
-			throw new BusException("Bus not saved..");
-		
-			return savedBus;
 		
 	}
 
