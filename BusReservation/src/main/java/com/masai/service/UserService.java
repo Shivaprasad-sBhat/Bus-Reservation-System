@@ -17,6 +17,6 @@ public interface UserService {
 	
 	public User viewUser(int userid) throws UserException;
 	
-	public List<User> viewAllUser() throws UserException;
+	public List<User> viewAllUser() throws UserException ;
 
 }

@@ -73,7 +73,7 @@ public class GlobalExceptionHandlerClass {
 	
 	
 //	Exception handler for User  Exception
-	@ExceptionHandler(BusException.class)
+	@ExceptionHandler(UserException.class)
 	public ResponseEntity<ErrorDetails> userException(UserException us, WebRequest req){
 		
 		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), us.getMessage(), req.getDescription(false));
