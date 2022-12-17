@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User SignUp</title>
     <style>
         #container{
             width: 30%;
-            height: 450px;
+            height: fit-content;
             margin:50px auto;
             background-color: #48c9b0;
             text-align: center;
             padding-top: 50px;
+            padding-bottom: 50px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         #container>h1{
@@ -36,7 +37,7 @@
         #submit{
             display: flex;
             color: white;
-            width: 70%;
+            width: 78%;
             margin: auto;
             background-color:#17a589 ;
             margin-top: 30px;
@@ -44,6 +45,13 @@
             justify-content: center;
             align-items: center;
             padding:23px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #submit:hover{
+
+            transform: scale(0.9);
         }
        
     </style>
@@ -52,14 +60,21 @@
     
     <div id="container">
 
-        <h1> - Admin Login - </h1>
+        <h1> - User  SignUp - </h1>
         <form>
+        <input type="text" id="fname" placeholder="First Name"/>
+        <input type="text" id="lname" placeholder="Last Name"/>
+        <input type="text" id="email" placeholder="Email"/>
+        <input type="text" id="phone" placeholder="Contact Number"/>
+        
+        <input type="text" id="uname" placeholder="User Name"/>
 
-        <input type="text" placeholder="User Namme"/>
-        <input type="text" placeholder="Password"/>
+        <input type="text" id="password" placeholder="Password"/>
+        <button id="submit">SUBMIT</button>
+
         </form>
 
-        <div id="submit">SUBMIT</div>
+        <!-- <div id="submit">SUBMIT</div> -->
 
 
     </div>
@@ -68,3 +83,5 @@
 
 </body>
 </html>
+
+<script src="/script/usersignup.js"></script>
