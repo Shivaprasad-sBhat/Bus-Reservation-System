@@ -36,7 +36,7 @@
         #submit{
             display: flex;
             color: white;
-            width: 70%;
+            width: 78%;
             margin: auto;
             background-color:#17a589 ;
             margin-top: 30px;
@@ -44,6 +44,13 @@
             justify-content: center;
             align-items: center;
             padding:23px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #submit:hover{
+
+            transform: scale(0.9);
         }
        
     </style>
@@ -55,11 +62,14 @@
         <h1> - Customer Login - </h1>
         <form>
 
-        <input type="text" placeholder="User Namme"/>
-        <input type="text" placeholder="Password"/>
+        <input type="text" id="uname" placeholder="User Name"/>
+
+        <input type="text" id="password" placeholder="Password"/>
+        <button id="submit">SUBMIT</button>
+
         </form>
 
-        <div id="submit">SUBMIT</div>
+        <!-- <div id="submit">SUBMIT</div> -->
 
 
     </div>
@@ -68,3 +78,14 @@
 
 </body>
 </html>
+
+<script src="userlogin.js">
+
+
+
+
+
+
+
+  
+</script>
