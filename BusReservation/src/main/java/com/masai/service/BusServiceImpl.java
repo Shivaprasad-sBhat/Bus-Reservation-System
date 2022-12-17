@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.BusException;
 import com.masai.model.Bus;
+import com.masai.model.Route;
 import com.masai.repository.BusDao;
 
 @Service
@@ -16,13 +17,33 @@ public class BusServiceImpl implements BusService {
 	@Autowired
 	BusDao busDao;
 	
+	private RouteDao rDao;
+	
 	
 //	Method to save Bus in database.
 	@Override
 	public Bus addBus(Bus bus) {
 
 
-			Bus savedBus = busDao.save(bus);
+			
+			
+			
+			Route route = bus.getRoutes();
+			
+		Route routes =	rDao.findById(route.getRouteId());
+		
+		
+		routes.getBus().add(bus);
+		
+		rDao.save(route);
+		
+		bus.setRoutes(routes);
+		
+		Bus savedBus = busDao.save(bus);
+		
+			
+			
+			
 			return savedBus;
 		
 	}

@@ -41,13 +41,13 @@ public class ReservationServiceImpl implements ReservationService{
 
 	// Seat reservation
 	@Override
-	public Reservation addReservation(Reservation reservation,Integer busId,String key) throws ReservationException{
+	public Reservation addReservation(Reservation reservation,Integer busId) throws ReservationException{
 	
-		sDao.findByUuid(key)
+		
 		
 	Bus bus =	bDao.findById(busId).orElseThrow(() -> new ReservationException("Bus not found."));
 	
-	User user = sDao.findById(11).orElseThrow(() ->new ReservationException("User details not found."));
+	User user = uDao.findById(11).orElseThrow(() ->new ReservationException("User details not found."));
 	
 	if(reservation.getReservationDateAndTime().isBefore(LocalDateTime.now()))
 		throw new ReservationException("Plese enter future date");
