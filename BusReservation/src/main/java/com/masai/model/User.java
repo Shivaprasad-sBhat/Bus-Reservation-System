@@ -43,7 +43,7 @@ public class User {
 	@NotNull(message = "password cannot set as null")
 	@NotEmpty(message = "password cannot set as empty")
 	@NotBlank(message = "password cannot set as blank")
-    @Size(min =  6 , message = "password length should be minimum 8 charcters")
+
 	private String password;
 	
 	@NotNull(message = "first name  cannot set as null")
