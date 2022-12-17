@@ -72,5 +72,28 @@ public class GlobalExceptionHandlerClass {
 	}
 	
 	
+//	Exception handler for User  Exception
+	@ExceptionHandler(BusException.class)
+	public ResponseEntity<ErrorDetails> userException(UserException us, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), us.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+//	Exception handler for Admin  Exception
+	@ExceptionHandler(AdminException.class)
+	public ResponseEntity<ErrorDetails> adminException(AdminException ad, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), ad.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	
+	
+	
 
 }

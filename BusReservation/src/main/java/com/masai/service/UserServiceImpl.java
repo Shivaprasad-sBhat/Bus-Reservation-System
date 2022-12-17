@@ -15,7 +15,6 @@ import com.masai.exception.UserException;
 import com.masai.model.CurrentSession;
 import com.masai.model.Reservation;
 import com.masai.model.User;
-import com.masai.repository.ResevationDAO;
 import com.masai.repository.SessionDao;
 import com.masai.repository.UserDao;
 
