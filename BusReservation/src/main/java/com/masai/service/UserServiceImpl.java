@@ -34,29 +34,28 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User createUser(User user) throws UserException {
 	
-//	     User existingUser = uDao.findByUserName(user.getUserName());
-//		
-//	     if(existingUser == null) {
-//	    	 
-//	    	 User create = uDao.save(user);
-//	    	 
-//	    	 return create;
-//	    	 
-//	     }
-//	     
-//	     else 
-//	    	 
-//	    	 throw new UserException("User alredy registered");
-//		
-//		
+	     User existingUser = uDao.findByUserName(user.getUserName());
 		
-		List<Reservation> list = new ArrayList<>();
+	     if(existingUser == null) {
+	    	 
+	    	List<Reservation> list = new ArrayList<>();
+	 		
+	 		user.setReservationList(list);
+	 		
+	 		uDao.save(user);
+	 	
+	 		return user;
+	 	    
+	    	 
+	     }
+	     
+	     else 
+	    	 
+	    	 throw new UserException("User alredy registered");
 		
-		user.setReservationList(list);
 		
-		uDao.save(user);
-	
-		return user;
+		
+		
 	    
 	}
 	
@@ -71,6 +70,9 @@ public class UserServiceImpl implements UserService {
 			   
 			   if(user.getUserLoginId() == existing.getId()) {
 				   
+				   List<Reservation> list = new ArrayList<>();
+			 		
+			 		user.setReservationList(list);
 				   
 				   User created = uDao.save(user);
 				   

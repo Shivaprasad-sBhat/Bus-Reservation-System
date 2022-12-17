@@ -39,7 +39,6 @@ public class User {
 	
 	private String email;
 	
-
 	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Reservation> reservationList;

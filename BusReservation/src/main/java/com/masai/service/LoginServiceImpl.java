@@ -92,6 +92,12 @@ public class LoginServiceImpl implements LoginService{
 		 else
 			 throw new UserException("Invalid uuid");
 	}
+	
+	
+	
+	
+/************************************************** ADMIN *************************************************************************/
+	
 
 	@Override
 	public String loginAdmin(LoginDto credential) throws AdminException {
@@ -100,10 +106,9 @@ public class LoginServiceImpl implements LoginService{
 		
 		if(ad !=null) {
 			
-		Optional<CurrentSession>  cs = 	sDao.findById(ad.getAdminId());
+		CurrentSession  cs = 	sDao.findByIdAndType(ad.getAdminId(), "admin");		
 		
-		
-		if(cs.isEmpty()) {
+		if(cs == null) {
 			
 			
 			if(credential.getPassword().equals(ad.getAdminPassword())) {
@@ -112,6 +117,8 @@ public class LoginServiceImpl implements LoginService{
 				String key= RandomString.make(6);
 				
 				CurrentSession makingonline = new CurrentSession(ad.getAdminId(), "admin", key, LocalDateTime.now());
+				
+				sDao.save(makingonline);
 				
 				return makingonline.getUuid();
 				
