@@ -41,15 +41,6 @@ public class GlobalExceptionHandlerClass {
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
 	
-//	Exception handler for Bus  Exception
-	@ExceptionHandler(BusException.class)
-	public ResponseEntity<ErrorDetails> productExceptionHandler(BusException pe, WebRequest req){
-		
-		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), pe.getMessage(), req.getDescription(false));
-		
-		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
-	}
-	
 	
 //	Exception Handler for No URI found or wrong uri
 	@ExceptionHandler(NoHandlerFoundException.class)
@@ -60,4 +51,26 @@ public class GlobalExceptionHandlerClass {
 		
 		return new ResponseEntity<ErrorDetails>(err,HttpStatus.OK);
 	}
+	
+//	Exception handler for Bus  Exception
+	@ExceptionHandler(ReservationException.class)
+	public ResponseEntity<ErrorDetails> reservationExceptionHandler(ReservationException re, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), re.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+//	Exception handler for Bus  Exception
+	@ExceptionHandler(BusException.class)
+	public ResponseEntity<ErrorDetails> bustExceptionHandler(BusException be, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), be.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+
 }
