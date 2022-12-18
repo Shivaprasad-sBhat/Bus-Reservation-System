@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Masai Bus - Customer DashBoard</title>
+           
+    <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/style/navbar.css">
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            #container{
+                width: 30%;
+                height: fit-content;
+                margin:50px auto;
+                background-color: #48c9b0;
+                text-align: center;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+            #container>h1{
+                color: #f2f2f2;
+                font-weight: lighter;
+                font-size: 34px;
+            }
+            input{
+                display: block;
+                width: 78%;
+                margin: auto;
+                padding: 23px;
+                margin-bottom: 15px;
+                border: none;
+                font-size: 18px;
+                background-color: #f2f2f2;
+            }
+            form{
+                margin-top: 50px;
+            }
+            #submit{
+                display: flex;
+                color: white;
+                width: 78%;
+                margin: auto;
+                background-color:#17a589 ;
+                margin-top: 30px;
+                height: 20px;
+                justify-content: center;
+                align-items: center;
+                padding:23px;
+                border: none;
+                cursor: pointer;
+            }
+    
+            #submit:hover{
+    
+                transform: scale(0.9);
+            }
+           
+        </style>
+
+
+</head>
+
+
+<body>
+    
+<div id="navbar">   
+
+    <img src="/assests/logo.png" />
+
+<div id="navbar-items">
+    <a href="/pages/customerdashboard.html"><h3> Booking </h3></a> 
+    <a href=""><h3> All Tickets </h3></a> 
+    <a href="/pages/updateuser.html"><h3> Update User </h3></a> 
+    <a href=""><h3> Logout </h3></a> 
+ 
+
+</div>
+</div>
+
+
+<!-- Navbar code  ends here -->
+
+
+
+<div id="container">
+
+    <h1> - User  Update Form - </h1>
+    <form>
+    <input type="text" id="fname" placeholder="First Name"/>
+    <input type="text" id="lname" placeholder="Last Name"/>
+    <input type="text" id="email" placeholder="Email"/>
+    <input type="text" id="phone" placeholder="Contact Number"/>
+    
+    <input type="text" id="uname" placeholder="User Name"/>
+
+    <input type="text" id="password" placeholder="Password"/>
+    <button id="submit">SUBMIT</button>
+
+    </form>
+
+    <!-- <div id="submit">SUBMIT</div> -->
+
+
+</div>
+
+
+
+
+</body>
+</html>
+
+<script src="/script/updateuser.js"></script>
