@@ -114,6 +114,7 @@ public class BusServiceImpl implements BusService {
 
 		List<Bus> buses = busDao.findAll();
 		
+		
 		if(buses.isEmpty()) {
 			throw new BusException("No bus found");
 		}else {
