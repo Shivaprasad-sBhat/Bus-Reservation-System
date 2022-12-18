@@ -51,13 +51,13 @@ async function login(obj){
 
 
             // save user data to session storage
-            sessionStorage.setItem("userDataStorage",JSON.stringify(data))
+            localStorage.setItem("userDataStorage",JSON.stringify(data))
 
 
             // Write code here to send user data and user to user dashboard
             alert("Login Succesfull. Redirecting  to customer dashboard.")
 
-
+            window.location.href="/pages/customerdashboard.html"
 
         }else{
             
@@ -76,4 +76,4 @@ async function login(obj){
 
 
 
-checkUser()
+// checkUser()
