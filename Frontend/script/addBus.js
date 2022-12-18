@@ -1,0 +1,81 @@
+document.querySelector("#addRoutebtn").addEventListener("click",createRoute)
+
+
+
+ function createRoute(event){
+
+    event.preventDefault();
+
+
+    let source2 =document.getElementById("source_1").value
+
+    let destnation2 = document.getElementById("destnation_1").value
+
+    let distance2 = document.getElementById("distance_1").value
+
+
+
+
+
+    let obj={};
+
+    obj["routeFrom"] = source2
+    obj["routeTo"]=destnation2
+    obj["distance"]= distance2
+
+   
+
+
+    console.log(obj)
+
+    // login(obj)
+
+    addRouteFun(obj)
+
+}
+
+async function addRouteFun(obj){
+    try{
+
+        let res = await fetch("http://localhost:8818/addRoute",{
+            method:"POST",
+            body:JSON.stringify(obj),
+            headers:{
+                "Content-Type":"application/json"
+            }
+            // body:JSON.stringify(obj)
+        })
+        console.log(res)
+        if(res.ok){
+            console.log("sucesss")
+            let data = await res.json();
+
+            // To get data from response   // admin data
+            // let userData=JSON.stringify(data)
+
+
+            console.log(data)
+
+
+            // Write code here to send user data and user to user dashboard
+            alert(`New route created.`)
+            
+               
+
+        }else{
+            
+                let data = await res.json();
+                let error=JSON.stringify(data)
+
+                let msg =JSON.parse(error);
+                alert(msg["details"])
+
+        }
+
+    }catch(error){
+        return "Not sucessful"
+
+    }
+
+
+}
