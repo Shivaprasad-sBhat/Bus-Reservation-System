@@ -39,7 +39,7 @@ public class Reservation {
 	@NotNull(message = "Can't set as Null")
 	private LocalDate travelDate;
 	
-	@NotNull(message = "Can't set as Null")
+//	@NotNull(message = "Can't set as Null")
 	private LocalDateTime reservationDateAndTime;
 	
 	@NotNull(message = "Can't set as Null")

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +22,13 @@ import com.masai.service.ReservationService;
 
 
 @RestController
-@RequestMapping("reservationservice")
 public class ReservationController {
 
 	@Autowired
 	private ReservationService rService;
 	
 	@PostMapping("seatReservation/{busid}/{userId}")
+     @CrossOrigin
 	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("userId") Integer userId) throws ReservationException {
 		
 		Reservation bookedReservation = rService.addReservation(reservation,busId,userId);
@@ -50,6 +51,7 @@ public class ReservationController {
 	
 	
 	@DeleteMapping ("deleteReservations/{reservationId}/{userId}")
+	@CrossOrigin
 	public ResponseEntity<Reservation>  deleteReservation(@PathVariable("reservationId") Integer reservationId,@PathVariable("userId") Integer userId) throws ReservationException {
 		
 		Reservation deleteReservation = rService.deleteReservation(reservationId,userId);
@@ -73,6 +75,7 @@ public class ReservationController {
 	
 	
 	@GetMapping("viewReservations/{userId}")
+	@CrossOrigin
 	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId) {
 		
 		List<Reservation> viewReservations = rService.viewReservations(userId);
