@@ -28,6 +28,8 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer reservationId;
 	
+	@NotNull
+	private Integer seatQuantity;
 	
 	private String reservationStatus;
 	
@@ -48,6 +50,7 @@ public class Reservation {
 	
 	@ManyToOne
 	private Bus bus;
+	
 	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)

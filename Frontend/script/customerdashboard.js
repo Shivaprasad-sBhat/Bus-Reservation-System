@@ -1,6 +1,7 @@
 
 let userData= JSON.parse(localStorage.getItem("userDataStorage"))
 console.log(userData)
+let obj={};
 
 
 document.getElementById("routeForm").addEventListener("submit",findBuses)
@@ -11,6 +12,7 @@ function findBuses(event){
 
     event.preventDefault();
 
+    document.getElementById("buslist").innerHTML=null;
 
     let source =document.getElementById("source").value
 
@@ -20,7 +22,6 @@ function findBuses(event){
 
     console.log("inside")
 
-    let obj={};
 
     obj["source"] = source
     obj["destination"]=destination
@@ -122,33 +123,33 @@ async function getAllBus(){
     
     
             let bid=document.createElement("p")
-            // bid.innerText=elem.busId
+            bid.innerText=elem.busId
     
              let bname=document.createElement("p")
-            //  bname.innerText=elem.busName
+             bname.innerText=elem.busName
     
              let atime=document.createElement("p")
-            //  atime.innerText=elem.arrivalTime
+             atime.innerText=elem.arrivalTime
     
              let dtime=document.createElement("p")
-            //  dtime.innerText=elem.departureTime
+             dtime.innerText=elem.departureTime
     
              let btype=document.createElement("p")
-            //  btype.innerText=elem.busType
+             btype.innerText=elem.busType
     
     
              let driverName=document.createElement("p")
-            //  driverName.innerText=elem.driverName
+             driverName.innerText=elem.driverName
     
     
     
              let seats=document.createElement("p")
-            //  seats.innerText=elem.availableSeats
+             seats.innerText=elem.availableSeats
     
     
             let btn=document.createElement("button")
-            // btn.innerText="Book"
-            // btn.setAttribute("id","bookSeat")
+            btn.innerText="Book"
+            btn.setAttribute("id","bookbtn")
     
             btn.addEventListener("click",function(){
                 bookTicket(elem,userData);
@@ -156,18 +157,39 @@ async function getAllBus(){
     
     
     
-            parentDiv.append(bid,bname,btype,arrivalTime,dtime,driverName,seats)   
+            parentDiv.append(bid,bname,btype,atime,dtime,driverName,seats,btn)   
             let b= document.querySelector("#buslist")
-            b.append(bid)
+            b.append(parentDiv)
             console.log("hello")
+            document.getElementById("details-heading").style.display="flex";
         })
 
        
     }
 
 
-function bookTicket(elem,userData){
+async function bookTicket(elem,userData){
     console.log("Inside book ticket function")
+
+    let seatQuantity=prompt("Please enter how many seats you want: ");
+
+    console.log(seatQuantity);
+
+    console.log(elem)
+    console.log(userData)
+    console.log(obj)
+
+
+
+    let reservationObj={}
+
+    reservationObj["source"]=obj.source;
+    reservationObj["destination"]=obj.destination;
+    reservationObj["travelDate"]=obj.date;
+    reservationObj["seatQuantity"]=seatQuantity;
+    reservationObj["travelDate"]=obj.date;
+    
+
 }
 
 
