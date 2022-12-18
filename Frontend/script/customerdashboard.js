@@ -175,9 +175,12 @@ async function bookTicket(elem,userData){
 
     console.log(seatQuantity);
 
-    console.log(elem)
+    console.log(elem) 
+    // busdetails
     console.log(userData)
+    //userdata
     console.log(obj)
+    //user input
 
 
 
@@ -187,10 +190,106 @@ async function bookTicket(elem,userData){
     reservationObj["destination"]=obj.destination;
     reservationObj["travelDate"]=obj.date;
     reservationObj["seatQuantity"]=seatQuantity;
-    reservationObj["travelDate"]=obj.date;
+    reservationObj["reservationType"] = elem.busType;
+
+
+        try{
+            let res = await fetch(`http://localhost:8818/seatReservation/${elem.busId}/${userData.userLoginId}`,{
+                method:"POST",
+                body:JSON.stringify(reservationObj),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+                // body:JSON.stringify(obj)
+            })
+            
+            if(res.ok){
+                console.log("sucesss")
+                let data = await res.json();
+                // To get data from response   // admin data
+                // let userData=JSON.stringify(data)
+                console.log(data)
+                // Write code here to send user data and user to user dashboard
+                alert(`Reservation Success`);
+
+
+                //printing reservation page 
+
+                // window.location.href="."
+
+                
+                window.location.href="./reservation.html"
+                 
+                localStorage.setItem("reservation",JSON.stringify(data))
+
+
+                console.log("end");
+
+            }else{
+                    let data = await res.json();
+                    let error=JSON.stringify(data)
+                    let msg =JSON.parse(error);
+                    alert(msg.message)
+            }
+        }catch(error){
+            console.log(error)
+            alert(error)
+            return "Not sucessful"
+        }
+     
+
+  
+}
+
+
+
+//printing reservation page 
+function reservation(data , userData){
+
     
 
+
+  
+//    let p1 = document.createElement("p");
+//    p1.innerText = "kl";
+//     document.querySelector(".reser").innerHTML="k";
+
+//    x.innerHTML = p1 ;
+//    let p2 = document.createElement("p");
+//    p2.innerText = userData.lastName;
+
+//    let p3 = document.createElement("p");
+//    p3.innerText = userData.email;
+
+//    let p4 = document.createElement("p");
+//    p4.innerText = data.reservationId;
+
+//    let p5 = document.createElement("p");
+//    p5.innerText = data.destination;
+
+//    let p6 = document.createElement("p");
+//    p6.innerText = data.source;
+
+//    let p7 = document.createElement("p");
+//    p7.innerText = data.reservationType;
+   
+
+//    let p8 = document.createElement("p");
+//    p8.innerText = data.reservationStatus;
+
+//    let p9 = document.createElement("p");
+//    p9.innerText = data.seatQuantity;
+
+//   x.append(p1);
+  
+console.log(data , userData);
+//   console.log(x);
+
 }
+
+
+
+
 
 
 
