@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.masai.exception.RouteException;
 import com.masai.exception.UserException;
+import com.masai.model.Bus;
 import com.masai.model.Route;
 
 public interface RouteService {
@@ -17,5 +18,7 @@ public interface RouteService {
 	public Route viewRoute(Integer routeId, String key) throws RouteException, UserException;
 
 	public List<Route> viewAllRoute(String key) throws RouteException, UserException;
+	
+	public List<Bus> viewBusByRoute(String soure,String destination) throws RouteException;
 
 }
