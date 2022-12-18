@@ -16,5 +16,9 @@ public interface RouteService {
 	public Route deleteRoute(Integer routeId) throws RouteException, UserException;
 
 	public Route viewRoute(Integer routeId) throws RouteException, UserException;
+	
+	public List<Route> viewAllRoute() throws RouteException, UserException;
+	
+	public List<Bus> viewBusByRoute(String soure,String destination) throws RouteException;
 
 }
