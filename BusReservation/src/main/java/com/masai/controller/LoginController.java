@@ -53,7 +53,7 @@ public class LoginController {
 	/**************************************************************************************/
 	
 	
-	
+	@CrossOrigin
 	@PostMapping("/adminlogin")
 	public ResponseEntity<Admin> loginAdmin(@RequestBody LoginDto credential) {
 		

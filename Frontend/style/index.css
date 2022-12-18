@@ -49,3 +49,7 @@ h1{
     height: 280px;
 }
 
+
+#section-div:hover{
+    transform: scale(1.2);
+}

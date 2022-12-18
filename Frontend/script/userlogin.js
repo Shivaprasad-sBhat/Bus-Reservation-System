@@ -1,45 +1,3 @@
-// async function dummy(){
-
-//     let res =   await fetch("http://localhost:8818/createUser")
-
-//     let data = await res.json();
-
-//    console.log (data);
-
-//    console.log(arr);
-//   }
-
-//   // dummy();
-
-// let data = {
-
-//       "userName": "jajja",
-//       "password": "sssss",
-//       "firstName": "sam",
-//       "lastName": "samuel",
-//       "contact": 0,
-//       "email": "raku@gmail.com"
-   
-// }
-
-
-
-// postData( 'http://localhost:8818/createUser', data)
-
-
-
-// async function getUser(){
-
-//     let res =   await fetch("http://localhost:8818/userlogin")
-
-//     let data = await res.json();
-
-//    console.log (data);
-
-//    console.log(arr);
-//   }
-
-
 
 
 document.querySelector("form").addEventListener("submit",checkUser)
@@ -74,19 +32,38 @@ async function login(obj){
 
         let res = await fetch("http://localhost:8818/userlogin",{
             method:"POST",
+            body:JSON.stringify(obj),
             headers:{
                 "Content-Type":"application/json"
-            },
-            body:JSON.stringify(obj)
+            }
+            // body:JSON.stringify(obj)
         })
         console.log(res)
         if(res.ok){
             console.log("sucesss")
             let data = await res.json();
-            console.log(JSON.stringify(data))
+
+            // To get data from response   // user data
+            // let userData=JSON.stringify(data)
+
+
+            console.log(data)
+
+
+            // save user data to session storage
+            sessionStorage.setItem("userDataStorage",JSON.stringify(data))
+
+
+            // Write code here to send user data and user to user dashboard
+            alert("Login Succesfull. Redirecting  to customer dashboard.")
+
+
 
         }else{
-            console.log("not found")
+            
+                alert("Username or Password is Incorrect!")
+
+
         }
 
     }catch(error){

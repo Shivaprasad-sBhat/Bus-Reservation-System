@@ -26,7 +26,7 @@ public class UserController {
 	@Autowired
 	private UserService uService;
 	
-	
+	@CrossOrigin
 	@PostMapping("/createUser")
 	public ResponseEntity<User> createUser( @Valid @RequestBody User user) {
 		

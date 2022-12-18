@@ -1,0 +1,37 @@
+#navbar{
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+   justify-content: space-between;
+   align-items: center;
+}
+
+
+#navbar-items{
+    display: flex;
+    /* border: 1px solid green; */
+    width: 60%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* #navbar>h3{
+    color: beige;
+    margin-top: 15px;
+    margin-bottom: 15px;
+} */
+
+#navbar-items>a{
+
+    text-decoration: none;
+    color: black;
+}
+
+#navbar>img{
+    width: 130px;
+}
+
+#navbar-items>a:hover{
+    transform: scale(1.2);
+    color: rgb(228, 41, 41);
+    text-decoration: underline black;
+}
