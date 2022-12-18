@@ -114,5 +114,24 @@ public class RouteServiceImpl implements RouteService {
 			throw new RouteException("Route list is empty");
 		}
 	}
+	
+	
+	@Override 
+	public List<Bus> viewBusByRoute(String soure,String destination) throws RouteException{
+		
+		
+		Route route =	rDao.findByRouteFromAndRouteTo(soure, destination) ;
+		
+		Route routes =rDao.findById(route.getRouteId()).orElseThrow(() -> new RouteException("Route not found"));
+		
+		List<Bus> busList =	routes.getBus();
+		
+		if(busList.isEmpty()) {
+			throw new RouteException("Buses not available in this route");
+		}
+		else {
+			return busList;
+		}
+	}
 
 }

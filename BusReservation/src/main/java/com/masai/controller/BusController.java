@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,6 +66,7 @@ public class BusController {
 		return new ResponseEntity<Bus>(foundBus,HttpStatus.OK);
 	}
 	
+	@CrossOrigin
 	@GetMapping("/viewbytype/{type}")
 	public ResponseEntity<List<Bus>> viewAllBusByType(@PathVariable("type") String type){
 		
@@ -74,6 +76,7 @@ public class BusController {
 		return new ResponseEntity<List<Bus>>(allBus,HttpStatus.OK);		
 	}
 	
+	@CrossOrigin
 	@GetMapping("/viewallbus")
 	public ResponseEntity<List<Bus>> viewAllBus(){
 		
