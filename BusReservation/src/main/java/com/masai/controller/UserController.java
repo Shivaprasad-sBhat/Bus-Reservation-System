@@ -38,9 +38,9 @@ public class UserController {
 	
 	
 	@PutMapping("/updateUser")
-	public ResponseEntity<User> updateUser(@Valid @RequestBody User user , @RequestParam("key")  String key){
+	public ResponseEntity<User> updateUser(@Valid @RequestBody User user ){
 		
-		User us = uService.updateUser(user, key);
+		User us = uService.updateUser(user);
 		
 		
 		return new ResponseEntity<User>(us, HttpStatus.ACCEPTED);
@@ -50,9 +50,9 @@ public class UserController {
 	
 	
 	@DeleteMapping("/deleteUser")
-	public ResponseEntity<User> deleteUser(@RequestParam("id") int userId, @RequestParam("key")  String key){
+	public ResponseEntity<User> deleteUser(@RequestParam("id") int userId){
 		
-		User us = uService.deleteUser(userId, key);
+		User us = uService.deleteUser(userId);
 		
 		
 		return new ResponseEntity<User>(us, HttpStatus.ACCEPTED);

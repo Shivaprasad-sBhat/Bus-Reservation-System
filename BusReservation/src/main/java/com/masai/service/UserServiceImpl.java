@@ -58,67 +58,131 @@ public class UserServiceImpl implements UserService {
 	}
 	
 
-	@Override
-	public User updateUser(User user, String key) throws UserException {
+	public User updateUser(User user) throws UserException {
 		
-		   CurrentSession existing  = sDao.findByUuid(key);
-		   
-		   if(existing!=null) {
+		
+		   Optional<User> existing =  uDao.findById(user.getUserLoginId());
+		  
+		   if(existing.isPresent()) {
 			   
 			   
-			   if(user.getUserLoginId() == existing.getId()) {
+			   User us = existing.get();
+			   
+			   if(us.getUserName().equals(user.getUserName()) && us.getPassword().equals(user.getPassword())) {
 				   
-				   List<Reservation> list = new ArrayList<>();
-			 		
-			 		user.setReservationList(list);
 				   
-				   User created = uDao.save(user);
-				   
-				   return created;
+				    return uDao.save(user);
 				   
 			   }
-			   
 			   else
 				   
-				   throw new UserException("User LoginId is wrong");
+				   throw new UserException("Username and password is wrong");
+			   
+			   
+			   
 			   
 		   }
+		   
 		   else
 			   
-			   throw new UserException("Key Wrong or Not Logged In");
+			   throw new UserException("Account not craeted");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		   CurrentSession existing  = sDao.findByUuid(key);
+//		   
+//    	   if(existing!=null) {
+//			   
+//			   
+//			   if(user.getUserLoginId() == existing.getId()) {
+//				   
+//				   List<Reservation> list = new ArrayList<>();
+//			 		
+//			 		user.setReservationList(list);
+//				   
+//				   User created = uDao.save(user);
+//				   
+//				   return created;
+//				   
+//			   }
+//			   
+//			   else
+//				   
+//				   throw new UserException("User LoginId is wrong");
+//			   
+//		   }
+//		   else
+//			   
+//			   throw new UserException("Key Wrong or Not Logged In");
 		
 	}
 
+	
+	
 	@Override
-	public User deleteUser(int userid, String key) throws UserException {
+	public User deleteUser(int userid) throws UserException {
+
 		
-		CurrentSession existing  = sDao.findByUuid(key);
-		   
-		   if(existing!=null) {
-			   
-			   
-			   if(existing.getId() == userid) {
-				   
-				   Optional<User> delete = uDao.findById(userid);
-				   
-				   uDao.deleteById(userid);
-				   
-				   return delete.get();
-				   
-			   }
-			   
-			   else
-				   
-				   throw new UserException("User LoginId is wrong");
-			   
-		   }
-		   else
-			   
-			   throw new UserException("Key Wrong or Not Logged In");
+		
+		Optional<User> existing =  uDao.findById(userid);
+		
+		if(existing.isPresent()) {
+			
+			
+			return uDao.save(existing.get());
+			
+		}
+		
+		else
+			
+			throw new UserException("User not found");		  
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		CurrentSession existing  = sDao.findByUuid(key);
+//		   
+//		   if(existing!=null) {
+//			   
+//			   
+//			   if(existing.getId() == userid) {
+//				   
+//				   Optional<User> delete = uDao.findById(userid);
+//				   
+//				   uDao.deleteById(userid);
+//				   
+//				   return delete.get();
+//				   
+//			   }
+//			   
+//			   else
+//				   
+//				   throw new UserException("User LoginId is wrong");
+//			   
+//		   }
+//		   else
+//			   
+//			   throw new UserException("Key Wrong or Not Logged In");
 		
 		
 	}
 
+	
+	
 	@Override
 	public  User viewUser(int userid) throws UserException {
 		
