@@ -54,58 +54,123 @@ function findBuses(event){
 
 
 
-// getAllBus()
+    getAllBus()
 
+    
+
+}
+
+async function getAllBus(){
+    try{
+
+        let res = await fetch("http://localhost:8818/viewallbus",{
+            method:"GET",
+            // body:JSON.stringify(obj),
+            headers:{
+                "Content-Type":"application/json"
+            }
+            // body:JSON.stringify(obj)
+        })
+        console.log(res)
+        if(res.ok){
+            console.log("sucesss")
+            let data = await res.json();
+
+            // To get data from response   // user data
+            // let userData=JSON.stringify(data)
+            let d=JSON.stringify(data)
+                
+
+            console.log(data)
+ 
+
+           appendData(data)
+            console.log("hello from async")
+
+
+        }else{
+            
+                alert("Username or Password is Incorrect!")
+
+
+        }
+
+    }catch(error){
+        return "Not sucessful"
+
+    }
 
 
 }
 
-// async function getAllBus(){
-//     try{
-
-//         let res = await fetch("http://localhost:8818/viewallbus",{
-//             method:"GET",
-//             // body:JSON.stringify(obj),
-//             headers:{
-//                 "Content-Type":"application/json"
-//             }
-//             // body:JSON.stringify(obj)
-//         })
-//         console.log(res)
-//         if(res.ok){
-//             console.log("sucesss")
-//             let data = await res.json();
-
-//             // To get data from response   // user data
-//             // let userData=JSON.stringify(data)
 
 
-//             console.log(data)
+
+    function appendData(data){
 
 
-//             // save user data to session storage
-//             localStorage.setItem("userDataStorage",JSON.stringify(data))
-
-
-//             // Write code here to send user data and user to user dashboard
-//             alert("Login Succesfull. Redirecting  to customer dashboard.")
-
-//             window.location.href="/pages/customerdashboard.html"
-
-//         }else{
+        data.map(function(elem){
+            console.log("------")
+            console.log(elem)
+            console.log("------")
+    
+            let parentDiv=document.createElement("div")
+            parentDiv.setAttribute("id","bus-div")
+    
+           
             
-//                 alert("Username or Password is Incorrect!")
+    
+    
+            let bid=document.createElement("p")
+            // bid.innerText=elem.busId
+    
+             let bname=document.createElement("p")
+            //  bname.innerText=elem.busName
+    
+             let atime=document.createElement("p")
+            //  atime.innerText=elem.arrivalTime
+    
+             let dtime=document.createElement("p")
+            //  dtime.innerText=elem.departureTime
+    
+             let btype=document.createElement("p")
+            //  btype.innerText=elem.busType
+    
+    
+             let driverName=document.createElement("p")
+            //  driverName.innerText=elem.driverName
+    
+    
+    
+             let seats=document.createElement("p")
+            //  seats.innerText=elem.availableSeats
+    
+    
+            let btn=document.createElement("button")
+            // btn.innerText="Book"
+            // btn.setAttribute("id","bookSeat")
+    
+            btn.addEventListener("click",function(){
+                bookTicket(elem,userData);
+            })
+    
+    
+    
+            parentDiv.append(bid,bname,btype,arrivalTime,dtime,driverName,seats)   
+            let b= document.querySelector("#buslist")
+            b.append(bid)
+            console.log("hello")
+        })
+
+       
+    }
 
 
-//         }
-
-//     }catch(error){
-//         return "Not sucessful"
-
-//     }
+function bookTicket(elem,userData){
+    console.log("Inside book ticket function")
+}
 
 
-// }
 
 
 document.getElementById("logout").addEventListener("click",logoutUser)
