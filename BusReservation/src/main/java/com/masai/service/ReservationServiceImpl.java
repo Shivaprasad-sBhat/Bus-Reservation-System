@@ -43,13 +43,15 @@ public class ReservationServiceImpl implements ReservationService{
 
 	// Seat reservation
 	@Override
-	public Reservation addReservation(Reservation reservation,Integer busId,String uuid) throws ReservationException{
+	public Reservation addReservation(Reservation reservation,Integer busId, Integer userId) throws ReservationException{
 	
 		
 		
 	Bus bus =	bDao.findById(busId).orElseThrow(() -> new ReservationException("Bus not found."));
-	CurrentSession user1 = sDao.findByUuid(uuid);
-	User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
+	
+		//	CurrentSession user1 = sDao.findByUuid(uuid);
+	
+			User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
 	
 	
 	if(bus.getAvailableSeats()<=0 || bus.getAvailableSeats()- reservation.getSeatQuantity() <= 0) 
@@ -91,13 +93,13 @@ public class ReservationServiceImpl implements ReservationService{
 //	}
 
 	@Override
-	public Reservation deleteReservation(Integer reservationId,String uuid) throws ReservationException {
+	public Reservation deleteReservation(Integer reservationId,Integer userid) throws ReservationException {
 		
 		Reservation reservations = rDao.findById(reservationId).orElseThrow(() -> new ReservationException("Reservation details not found."));
 
 		
-		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
+//		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(userid).orElseThrow(()-> new UserException("User not found"));
 		
 		List<Reservation> reservationList =user.getReservationList();
 		
@@ -136,9 +138,10 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public Reservation viewReservationDetail(Integer reservationId,String uuid) throws ReservationException {
-		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
+	public Reservation viewReservationDetail(Integer reservationId,Integer userId) throws ReservationException {
+	
+		
+		User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
 		
 		List<Reservation> rList = user.getReservationList();
 		
@@ -161,10 +164,10 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public List<Reservation> viewReservations(Integer userID,String uuid) throws ReservationException {
+	public List<Reservation> viewReservations(Integer userID) throws ReservationException {
 		
-		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
+//		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(userID).orElseThrow(()-> new UserException("User not found"));
 	
 		List<Reservation> reservationsList = user.getReservationList();
 		
@@ -181,10 +184,10 @@ public class ReservationServiceImpl implements ReservationService{
 	
 
 	@Override
-	public List<Reservation> viewReservationsByDate(String uuid,String date) throws ReservationException {
+	public List<Reservation> viewReservationsByDate(Integer userId ,String date) throws ReservationException {
 
-		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(user1.getId()).orElseThrow(()-> new UserException("User not found"));
+//		CurrentSession user1 = sDao.findByUuid(uuid);
+		User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
 		
 	
 		List<Reservation> reservationsList = user.getReservationList();
