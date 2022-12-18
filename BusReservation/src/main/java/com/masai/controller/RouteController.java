@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.RouteException;
 import com.masai.exception.UserException;
+import com.masai.model.Bus;
 import com.masai.model.Route;
 import com.masai.service.RouteServiceImpl;
 
@@ -72,6 +73,15 @@ public class RouteController {
 
 		return new ResponseEntity<List<Route>>(rot, HttpStatus.FOUND);
 
+	}
+	
+	
+	@GetMapping("/viewBusByRoute/{source}/{destination}")
+	public ResponseEntity<List<Bus>> viewBusByRoute(@PathVariable("source") String soure,@PathVariable("destination") String destination) throws RouteException{
+		
+		List<Bus> busList =	rService.viewBusByRoute(soure, destination);
+	
+		return new ResponseEntity<List<Bus>>(busList,HttpStatus.OK);
 	}
 
 }
