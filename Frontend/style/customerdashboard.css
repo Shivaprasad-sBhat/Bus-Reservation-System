@@ -48,3 +48,55 @@ border-radius: 15px;
     border-radius: 10px;
 }
 
+#buslist{
+    /* border: 1px solid  red; */
+   
+    width: 85%;
+    margin: auto;
+    margin-top: 20px ;
+
+    display: grid;
+    grid-template-columns:100%;
+    gap: 20px;
+    align-content: space-around;
+
+}
+
+#bus-div{
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;        text-transform: capitalize;
+    padding: 15px;
+}
+
+#bus-div>p{
+    font-size: 24px;
+    /* border: 1px solid red; */
+}
+
+#bookbtn{
+    font-size: 22px;
+    /* border: 1px solid red; */
+    border: none;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: rgb(38, 189, 189);
+}
+
+
+#details-heading{
+    width: 80%;
+    margin: auto;
+    display: none;
+    align-content: space-around;
+    font-size: 24px;
+    justify-content: space-around;
+    margin-top: 100px;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: rgb(38, 189, 189);
+    border-radius: 10px;
+    color: white;
+
+}
