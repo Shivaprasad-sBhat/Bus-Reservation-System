@@ -20,6 +20,8 @@ document.querySelector("form").addEventListener("submit",checkAdmin)
     obj["name"] =name;
     obj["password"] =pass;
 
+    console.log(obj)
+    
     login(obj)
 
 }

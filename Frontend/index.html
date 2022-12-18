@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Document</title>
+    <title>Masai Bus - Bus reservation System</title>
            
     <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/style/index.css">
+        <link rel="stylesheet" href="/style/navbar.css">
+
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -22,7 +24,20 @@
 
 <body>
     
+<div id="navbar">   
 
+    <img src="./assests/logo.png" />
+
+<div id="navbar-items">
+    <a href="/index.html"><h3> Home </h3></a> 
+    <a href="/pages/userlogin.html"><h3> User Login </h3></a> 
+    <a href="/pages/usersignup.html"><h3> User SignUp </h3></a> 
+    <a href="/pages/adminlogin.html"><h3> Adminl Login </h3></a> 
+ 
+
+</div>
+
+</div>
     
 
     <div id="mainheading">  
@@ -31,14 +46,18 @@
 
         <div id="section">
             <div id="section-box">
+                <a href="./pages/adminlogin.html">
                 <div id="section-div">
                     <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="">
                     <h3>ADMIN</h3>
                 </div>
+            </a>
+            <a href="./pages/userlogin.html">
                 <div id="section-div">
                     <img  class="img2" src="https://www.freeiconspng.com/thumbs/computer-user-icon/computer-user-icon-2.png" alt="">
                     <h3>USER</h3>
                 </div>
+            </a>
             </div>
         </div>
 

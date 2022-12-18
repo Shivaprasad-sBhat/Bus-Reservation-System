@@ -67,7 +67,7 @@ async function userSignUpFun(obj){
             // Write code here to send user data and user to user dashboard
             alert(`Welcome to Masai Bus ${data.firstName}. Redirecting to Login page.`)
             
-
+                window.location.href="/pages/userlogin.html"
 
         }else{
             
@@ -76,6 +76,7 @@ async function userSignUpFun(obj){
 
                 let msg =JSON.parse(error);
                 alert(msg["details"])
+
         }
 
     }catch(error){
