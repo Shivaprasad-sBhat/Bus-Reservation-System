@@ -49,7 +49,7 @@ async function userUpdateFun(obj){
     try{
 
         let res = await fetch("http://localhost:8818/updateUser",{
-            method:"POST",
+            method:"PUT",
             body:JSON.stringify(obj),
             headers:{
                 "Content-Type":"application/json"
@@ -65,6 +65,7 @@ async function userUpdateFun(obj){
             // let userData=JSON.stringify(data)
 
 
+            console.log("updated")
             console.log(data)
 
 
@@ -73,7 +74,7 @@ async function userUpdateFun(obj){
 
             localStorage.setItem("userDataStorage",JSON.stringify(data))
             
-             window.location.href="/pages/customerdashboard.js"
+             window.location.href="/pages/customerdashboard.html"
 
         }else{
             

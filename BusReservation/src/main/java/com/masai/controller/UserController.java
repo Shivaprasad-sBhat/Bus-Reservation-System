@@ -37,6 +37,7 @@ public class UserController {
 	}
 	
 	
+	@CrossOrigin
 	@PutMapping("/updateUser")
 	public ResponseEntity<User> updateUser(@Valid @RequestBody User user ){
 		
