@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.model.Admin;
 import com.masai.model.LoginDto;
 import com.masai.model.User;
 import com.masai.service.LoginService;
@@ -26,14 +25,14 @@ public class LoginController {
 	
 	@CrossOrigin
 	@PostMapping("/userlogin")
-	public ResponseEntity<String> loginUser(@RequestBody LoginDto credential) {
+	public ResponseEntity<User> loginUser(@RequestBody LoginDto credential) {
 		
 		System.out.println(credential);
 		
-		String res = lService.loginUser(credential);
+		User res = lService.loginUser(credential);
 						
 			
-		return new ResponseEntity<String>(res, HttpStatus.ACCEPTED);
+		return new ResponseEntity<User>(res, HttpStatus.ACCEPTED);
 			
 		}
 	
@@ -56,13 +55,13 @@ public class LoginController {
 	
 	
 	@PostMapping("/adminlogin")
-	public ResponseEntity<String> loginAdmin(@RequestBody LoginDto credential) {
+	public ResponseEntity<Admin> loginAdmin(@RequestBody LoginDto credential) {
 		
 		
-		String res = lService.loginAdmin(credential);
+		Admin res = lService.loginAdmin(credential);
 						
 			
-		return new ResponseEntity<String>(res, HttpStatus.ACCEPTED);
+		return new ResponseEntity<Admin>(res, HttpStatus.ACCEPTED);
 			
 		}
 	

@@ -83,7 +83,7 @@ async function login(obj){
         if(res.ok){
             console.log("sucesss")
             let data = await res.json();
-            console.log(data)
+            console.log(JSON.stringify(data))
 
         }else{
             console.log("not found")

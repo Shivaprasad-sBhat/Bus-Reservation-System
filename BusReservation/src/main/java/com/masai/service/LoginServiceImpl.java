@@ -30,7 +30,7 @@ public class LoginServiceImpl implements LoginService{
 	private AdminDao aDao;
 	
 	@Override
-	public String loginUser(LoginDto credential) throws UserException {
+	public User loginUser(LoginDto credential) throws UserException {
 		
 		
 		System.out.println(credential.toString());
@@ -58,8 +58,9 @@ public class LoginServiceImpl implements LoginService{
 				
 				CurrentSession active = new CurrentSession(existingUser.getUserLoginId(), "user",key, LocalDateTime.now());
 				
-				return sDao.save(active).getUuid();
-
+				 sDao.save(active);
+				 
+				 return existingUser;
 			}
 			
 			else
@@ -100,7 +101,7 @@ public class LoginServiceImpl implements LoginService{
 	
 
 	@Override
-	public String loginAdmin(LoginDto credential) throws AdminException {
+	public Admin loginAdmin(LoginDto credential) throws AdminException {
 		
 		Admin ad =   aDao.findByAdminName(credential.getName());
 		
@@ -120,7 +121,7 @@ public class LoginServiceImpl implements LoginService{
 				
 				sDao.save(makingonline);
 				
-				return makingonline.getUuid();
+				return ad;
 				
 				
 			}
