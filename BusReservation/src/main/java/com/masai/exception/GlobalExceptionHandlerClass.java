@@ -102,5 +102,16 @@ public class GlobalExceptionHandlerClass {
 	
 	
 	
+	
+//	Exception handler for FeedBack  Exception
+	@ExceptionHandler(FeedBackException.class)
+	public ResponseEntity<ErrorDetails> feedBackException(FeedBackException re, WebRequest req){
+		
+		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), re.getMessage(), req.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	
 
 }

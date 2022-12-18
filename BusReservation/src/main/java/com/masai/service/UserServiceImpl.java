@@ -138,8 +138,12 @@ public class UserServiceImpl implements UserService {
 		if(existing.isPresent()) {
 			
 			
-			return uDao.save(existing.get());
+			User u = existing.get();
 			
+			 uDao.delete(u);
+			
+			 
+			 return u;
 		}
 		
 		else

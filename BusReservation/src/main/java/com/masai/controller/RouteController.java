@@ -28,47 +28,48 @@ public class RouteController {
 	private RouteServiceImpl rService;
 
 	@PostMapping("/addRoute")
-	public ResponseEntity<Route> addRouteHandler(@Valid @RequestBody Route route, @RequestParam String key)throws RouteException, UserException {
+	
+	public ResponseEntity<Route> addRouteHandler(@Valid @RequestBody Route route)throws RouteException, UserException {
 
-		Route rot = rService.addRoute(route, key);
+		Route rot = rService.addRoute(route);
 
 		return new ResponseEntity<Route>(rot, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/updateRoute")
-	public ResponseEntity<Route> updateRouteHandler(@Valid @RequestBody Route route, @RequestParam String key)
+	public ResponseEntity<Route> updateRouteHandler(@Valid @RequestBody Route route)
 			throws RouteException, UserException {
 
-		Route rot = rService.updateRoute(route, key);
+		Route rot = rService.updateRoute(route);
 
 		return new ResponseEntity<Route>(rot, HttpStatus.ACCEPTED);
 
 	}
 
 	@DeleteMapping("/deleteRoute/{routeId}")
-	public ResponseEntity<Route> deleteRouteHandler(@PathVariable("routeId") Integer routeId, @RequestParam String key)
+	public ResponseEntity<Route> deleteRouteHandler(@PathVariable("routeId") Integer routeId)
 			throws RouteException, UserException {
 
-		Route rot = rService.deleteRoute(routeId, key);
+		Route rot = rService.deleteRoute(routeId);
 
 		return new ResponseEntity<Route>(rot, HttpStatus.OK);
 
 	}
+	
 
 	@GetMapping("/viewRoute/{routeId}")
-	public ResponseEntity<Route> viewRouteHandler(@PathVariable("routeId") Integer routeId, @RequestParam String key)
-			throws RouteException, UserException {
+	public ResponseEntity<Route> viewRouteHandler(@PathVariable("routeId") Integer routeId) throws RouteException, UserException {
 
-		Route rot = rService.viewRoute(routeId, key);
+		Route rot = rService.viewRoute(routeId);
 
 		return new ResponseEntity<Route>(rot, HttpStatus.FOUND);
 	}
 
+	
 	@GetMapping("/viewAllRoute")
-	public ResponseEntity<List<Route>> viewAllRouteHandler(@RequestParam String key)
-			throws RouteException, UserException {
+	public ResponseEntity<List<Route>> viewAllRouteHandler() throws RouteException, UserException {
 
-		List<Route> rot = rService.viewAllRoute(key);
+		List<Route> rot = rService.viewAllRoute();
 
 		return new ResponseEntity<List<Route>>(rot, HttpStatus.FOUND);
 
