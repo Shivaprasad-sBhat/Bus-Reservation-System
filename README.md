@@ -13,6 +13,10 @@
 * Spring Data JPA
 * Hibernate
 * MySQL
+* HTML
+* CSS
+* Java
+
 
 ## Modules
 
@@ -39,11 +43,11 @@
 
 ## Installation & Run
 
-* Before running the API server, you should update the database config inside the [application.properties](https://github.com/vinaykumar2n/succinct-wrench-1095/blob/main/BusReservationSystemPortal/src/main/resources/application.properties) file. 
+* Before running the API server, you should update the database config inside the [application.properties](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/BusReservation/src/main/resources/application.properties) file. 
 * Update the port number, username and password as per your local database config.
 
 ```
-    server.port=8888
+    server.port=8818
 
     spring.datasource.url=jdbc:mysql://localhost:3306/busdb
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -54,9 +58,9 @@
 
 ## API Root Endpoint
 
-`https://localhost:8888/`
+`https://localhost:8818/`
 
-`http://localhost:8888/swagger-ui/`
+`http://localhost:8818/swagger-ui/`
 
 
 ## API Module Endpoints
@@ -95,25 +99,8 @@
 * `DELETE /admin/delete` : Deletes the admin with passed id   -->
 
 
-### Sample API Response for Admin Login
 
-`POST   localhost:8888/login/admin`
 
-* Request Body
-
-```
-    {
-        "mobileNo": "8651060999",
-        "password": "Clickme@007"
-    }
-```
-
-* Response
-
-```
-   CurrentAdminSession( adminId=10, uuid=ZaVLaK,localDatetime=2022-10-01 12:29:52.376508)
-   
-```
  
 
 
