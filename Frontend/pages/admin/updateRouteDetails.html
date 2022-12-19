@@ -15,68 +15,73 @@
 <body>
 
     <!-- NavBar -->
+    <div id="navbar1">
 
-
-    <div id="navbar" >   
-  
         <img src="/assests/logo.png" />
-    
-    <div id="navbar-items" >
-        <a href="admindashboard.html"><h3> Home </h3></a> 
-        <a href="busModule.html"><h3> Bus  </h3></a> 
-        <a href="routeModule.html"><h3> Route </h3></a> 
-        <a href="feadbackModule.html"><h3>Feadbacks</h3> </a>
-        <a id="admin_logout" ><h3> Logout </h3></a> 
-     
-    
-    </div>
 
-    <!-- Left Navbar -->
-    <div>
+        <div id="navbar-items1">
+            <a href="admindashboard.html">
+                <h3> Home </h3>
+            </a>
+            <a href="busModule.html">
+                <h3> Bus </h3>
+            </a>
+            <a href="routeModule.html">
+                <h3> Route </h3>
+            </a>
+            <a href="feadbackModule.html">
+                <h3>Feadbacks</h3>
+            </a>
+            <a id="admin_logout">
+                <h3> Logout </h3>
+            </a>
 
 
-        <div class="sidebar" style="position: fixed ;margin-top: 20px;">
-            <header>Dashboard</header>
-
-            <ul>
-
-                
-                <a href="routeModule.html">Add new Routes</a>
-                <a href="updateRouteDetails.html" id="update-routes">Update Routes</a>
-                <a href="viewAllRoute.html" id="view-routes">View All Routes </a>
-                <a href="deleteRoute.html" id="delete-routes">Delete Routes </a>
-                
-
-            </ul>
         </div>
 
+        <!-- Left Navbar -->
+        <div>
+            <div class="sidebar" style="position: fixed ;margin-top: 20px;">
+                <header>Dashboard</header>
 
-        <!-- Append the data here -->
+                <ul>
 
-        <div id="admin-container" >
+                    <a href="routeModule.html">Add new Routes</a>
+                    <a href="updateRouteDetails.html" id="update-routes">Update Routes</a>
+                    <a href="viewAllRoute.html" id="view-routes">View All Routes </a>
+                    <a href="deleteRoute.html" id="delete-routes">Delete Routes </a>
 
-            <!--    <div>Append data here</div> -->
 
-            <div class="table-Dashboard">
-                <h2 id="heading">Update Route Details</h2>
-                <table class="t1">
-                    <thead>
-                        <tr>
-                            <th>Route ID</th>
-                            <th>Source</th>
-                            <th>Destination</th>
-                            <th>Distance</th>
-                            <th>Update</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody">
-                        <!-- Append the fetched data  here -->
-                    </tbody>
-                </table>
+                </ul>
             </div>
-        </div>
 
-    </div>
+
+            <!-- Append the data here -->
+
+            <div id="admin-container">
+
+                <!--    <div>Append data here</div> -->
+
+                <div class="table-Dashboard">
+                    <h2 id="heading">Update Route Details</h2>
+                    <table class="t1">
+                        <thead>
+                            <tr>
+                                <th>Route ID</th>
+                                <th>Source</th>
+                                <th>Destination</th>
+                                <th>Distance</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <!-- Append the fetched data  here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
 
 
     </div>
@@ -84,3 +89,4 @@
 
 </html>
 <script src="/script/updateRoute.js"></script>
+<script src="/script/adminLogout.js"></script>

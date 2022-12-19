@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ public class RouteController {
 	private RouteServiceImpl rService;
 
 	@PostMapping("/addRoute")
-	
+	@CrossOrigin
 	public ResponseEntity<Route> addRouteHandler(@Valid @RequestBody Route route)throws RouteException, UserException {
 
 		Route rot = rService.addRoute(route);
@@ -38,6 +39,7 @@ public class RouteController {
 	}
 
 	@PutMapping("/updateRoute")
+	@CrossOrigin
 	public ResponseEntity<Route> updateRouteHandler(@Valid @RequestBody Route route)
 			throws RouteException, UserException {
 
@@ -48,6 +50,7 @@ public class RouteController {
 	}
 
 	@DeleteMapping("/deleteRoute/{routeId}")
+	@CrossOrigin
 	public ResponseEntity<Route> deleteRouteHandler(@PathVariable("routeId") Integer routeId)
 			throws RouteException, UserException {
 
@@ -59,6 +62,7 @@ public class RouteController {
 	
 
 	@GetMapping("/viewRoute/{routeId}")
+	@CrossOrigin
 	public ResponseEntity<Route> viewRouteHandler(@PathVariable("routeId") Integer routeId) throws RouteException, UserException {
 
 		Route rot = rService.viewRoute(routeId);
@@ -68,6 +72,7 @@ public class RouteController {
 
 	
 	@GetMapping("/viewAllRoute")
+	@CrossOrigin
 	public ResponseEntity<List<Route>> viewAllRouteHandler() throws RouteException, UserException {
 
 		List<Route> rot = rService.viewAllRoute();
@@ -78,6 +83,7 @@ public class RouteController {
 	
 	
 	@GetMapping("/viewBusByRoute/{source}/{destination}")
+	@CrossOrigin
 	public ResponseEntity<List<Bus>> viewBusByRoute(@PathVariable("source") String soure,@PathVariable("destination") String destination) throws RouteException{
 		
 		List<Bus> busList =	rService.viewBusByRoute(soure, destination);

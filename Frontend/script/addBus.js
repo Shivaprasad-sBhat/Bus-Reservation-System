@@ -1,25 +1,25 @@
-document.querySelector("form").addEventListener("submit",createRoute)
+document.querySelector("#addBusBtn").addEventListener("click",createBus)
 
 
 
- function createRoute(){
+ function createBus(){
 
     event.preventDefault();
 
 
-    let busName =document.getElementById("busName").value
+    let busName =document.getElementById("busName1").value
 
-    let driverName = document.getElementById("driverName").value
+    let driverName = document.getElementById("driverName1").value
 
-    let busType = document.getElementById("busType").value
+    let busType = document.getElementById("busType1").value
 
-    let arrivalTime = document.getElementById("arrivalTime").value
+    let arrivalTime = document.getElementById("arrivalTime1").value
 
-    let departureTime = document.getElementById("departureTime").value
+    let departureTime = document.getElementById("departureTime1").value
 
-    let seats = document.getElementById("seats").value
-
-    let routes = document.getElementById("routes").value
+    let seats1 = document.getElementById("seats1").value
+    let avilableSeats = document.getElementById("avilableSeats1").value
+ 
 
     let obj={};
 
@@ -28,20 +28,23 @@ document.querySelector("form").addEventListener("submit",createRoute)
     obj["busType"]= busType
     obj["arrivalTime"]= arrivalTime
     obj["departureTime"]= departureTime
-    obj["seats"]= seats
-    obj["routes"]= routes
+    obj["seats"]= seats1
+    obj["availableSeats"]= avilableSeats
+    
     console.log(obj)
 
     // login(obj)
 
-    addRouteFun(obj)
+    addBusFun(obj)
 
 }
 
-async function addRouteFun(obj){
+async function addBusFun(obj){
     try{
 
-        let res = await fetch("http://localhost:8818/addRoute",{
+    let routeid = document.getElementById("routesid1").value
+    console.log(routeid)
+        let res = await fetch(`http://localhost:8818/savebus/${routeid}`,{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{
@@ -73,12 +76,13 @@ async function addRouteFun(obj){
               
                 let msg =JSON.parse(error);
           
-
+                console.log(msg)
                 alert(msg.message)
 
         }
 
     }catch(error){
+        console.log(error)
         alert("Failed..")
         return "Not sucessful"
 

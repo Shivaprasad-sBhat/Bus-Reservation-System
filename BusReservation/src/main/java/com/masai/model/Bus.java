@@ -1,5 +1,7 @@
 package com.masai.model;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
@@ -9,12 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.apache.tomcat.jni.Time;
+import org.springframework.data.jpa.repository.Temporal;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -34,38 +41,31 @@ public class Bus {
 	private Integer busId;
 	
 	@NotNull(message = "bus name cannot set as null")
-	@NotEmpty(message = "bus name cannot set as empty")
-	@NotBlank(message = "bus name cannot set as blank")
 	private String busName;
 	
 	@NotNull(message = "driver name cannot set as null")
-	@NotEmpty(message = "driver name cannot set as empty")
-	@NotBlank(message = "driver name cannot set as blank")
 	private String driverName;
 
-	@NotNull(message = "bus type cannot set as null")
-	@NotEmpty(message = "bus type cannot set as empty")
-	@NotBlank(message = "bus type cannot set as blank")
+	@NotNull(message = "driver name cannot set as null")
 	private String busType;
 	
 	
 	
-	@NotNull(message = "can't set as null")
-	
-	private LocalTime arrivalTime;
+	@javax.persistence.Temporal(TemporalType.TIME)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+	private java.util.Date arrivalTime;
 	
 	
 
-	@NotNull(message = "can't set as null")
-	private LocalTime departureTime;
+	@javax.persistence.Temporal(TemporalType.TIME)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+	private java.util.Date departureTime;
 	
 	
-	@NotNull(message = "can't set as null")
-	@Min(value = 30 , message = "seat min 30")
-	@Max(value = 60 , message = "seat max 60")
+	@Min(value = 10 , message = "seat min 10")
+	@Max(value = 100 , message = "seat max 100")
 	private Integer seats;
 
-	@NotNull(message = "cannt set as null")
 	@Min( value = 0 , message = "not availabel seat")
 	private Integer availableSeats;
 	

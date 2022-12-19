@@ -30,9 +30,7 @@ public class ReservationController {
 	
 	
 	@PostMapping("seatReservation/{busid}/{userId}")
-
 	@CrossOrigin
-
 	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("userId") Integer userId) throws ReservationException {
 		
 		Reservation bookedReservation = rService.addReservation(reservation,busId,userId);
@@ -67,6 +65,7 @@ public class ReservationController {
 	
 	
 	@GetMapping("viewReservationsDetails/{reservationId}/{userId}")
+	@CrossOrigin
 	public ResponseEntity<Reservation>  viewReservationDetail(@PathVariable("reservationId") Integer reservationId,@PathVariable("userId") Integer userId) {
 		
 			Reservation viewReservation = rService.viewReservationDetail(reservationId,userId);
@@ -91,6 +90,7 @@ public class ReservationController {
 	
 	
 	@GetMapping("viewReservationsbyDate/{userId}/{date}")
+	@CrossOrigin
 	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("userId") Integer userId,@PathVariable("date") String date) {
 		
 		List<Reservation> viewReservations = rService.viewReservationsByDate(userId,date);

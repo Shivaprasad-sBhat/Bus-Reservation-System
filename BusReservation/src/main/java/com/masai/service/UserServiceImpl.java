@@ -68,18 +68,10 @@ public class UserServiceImpl implements UserService {
 			   
 			   User us = existing.get();
 			   
-			   if(us.getUserName().equals(user.getUserName()) && us.getPassword().equals(user.getPassword())) {
-				   
-				   
-				    return uDao.save(user);
-				   
-			   }
-			   else
-				   
-				   throw new UserException("Username and password is wrong");
 			   
-			   
-			   
+			   return uDao.save(user);
+				   
+			 
 			   
 		   }
 		   

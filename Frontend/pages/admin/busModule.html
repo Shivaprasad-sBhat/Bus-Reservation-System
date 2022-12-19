@@ -17,11 +17,11 @@
     <!-- NavBar -->
 
 
-    <div id="navbar" >   
+    <div id="navbar1" >   
   
         <img src="/assests/logo.png" />
     
-    <div id="navbar-items" >
+        <div id="navbar-items1" >
         <a href="admindashboard.html"><h3> Home </h3></a> 
         <a href="busModule.html"><h3> Bus  </h3></a> 
         <a href="routeModule.html"><h3> Route </h3></a> 
@@ -34,7 +34,6 @@
     <!-- Left Navbar -->
     <div>
 
-
         <div class="sidebar" style="position: fixed ;margin-top: 20px;">
             <header>Dashboard</header>
 
@@ -42,10 +41,10 @@
 
                 
                 
-                <a href="routeModule.html">Add new Routes</a>
-                <a href="updateRouteDetails.html" id="update-routes">Update Routes</a>
-                <a href="viewAllRoute.html" id="view-routes">View All Routes </a>
-                <a href="deleteRoute.html" id="delete-routes">Delete Routes </a>
+                <a href="busModule.html">Add new Bus</a>
+                <a href="updateBus.html" id="update-Bus">Update Bus</a>
+                <a href="viewAllBus.html" id="view-Bus">View All Bus </a>
+                <a href="deleteBus.html" id="delete-bus">Delete Bus </a>
                 
 
             </ul>
@@ -61,26 +60,52 @@
            <div class="upload-product-box">
                 <h1>Add a New Bus</h1>
                 <form action="" id="form">
-                    <label class="form-name">Bus name</label>
+                    <label class="form-name">Bus Name</label>
                     <br />
 
-                    <input class="input1" type="text" id="busName" required placeholder="Enter.." />
+                    <input class="input1" type="text" id="busName1" required placeholder="Enter.." />
                     <br />
 
                     <br />
-                    <label class="form-name" for="">Destination</label>
+                    <label class="form-name" for="">Driver Name</label>
                     <br />
 
-                    <input class="input1" type="text" id="driverName" required placeholder="Enter.." />
+                    <input class="input1" type="text" id="driverName1" required placeholder="Enter.." />
                     <br />
 
 
-                    <label class="form-name" for="">Distance</label>
+                    <label class="form-name" for="">Bus Type</label>
                     <br />
-                    <input class="input1" type="number" id="busType" required placeholder="Enter.." />
+                    <input class="input1" type="text" id="busType1" required placeholder="Enter.." />
                     <br />
 
-                    <button class="btn2" id="addRoutebtn">Create</button>
+                    <label class="form-name">Arrival Time</label>
+                    <br />
+
+                    <input class="input1" type="text" id="arrivalTime1" required placeholder="Enter.." />
+                    <br />
+                    <label class="form-name">Departure Time</label>
+                    <br />
+
+                    <input class="input1" type="text" id="departureTime1" required placeholder="Enter.." />
+                    <br />
+                    <label class="form-name">Total Bus Seats</label>
+                    <br />
+
+                    <input class="input1" type="number" id="seats1" required placeholder="Enter.." />
+                    <br />
+
+                    <label class="form-name">Available Seats</label>
+                    <br />
+
+                    <input class="input1" type="number" id="avilableSeats1" required placeholder="Enter.." />
+                    <br />
+                    <label class="form-name">Route ID</label>
+                    <br />
+
+                    <input class="input1" type="number" id="routesid1" required placeholder="Enter.." />
+                    <br />
+                    <button class="btn2" id="addBusBtn">Create</button>
                    
                 </form>
             </div> 
@@ -93,4 +118,5 @@
 </body>
 
 </html>
-<script src=""></script>
+<script src="/script/addBus.js"></script> 
+<script src="/script/adminLogout.js"></script>

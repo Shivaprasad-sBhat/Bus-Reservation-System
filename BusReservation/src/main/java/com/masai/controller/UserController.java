@@ -49,7 +49,7 @@ public class UserController {
 	}
 	
 	
-	
+	@CrossOrigin
 	@DeleteMapping("/deleteUser")
 	public ResponseEntity<User> deleteUser(@RequestParam("id") int userId){
 		
@@ -60,6 +60,7 @@ public class UserController {
 		
 	}
 	
+	@CrossOrigin
 	@GetMapping("/getUserByid")
 	public ResponseEntity<User> getUserByid(@RequestParam("id") int userId){		
 		User us = uService.viewUser(userId);
@@ -69,6 +70,8 @@ public class UserController {
 		
 	}
 	
+	
+	@CrossOrigin
 	@GetMapping("/getAllUser")
 	public ResponseEntity<List<User>> getAllUser(){
 		

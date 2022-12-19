@@ -1,4 +1,4 @@
-#navbar{
+#navbar1{
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
    justify-content: space-between;
@@ -7,7 +7,7 @@
 }
 
 
-#navbar-items{
+#navbar-items1{
     display: flex;
     /* border: 1px solid green; */
     width: 60%;
@@ -21,17 +21,17 @@
     margin-bottom: 15px;
 } */
 
-#navbar-items>a{
+#navbar-items1>a{
 
     text-decoration: none;
     color: black;
 }
 
-#navbar>img{
+#navbar1>img{
     width: 130px;
 }
 
-#navbar-items>a:hover{
+#navbar-items1>a:hover{
     transform: scale(1.2);
     color: rgb(228, 41, 41);
     text-decoration: underline black;

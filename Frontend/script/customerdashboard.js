@@ -55,16 +55,16 @@ function findBuses(event){
 
 
 
-    getAllBus()
+    getAllBus(obj)
 
     
 
 }
 
-async function getAllBus(){
+async function getAllBus(obj){
     try{
-
-        let res = await fetch("http://localhost:8818/viewallbus",{
+            //new api
+        let res = await fetch(`http://localhost:8818/viewBusByRoute/${obj.source}/${obj.destination}`,{
             method:"GET",
             // body:JSON.stringify(obj),
             headers:{
@@ -91,7 +91,7 @@ async function getAllBus(){
 
         }else{
             
-                alert("Username or Password is Incorrect!")
+                alert("Bus not found!")
 
 
         }
@@ -194,6 +194,7 @@ async function bookTicket(elem,userData){
 
 
         try{
+            console.log(elem.busId)
             let res = await fetch(`http://localhost:8818/seatReservation/${elem.busId}/${userData.userLoginId}`,{
                 method:"POST",
                 body:JSON.stringify(reservationObj),
