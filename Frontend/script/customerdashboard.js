@@ -188,8 +188,8 @@ async function bookTicket(elem,userData){
 
     reservationObj["source"]=obj.source;
     reservationObj["destination"]=obj.destination;
-    reservationObj["travelDate"]=obj.date;
     reservationObj["seatQuantity"]=seatQuantity;
+
     reservationObj["reservationType"] = elem.busType;
 
 
@@ -221,6 +221,12 @@ async function bookTicket(elem,userData){
                 window.location.href="./reservation.html"
                  
                 localStorage.setItem("reservation",JSON.stringify(data))
+
+   
+
+
+
+
 
 
                 console.log("end");

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routes</title>
+    <link rel="stylesheet" href="style/admindashboard.css">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="style/routeModule.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+    <!-- NavBar -->
+
+
+    <div id="navbar">
+
+        <img src="./assests/logo.png" />
+
+        <div id="navbar-items">
+            <a href="admindashboard.html">
+                <h3> Home </h3>
+            </a>
+            <a href="busModule">
+                <h3> Bus </h3>
+            </a>
+            <a href="routeModule.html">
+                <h3> Route </h3>
+            </a>
+            <a href="#">
+                <h3>Feadbacks</h3>
+            </a>
+            <a href="/pages/adminlogin.html">
+                <h3> Logout </h3>
+            </a>
+
+
+        </div>
+
+    </div>
+
+    <!-- Left Navbar -->
+    <div>
+
+
+        <div class="sidebar" style="position: fixed ;margin-top: 20px;">
+            <header>Dashboard</header>
+
+            <ul>
+
+               
+                <a href="routeModule.html">Add new Routes</a>
+                <a href="updateRouteDetails.html" id="update-routes">Update Routes</a>
+                <a href="viewAllRoute.html" id="view-routes">View All Routes </a>
+                <a href="deleteRoute.html" id="delete-routes">Delete Routes </a>
+                
+
+            </ul>
+        </div>
+
+
+        <!-- Append the data here -->
+
+        <div id="admin-container">
+
+            <!--    <div>Append data here</div> -->
+
+            <div class="table-Dashboard">
+                <h2 id="heading">Update Route Details</h2>
+                <table class="t1">
+                    <thead>
+                        <tr>
+                            <th>Route ID</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Distance</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Append the fetched data  here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+</body>
+
+</html>
+<script src="script/deleteRoute.js"></script>

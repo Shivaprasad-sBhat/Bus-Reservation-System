@@ -27,8 +27,12 @@ public class ReservationController {
 	@Autowired
 	private ReservationService rService;
 	
+	
+	
 	@PostMapping("seatReservation/{busid}/{userId}")
-     @CrossOrigin
+
+	@CrossOrigin
+
 	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("userId") Integer userId) throws ReservationException {
 		
 		Reservation bookedReservation = rService.addReservation(reservation,busId,userId);
