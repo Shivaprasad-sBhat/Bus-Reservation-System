@@ -20,7 +20,22 @@
 }
 #tbody>tr>td{
 
-    margin-top: 5000px;
+    
+}
+#fb{
+    
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#fb:hover{
+    cursor: pointer;
+}
+#cancel{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#cancel:hover{
+    cursor: pointer;
 }
 
  #tbody>tr>td {

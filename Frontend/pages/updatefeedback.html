@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AllTicketDetails</title>
+    <title>UPDATE FEEDBACK</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/navbar.css">
     <link rel="stylesheet" href="/style/customerdashboard.css">
-    <link rel="stylesheet" href="/style/allticket.css">
-
+    <link rel="stylesheet" href="/style/feedback.css">
 </head>
 <body>
+    
 
     <div id="navbar">   
 
@@ -29,28 +29,28 @@
 
 
 
-<div class="table-Dashboard">
-        <h2 id="heading">All Tickets</h2>
-        <table class="t1">
-            <thead>
-                <tr>
-                   <th>RESERVATIONID</th>
-                   <th>RESERVATIONTYPE</th>
-                   <th>TRAVELDATE</th>
-                   <th>SOURCE</th>
-                   <th>DESTINATION</th>
-                   <th>SEATQUANTITY</th>
-                   <th>RESERVATIONSTATUS</th>
-                   <th>RESERVATIONDATEANDTIME</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                <!-- Append the fetched data  here -->
 
-            </tbody>
-        </table>
-    </div>
+
+    <div class="feedback">
+    <h1>UPDATE FEEDBACK</h1>
+    <form id="form">
+
+     <label>Driver Rating</label>
+     <input id="dr" type="text" placeholder="  enter"><br>
+
+     <label>Service Rating</label>
+     <input id="sr" type="text" placeholder=" enter"><br>
+     
+     <label>Overall Rating</label>
+     <input id="or" type="text" placeholder=" enter"><br>
+     
+     <label>Comments </label>
+     <input id="cr" type="text" placeholder="    enter"><br>
+     
+     <button type="submit">SUBMIT</button>
+     
+    </form>
+</div>
 
 </body>
 </html>
-<script src="../script/allticket.js"></script>

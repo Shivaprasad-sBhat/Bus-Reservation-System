@@ -74,6 +74,7 @@ function appendData(data){
     let td6 = document.createElement("td");
     td6.innerText = el.seatQuantity;
 
+
     let td7 = document.createElement("td");
     td7.innerText = el.reservationStatus;
     if(el.reservationStatus =="Reservation Canceled."){
@@ -87,16 +88,78 @@ function appendData(data){
     let td8 = document.createElement("td");
     td8.innerText = el.reservationDateAndTime;
 
+
+    let feedback = document.createElement("td");
+    feedback.innerText = "FEEDBACK";
+    feedback.setAttribute("id","fb");
+    feedback.addEventListener("click" , function(){
+
+        let blue = JSON.parse(localStorage.getItem("blue"));
+
+        let flag = false;
+
+        if(blue !=null){
+
+          for(let i in blue){
+
+              if(blue[i] == el.reservationId ) flag = true;
+
+          }
+
+        }
+
+        if(flag){
+              
+            localStorage.setItem("reservationfeedback",JSON.stringify(el));
+
+            window.location.href="./updatefeedback.html"
+             
+        }
+        else{
+
+            
+            localStorage.setItem("reservationfeedback",JSON.stringify(el));
+
+            window.location.href="./feedback.html"
+        }
+    })
+
+
+    let blue = JSON.parse(localStorage.getItem("blue"));
+
+        let flag = false;
+
+        if(blue !=null){
+
+          for(let i in blue){
+
+              if(blue[i] == el.reservationId ) flag = true;
+
+          }
+
+        }
+
+        if(flag){
+       
+            feedback.style.backgroundColor="blue";
+            feedback.style.color = "white";
+
+        }
+
+
+
+
     let td9 = document.createElement("td");
     td9.innerText = "CANCELTICKET";
     td9.style.color="red";
+    td9.setAttribute("id","cancel")
     td9.addEventListener("click",function(){
 
         removes(el);
 
     })
 
-    tr.append(td1 ,td2 , td3 , td4 , td5 , td6 , td7 , td8 , td9);
+    tr.append(td1 ,td2 , td3 , td4 , td5 , td6 , td7 , td8 ,feedback ,  td9);
 
     tbody.append(tr);
     
@@ -153,4 +216,20 @@ async function removes(data){
     
 }
 
+document.getElementById("logout").addEventListener("click",logoutUser)
 
+
+function logoutUser(){
+
+   event.preventDefault();
+
+    localStorage.removeItem("userDataStorage")
+
+
+    alert("You are Logged Out.")
+
+    window.location.href="/index.html"
+
+
+
+}
