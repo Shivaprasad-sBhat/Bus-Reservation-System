@@ -14,7 +14,7 @@ function getBuses(event) {
 async function getAllBuses() {
     try {
 
-        let res = await fetch("http://localhost:8818/viewAllRoute", {
+        let res = await fetch("http://localhost:8818/viewallbus", {
             method: "GET",
             // body:JSON.stringify(obj),
             headers: {
@@ -115,17 +115,17 @@ async function updateBusFun(ele){
 }
 
 
-document.querySelector("#updateBusDetails").addEventListener("click",updateRoute)
+document.querySelector("#updateBusDetails").addEventListener("click",updateBusDetails1)
 
 
 
 
-function updateRoute(event){
+function updateBusDetails1(event){
 
     event.preventDefault();
     let busData= JSON.parse(localStorage.getItem("BusDetailsLS"))
 
-    let busId = busData.busId
+    let busId = busData["busId"]
 
     let busName =document.getElementById("busName2").value
 
@@ -137,9 +137,10 @@ function updateRoute(event){
 
     let departureTime = document.getElementById("departureTime2").value
 
-    let seats1 = document.getElementById("seats1").value
+    let seats1 = document.getElementById("seats2").value
+
     let avilableSeats = document.getElementById("avilableSeats2").value
- 
+   
 
     let obj={};
 
@@ -152,7 +153,7 @@ function updateRoute(event){
     obj["departureTime"]= departureTime
     obj["seats"]= seats1
     obj["availableSeats"]= avilableSeats
-    
+   
     console.log(obj)
 
     // login(obj)
@@ -163,7 +164,9 @@ function updateRoute(event){
 async function updateBus1(obj){
     try{
 
-        let res = await fetch(`http://localhost:8818/updateBus/${obj}`,{
+        let routeID = document.getElementById("routeID12").value
+     
+        let res = await fetch(`http://localhost:8818/updatebus/${routeID}`,{
             method:"PUT",
             body:JSON.stringify(obj),
             headers:{
@@ -184,7 +187,7 @@ async function updateBus1(obj){
 
 
             // Write code here to send user data and user to user dashboard
-            alert(`Route updated.`)
+            alert(`Bus details updated.`)
             
                
         }else{
@@ -194,6 +197,7 @@ async function updateBus1(obj){
                 console.log(data)
                 let msg =JSON.parse(error);
                 alert(msg.message)
+                console.log(msg.message)
 
         }
 
