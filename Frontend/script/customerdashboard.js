@@ -63,7 +63,7 @@ function findBuses(event){
 
 async function getAllBus(obj){
     try{
-
+            //new api
         let res = await fetch(`http://localhost:8818/viewBusByRoute/${obj.source}/${obj.destination}`,{
             method:"GET",
             // body:JSON.stringify(obj),
@@ -91,7 +91,7 @@ async function getAllBus(obj){
 
         }else{
             
-                alert("Username or Password is Incorrect!")
+                alert("Bus not found!")
 
 
         }
