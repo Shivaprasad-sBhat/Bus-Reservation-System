@@ -119,7 +119,7 @@ public class ReservationServiceImpl implements ReservationService{
 				bDao.save(bus);
 				
 				//update status and adding to list again
-				reservations.setReservationStatus("Reservation Canceled.");
+				reservations.setReservationStatus("Reservation cancelled");
 				user.setReservationList(reservationList);
 				
 				uDao.save(user);

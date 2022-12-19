@@ -185,12 +185,10 @@ async function bookTicket(elem,userData){
 
 
     let reservationObj={}
-
-    reservationObj["source"]=obj.source;
-    reservationObj["destination"]=obj.destination;
-    reservationObj["seatQuantity"]=seatQuantity;
-
-    reservationObj["reservationType"] = elem.busType;
+    
+ reservationObj["travelDate"]=obj.date;
+ reservationObj["seatQuantity"]=seatQuantity;
+ reservationObj["reservationType"] = elem.busType;
 
 
         try{
