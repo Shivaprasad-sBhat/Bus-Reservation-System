@@ -44,6 +44,7 @@ public class BusController {
 	
 	
 	@PutMapping("/updatebus")
+	@CrossOrigin
 	public ResponseEntity<Bus> updateBus(@Valid @RequestBody Bus bus){
 		
 		Bus savedBus = busServices.updateBus(bus);
@@ -53,6 +54,7 @@ public class BusController {
 	}
 	
 	@DeleteMapping("/deletebus/{id}")
+	@CrossOrigin
 	public ResponseEntity<Bus> deletBus(@PathVariable("id") Integer busId){
 		
 		Bus deletedBus = busServices.deleteBus(busId);

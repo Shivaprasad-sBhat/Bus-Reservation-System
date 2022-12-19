@@ -30,7 +30,7 @@ public class RouteController {
 	private RouteServiceImpl rService;
 
 	@PostMapping("/addRoute")
-	
+	@CrossOrigin
 	public ResponseEntity<Route> addRouteHandler(@Valid @RequestBody Route route)throws RouteException, UserException {
 
 		Route rot = rService.addRoute(route);
@@ -39,6 +39,7 @@ public class RouteController {
 	}
 
 	@PutMapping("/updateRoute")
+	@CrossOrigin
 	public ResponseEntity<Route> updateRouteHandler(@Valid @RequestBody Route route)
 			throws RouteException, UserException {
 
@@ -49,6 +50,7 @@ public class RouteController {
 	}
 
 	@DeleteMapping("/deleteRoute/{routeId}")
+	@CrossOrigin
 	public ResponseEntity<Route> deleteRouteHandler(@PathVariable("routeId") Integer routeId)
 			throws RouteException, UserException {
 
@@ -60,6 +62,7 @@ public class RouteController {
 	
 
 	@GetMapping("/viewRoute/{routeId}")
+	@CrossOrigin
 	public ResponseEntity<Route> viewRouteHandler(@PathVariable("routeId") Integer routeId) throws RouteException, UserException {
 
 		Route rot = rService.viewRoute(routeId);
@@ -69,6 +72,7 @@ public class RouteController {
 
 	
 	@GetMapping("/viewAllRoute")
+	@CrossOrigin
 	public ResponseEntity<List<Route>> viewAllRouteHandler() throws RouteException, UserException {
 
 		List<Route> rot = rService.viewAllRoute();

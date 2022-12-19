@@ -38,6 +38,7 @@ public class LoginController {
 	
 	
 	@PostMapping("/userlogout")
+	@CrossOrigin
 	public ResponseEntity<String> logoutuser(@RequestParam("key") String key) {
 		
 		
@@ -67,6 +68,7 @@ public class LoginController {
 	
 	
 	@PostMapping("/adminlogout")
+	@CrossOrigin
 	public ResponseEntity<String> adminlogout(@RequestParam("key") String key) {
 		
 		
