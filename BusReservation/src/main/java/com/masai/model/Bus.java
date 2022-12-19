@@ -62,8 +62,8 @@ public class Bus {
 	private java.util.Date departureTime;
 	
 	
-	@Min(value = 30 , message = "seat min 30")
-	@Max(value = 60 , message = "seat max 60")
+	@Min(value = 10 , message = "seat min 10")
+	@Max(value = 100 , message = "seat max 100")
 	private Integer seats;
 
 	@Min( value = 0 , message = "not availabel seat")
