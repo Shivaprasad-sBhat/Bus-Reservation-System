@@ -1,31 +1,35 @@
-document.querySelector("#addRoutebtn").addEventListener("click",createRoute)
+document.querySelector("form").addEventListener("submit",createRoute)
 
 
 
- function createRoute(event){
+ function createRoute(){
 
     event.preventDefault();
 
 
-    let source2 =document.getElementById("source_1").value
+    let busName =document.getElementById("busName").value
 
-    let destnation2 = document.getElementById("destnation_1").value
+    let driverName = document.getElementById("driverName").value
 
-    let distance2 = document.getElementById("distance_1").value
+    let busType = document.getElementById("busType").value
 
+    let arrivalTime = document.getElementById("arrivalTime").value
 
+    let departureTime = document.getElementById("departureTime").value
 
+    let seats = document.getElementById("seats").value
 
+    let routes = document.getElementById("routes").value
 
     let obj={};
 
-    obj["routeFrom"] = source2
-    obj["routeTo"]=destnation2
-    obj["distance"]= distance2
-
-   
-
-
+    obj["busName"] = busName
+    obj["driverName"]=driverName
+    obj["busType"]= busType
+    obj["arrivalTime"]= arrivalTime
+    obj["departureTime"]= departureTime
+    obj["seats"]= seats
+    obj["routes"]= routes
     console.log(obj)
 
     // login(obj)
@@ -66,13 +70,16 @@ async function addRouteFun(obj){
             
                 let data = await res.json();
                 let error=JSON.stringify(data)
-
+              
                 let msg =JSON.parse(error);
-                alert(msg["details"])
+          
+
+                alert(msg.message)
 
         }
 
     }catch(error){
+        alert("Failed..")
         return "Not sucessful"
 
     }
