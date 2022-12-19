@@ -67,7 +67,7 @@ public class RouteController {
 
 		Route rot = rService.viewRoute(routeId);
 
-		return new ResponseEntity<Route>(rot, HttpStatus.FOUND);
+		return new ResponseEntity<Route>(rot, HttpStatus.OK);
 	}
 
 	
@@ -77,7 +77,7 @@ public class RouteController {
 
 		List<Route> rot = rService.viewAllRoute();
 
-		return new ResponseEntity<List<Route>>(rot, HttpStatus.FOUND);
+		return new ResponseEntity<List<Route>>(rot, HttpStatus.OK);
 
 	}
 	
