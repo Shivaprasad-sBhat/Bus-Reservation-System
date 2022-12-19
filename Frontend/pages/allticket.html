@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllTicketDetails</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style/navbar.css">
+    <link rel="stylesheet" href="/style/customerdashboard.css">
+    <link rel="stylesheet" href="/style/allticket.css">
+
+</head>
+<body>
+
+    <div id="navbar">   
+
+        <img src="/assests/logo.png" />
+    
+    <div id="navbar-items">
+        <a href="/pages/customerdashboard.html"><h3> Booking </h3></a> 
+        <a href="./allticket.html"><h3> All Tickets </h3></a> 
+        <a href="/pages/updateuser.html"><h3> Update User </h3></a> 
+        <a href=""><h3 id="logout"> Logout </h3></a> 
+     
+    
+    </div>
+    </div>
+
+
+
+<div class="table-Dashboard">
+        <h2 id="heading">All Tickets</h2>
+        <table class="t1">
+            <thead>
+                <tr>
+                   <th>RESERVATIONID</th>
+                   <th>RESERVATIONTYPE</th>
+                   <th>TRAVELDATE</th>
+                   <th>SOURCE</th>
+                   <th>DESTINATION</th>
+                   <th>SEATQUANTITY</th>
+                   <th>RESERVATIONSTATUS</th>
+                   <th>RESERVATIONDATEANDTIME</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- Append the fetched data  here -->
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+<script src="../script/allticket.js"></script>

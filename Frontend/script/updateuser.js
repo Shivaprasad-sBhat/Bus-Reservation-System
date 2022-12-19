@@ -93,3 +93,25 @@ async function userUpdateFun(obj){
 
 
 }
+
+
+
+document.getElementById("logout").addEventListener("click",logoutUser)
+
+
+function logoutUser(){
+
+   event.preventDefault();
+
+    localStorage.removeItem("userDataStorage")
+
+
+    alert("You are Logged Out.")
+
+    window.location.href="/index.html"
+
+
+
+}
+
+

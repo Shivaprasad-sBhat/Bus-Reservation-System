@@ -175,9 +175,12 @@ async function bookTicket(elem,userData){
 
     console.log(seatQuantity);
 
-    console.log(elem)
+    console.log(elem) 
+    // busdetails
     console.log(userData)
+    //userdata
     console.log(obj)
+    //user input
 
 
 
@@ -186,71 +189,71 @@ async function bookTicket(elem,userData){
     reservationObj["source"]=obj.source;
     reservationObj["destination"]=obj.destination;
     reservationObj["seatQuantity"]=seatQuantity;
-    reservationObj["travelDate"]=obj.date;
-    reservationObj["reservationType"]=elem.busType;
 
-    console.log(reservationObj)
+    reservationObj["reservationType"] = elem.busType;
 
 
-    try{
+        try{
+            let res = await fetch(`http://localhost:8818/seatReservation/${elem.busId}/${userData.userLoginId}`,{
+                method:"POST",
+                body:JSON.stringify(reservationObj),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+                // body:JSON.stringify(obj)
+            })
+            
+            if(res.ok){
+                console.log("sucesss")
+                let data = await res.json();
+                // To get data from response   // admin data
+                // let userData=JSON.stringify(data)
+                console.log(data)
+                // Write code here to send user data and user to user dashboard
+                alert(`Reservation Success`);
 
-        let res = await fetch(`http://localhost:8818/reservationservice/seatReservation/${elem.busId}/${userData.userLoginId}`,{
-            method:"POST",
-            body:JSON.stringify(reservationObj),
-            headers:{
-                "Content-Type":"application/json"
+
+                //printing reservation page 
+
+                // window.location.href="."
+
+                
+                window.location.href="./reservation.html"
+                 
+                localStorage.setItem("reservation",JSON.stringify(data))
+
+   
+
+
+
+
+
+
+                console.log("end");
+
+            }else{
+                    let data = await res.json();
+                    let error=JSON.stringify(data)
+                    let msg =JSON.parse(error);
+                    alert(msg.message)
             }
-            // body:JSON.stringify(obj)
-        })
-        console.log(res)
-        if(res.ok){
-            console.log("sucesss")
-            let data = await res.json();
-
-            // To get data from response   // admin data
-            // let userData=JSON.stringify(data)
-
-
-            console.log(data)
-
-
-            // save user data to session storage
-            sessionStorage.setItem("adminDataStorage",JSON.stringify(data))
-
-
-            // Write code here to send user data and user to Admin dashboard
-            alert("Login Succesfull. Redirecting  to Admin dashboard.")
-
-            
-
-        }else{
-
-
-            let data = await res.json();
-            let error=JSON.stringify(data)
-
-            let msg =JSON.parse(error);
-            // alert(msg["details"])
-            console.log(msg)
-
-
-
-            
-                alert("Username or Password is Incorrect!")
-
-
+        }catch(error){
+            console.log(error)
+            alert(error)
+            return "Not sucessful"
         }
+     
 
-    }catch(error){
-        return "Not sucessful"
-
-    }
-
-
-
-
-
+  
 }
+
+
+
+
+
+
+
+
 
 
 

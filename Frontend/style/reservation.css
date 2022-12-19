@@ -1,0 +1,47 @@
+.cont{
+
+    
+   
+
+} 
+.cont>h1{
+    width: 500px;
+    background-color: rgb(38, 189, 189);
+    margin: auto;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.reser{
+    margin: auto;
+    margin-top: 30px;
+    padding: 30px;
+    width: 450px;
+    display: grid;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    justify-items: center;
+
+
+}
+.cont>div:last-child{
+    margin-top: 30px;
+    text-align: center;
+   
+}  
+#but{
+ 
+    width: 150px;
+    height: 40px;
+    border: hidden;
+    border-radius: 10px;
+    
+}
+           
+#but:hover{
+    background-color: aqua;
+}
+.reser>p{
+
+    
+    font-weight: 200px;
+}

@@ -22,7 +22,6 @@ import com.masai.service.ReservationService;
 
 
 @RestController
-@RequestMapping("reservationservice")
 public class ReservationController {
 
 	@Autowired
@@ -31,7 +30,9 @@ public class ReservationController {
 	
 	
 	@PostMapping("seatReservation/{busid}/{userId}")
+
 	@CrossOrigin
+
 	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("userId") Integer userId) throws ReservationException {
 		
 		Reservation bookedReservation = rService.addReservation(reservation,busId,userId);
@@ -54,6 +55,7 @@ public class ReservationController {
 	
 	
 	@DeleteMapping ("deleteReservations/{reservationId}/{userId}")
+	@CrossOrigin
 	public ResponseEntity<Reservation>  deleteReservation(@PathVariable("reservationId") Integer reservationId,@PathVariable("userId") Integer userId) throws ReservationException {
 		
 		Reservation deleteReservation = rService.deleteReservation(reservationId,userId);
@@ -77,6 +79,7 @@ public class ReservationController {
 	
 	
 	@GetMapping("viewReservations/{userId}")
+	@CrossOrigin
 	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId) {
 		
 		List<Reservation> viewReservations = rService.viewReservations(userId);

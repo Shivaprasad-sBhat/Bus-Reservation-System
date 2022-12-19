@@ -54,12 +54,11 @@ public class ReservationServiceImpl implements ReservationService{
 			User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
 	
 	
-	if(bus.getAvailableSeats()<=0 || bus.getAvailableSeats()- reservation.getSeatQuantity() <= 0) 
-		throw new ReservationException("All seats are booked.");
+	    if(bus.getAvailableSeats()<=0 || bus.getAvailableSeats()- reservation.getSeatQuantity() < 0) throw new ReservationException("All seats are booked.");
 		
 	
 			bus.setAvailableSeats(bus.getAvailableSeats()-reservation.getSeatQuantity());
-			Bus updatedBus = bDao.save(bus);
+//			Bus updatedBus = bDao.save(bus);
 			
 			reservation.setBus(bus);
 			reservation.setReservationStatus("Reservation Confirmed");
