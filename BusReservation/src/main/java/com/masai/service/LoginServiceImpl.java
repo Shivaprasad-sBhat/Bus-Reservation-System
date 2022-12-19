@@ -107,10 +107,10 @@ public class LoginServiceImpl implements LoginService{
 		
 		if(ad !=null) {
 			
-		CurrentSession  cs = 	sDao.findByIdAndType(ad.getAdminId(), "admin");		
-		
-		if(cs == null) {
-			
+//		CurrentSession  cs = 	sDao.findByIdAndType(ad.getAdminId(), "admin");		
+//		
+//		if(cs == null) {
+//			
 			
 			if(credential.getPassword().equals(ad.getAdminPassword())) {
 				
@@ -129,12 +129,12 @@ public class LoginServiceImpl implements LoginService{
 				throw new AdminException("Password is wrong");
 			
 			
-		}
-		else
-			
-			throw new AdminException("Admin alredy login");
-		
-		
+//		}
+//		else
+//			
+//			throw new AdminException("Admin alredy login");
+//		
+//		
 		
 			
 		}

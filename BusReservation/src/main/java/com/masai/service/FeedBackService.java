@@ -18,4 +18,5 @@ public interface FeedBackService {
 	
 	public List<Feedback> viewAllFeedBack(int userid) throws FeedBackException;
 	
+	public List<Feedback> viewAllFeedBacks() throws FeedBackException;
 }

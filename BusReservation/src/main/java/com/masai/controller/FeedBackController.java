@@ -74,7 +74,17 @@ public class FeedBackController {
 	}
 	
 	
-	
+	@GetMapping("/getAllFedbacks")
+	@CrossOrigin
+	public ResponseEntity<List<Feedback>> getAllFeedBacks(){
+		
+		
+	  List<Feedback> fb = 	fService.viewAllFeedBacks();
+		
+	  
+	  return new ResponseEntity<List<Feedback>>(fb, HttpStatus.ACCEPTED);
+	  
+	}
 	
 	
 	

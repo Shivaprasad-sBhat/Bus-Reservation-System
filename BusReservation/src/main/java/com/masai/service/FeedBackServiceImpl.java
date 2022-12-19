@@ -148,6 +148,21 @@ public class FeedBackServiceImpl implements FeedBackService {
 	}
 	
 	
-	
+	@Override
+	public List<Feedback> viewAllFeedBacks() throws FeedBackException {
+		
+		
+		    List<Feedback> allFb = fDao.findAll();
+		    
+		    if(!allFb.isEmpty()) {
+		    	
+		    	
+		    	return allFb;
+		    }
+		    
+		    else
+		    	throw new FeedBackException("No FeedBackAvialbale");
+		
+	}
 
 }

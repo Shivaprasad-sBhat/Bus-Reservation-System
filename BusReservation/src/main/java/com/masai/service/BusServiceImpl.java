@@ -76,8 +76,17 @@ public class BusServiceImpl implements BusService {
 		if(opt.isPresent()) {
 			Bus bus = opt.get();
 			
-			
-			
+//		Route route = rDao.findById(bus.getRoutes().getRouteId()).orElseThrow(() ->new  BusException("Bus not found."));
+//			
+//			for(int i=0;i<route.getBus().size();i++) {
+//				if(route.getBus().get(i).getBusId() == bus.getBusId()) {
+//					route.getBus().remove(i);
+//					break;
+//				}
+//			}
+//		
+//			route.setBus(route.getBus());
+//			rDao.save(route);
 			busDao.delete(bus);
 			return bus;
 		}else {

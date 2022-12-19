@@ -21,10 +21,10 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer adminId;
 	
-	@Size(min = 3 , max = 5)
+	@Size(min = 3 , max = 10)
 	private String adminName;
 	
 	@NotNull
-	@Size(min = 8 , max = 10)
+	@Size(min = 6 , max = 10)
 	private String adminPassword;
 }
