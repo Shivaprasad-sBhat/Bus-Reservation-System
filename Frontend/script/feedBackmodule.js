@@ -1,12 +1,11 @@
-let userdata = JSON.parse(localStorage.getItem("userDataStorage"));
 
-allTicket(userdata);
+allTicket();
 
-async function allTicket(userdata){
+async function allTicket(){
 
 
     try{
-        let res = await fetch(`http://localhost:8818/getAllFedback${userdata.userLoginId}`,{
+        let res = await fetch(`http://localhost:8818/getAllFedbacks`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json"

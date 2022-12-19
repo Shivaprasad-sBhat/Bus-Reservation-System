@@ -57,6 +57,7 @@ async function login(obj){
             // Write code here to send user data and user to Admin dashboard
             alert("Login Succesfull. Redirecting  to Admin dashboard.")
 
+            window.location.href="/pages/admin/admindashboard.html"
             
 
         }else{
