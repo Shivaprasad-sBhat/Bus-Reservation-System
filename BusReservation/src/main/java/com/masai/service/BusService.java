@@ -11,7 +11,7 @@ public interface BusService {
 	
 	public Bus addBus(Bus bus , int busid) throws BusException, RouteException;
 	
-	public Bus updateBus(Bus bus) throws BusException;
+	public Bus updateBus(Bus bus,Integer routeId) throws BusException;
 	
 	public Bus deleteBus(Integer busId) throws BusException;
 	

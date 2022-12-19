@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.masai.exception.BusException;
 import com.masai.exception.RouteException;
@@ -48,12 +49,18 @@ public class BusServiceImpl implements BusService {
 
 // Method to update Bus
 	@Override
-	public Bus updateBus(Bus bus) throws BusException {
+	
+	public Bus updateBus(Bus bus,Integer routeId) throws BusException {
 		
 		Optional<Bus> opt = busDao.findById(bus.getBusId());
 		
+		Route route = rDao.findById(routeId).orElseThrow(()->new BusException("Route details not found"));
+			
 		if(opt.isPresent()) {
+			
+			bus.setRoutes(route);
 			Bus updatedBus=  busDao.save(bus);
+			
 			return updatedBus;
 		}else {
 			throw new BusException("Bus not found with Id: "+bus.getBusId());

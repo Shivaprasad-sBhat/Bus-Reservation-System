@@ -65,7 +65,7 @@ async function addBusFun(obj){
 
 
             // Write code here to send user data and user to user dashboard
-            alert(`New route created.`)
+            alert(`New bus added.`)
             
                
 

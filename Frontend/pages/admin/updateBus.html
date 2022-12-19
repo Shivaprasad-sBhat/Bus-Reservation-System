@@ -16,69 +16,79 @@
 
     <!-- NavBar -->
 
-    <div id="navbar1" >   
-  
+    <div id="navbar1">
+
         <img src="/assests/logo.png" />
-    
-        <div id="navbar-items1" >
-        <a href="admindashboard.html"><h3> Home </h3></a> 
-        <a href="busModule.html"><h3> Bus  </h3></a> 
-        <a href="routeModule.html"><h3> Route </h3></a> 
-        <a href="feadbackModule.html"><h3>Feadbacks</h3> </a>
-        <a id="admin_logout" ><h3> Logout </h3></a> 
-     
-    
+
+        <div id="navbar-items1">
+            <a href="admindashboard.html">
+                <h3> Home </h3>
+            </a>
+            <a href="busModule.html">
+                <h3> Bus </h3>
+            </a>
+            <a href="routeModule.html">
+                <h3> Route </h3>
+            </a>
+            <a href="feadbackModule.html">
+                <h3>Feadbacks</h3>
+            </a>
+            <a id="admin_logout">
+                <h3> Logout </h3>
+            </a>
+        </div>
+
     </div>
 
-        <!-- Left Navbar -->
-        <div>
+    <!-- Left Navbar -->
+    <div>
 
 
-            <div class="sidebar" style="position: fixed ;margin-top: 20px;">
-                <header>Dashboard</header>
+        <div class="sidebar" style="position: fixed ;margin-top: 20px;">
+            <header>Dashboard</header>
 
-                <ul>
-
-
-                    <a href="busModule.html">Add new Bus</a>
-                    <a href="updateBus.html" id="update-Bus">Update Bus</a>
-                    <a href="viewAllBus.html" id="view-Bus">View All Bus </a>
-                    <a href="deleteBus.html" id="delete-bus">Delete Bus </a>
-
-                </ul>
-            </div>
+            <ul>
 
 
-            <!-- Append the data here -->
+                <a href="busModule.html">Add new Bus</a>
+                <a href="updateBus.html" id="update-Bus">Update Bus</a>
+                <a href="viewAllBus.html" id="view-Bus">View All Bus </a>
+                <a href="deleteBus.html" id="delete-bus">Delete Bus </a>
 
-            <div id="admin-container">
-
-                <!--    <div>Append data here</div> -->
-
-                <div class="table-Dashboard">
-                    <h2 id="heading">All Routes</h2>
-                    <table class="t1">
-                        <thead>
-                            <tr>
-                                <th>Bus Id</th>
-                                <th>Bus Name</th>
-                                <th>Driver Name</th>
-                                <th>Type</th>
-                                <th>Departure Time</th>
-                                <th>Arrival Time</th>
-                                <th>Total Seats</th>
-                                <th>Avilable Seats</th>
-                                <th>Update</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody">
-                            <!-- Append the fetched data  here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
+            </ul>
         </div>
+
+
+        <!-- Append the data here -->
+
+        <div id="admin-container">
+
+            <!--    <div>Append data here</div> -->
+
+            <div class="table-Dashboard">
+                <h2 id="heading">Update bus</h2>
+                <table class="t1">
+                    <thead>
+                        <tr>
+                            <th>Bus Id</th>
+                            <th>Bus Name</th>
+                            <th>Driver Name</th>
+                            <th>Type</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Total Seats</th>
+                            <th>Avilable Seats</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Append the fetched data  here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 
 
     </div>

@@ -85,7 +85,7 @@
 }
 ul a:hover {
   padding-left: 50px;
-}
+} 
 
 
 
@@ -101,7 +101,7 @@ ul a:hover {
 #admin-container {
   margin: 0% 0% 10% 22%;
   display: flex;
-  
+
 }
 #admin-container > div {
   margin: 8px;

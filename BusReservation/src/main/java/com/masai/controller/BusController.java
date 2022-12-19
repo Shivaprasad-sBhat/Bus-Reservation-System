@@ -43,11 +43,11 @@ public class BusController {
 	}
 	
 	
-	@PutMapping("/updatebus")
+	@PutMapping("/updatebus/{routeId}")
 	@CrossOrigin
-	public ResponseEntity<Bus> updateBus(@Valid @RequestBody Bus bus){
+	public ResponseEntity<Bus> updateBus(@Valid @RequestBody Bus bus,@PathVariable("routeId") Integer routeId){
 		
-		Bus savedBus = busServices.updateBus(bus);
+		Bus savedBus = busServices.updateBus(bus,routeId);
 		
 		return new ResponseEntity<Bus>(savedBus,HttpStatus.CREATED);
 		

@@ -17,18 +17,28 @@
     <!-- NavBar -->
 
 
-    <div id="navbar1" >   
-  
+    <div id="navbar1">
+
         <img src="/assests/logo.png" />
-    
-        <div id="navbar-items1" >
-        <a href="admindashboard.html"><h3> Home </h3></a> 
-        <a href="busModule.html"><h3> Bus  </h3></a> 
-        <a href="routeModule.html"><h3> Route </h3></a> 
-        <a href="feadbackModule.html"><h3>Feadbacks</h3> </a>
-        <a id="admin_logout" ><h3> Logout </h3></a> 
-     
-    
+
+        <div id="navbar-items1">
+            <a href="admindashboard.html">
+                <h3> Home </h3>
+            </a>
+            <a href="busModule.html">
+                <h3> Bus </h3>
+            </a>
+            <a href="routeModule.html">
+                <h3> Route </h3>
+            </a>
+            <a href="feadbackModule.html">
+                <h3>Feadbacks</h3>
+            </a>
+            <a id="admin_logout">
+                <h3> Logout </h3>
+            </a>
+
+        </div>
     </div>
 
     <!-- Left Navbar -->
@@ -39,53 +49,49 @@
             <header>Dashboard</header>
 
             <ul>
- 
+
                 <a href="routeModule.html">Add new Routes</a>
-                <a href="updateRouteDetails.html" id="update-routes">Update Routes</a>
+                <a href="updateRoute.html" id="update-routes">Update Routes</a>
                 <a href="viewAllRoute.html" id="view-routes">View All Routes </a>
                 <a href="deleteRoute.html" id="delete-routes">Delete Routes </a>
 
             </ul>
         </div>
+    </div>
+
+    <!-- Append the data here -->
+
+    <div id="admin-container">
+
+        <!--    <div>Append data here</div> -->
+
+        <div class="upload-product-box">
+            <h1>Update Route</h1>
+            <form action="" id="form">
+                <label class="form-name">Source</label>
+                <br />
+
+                <input class="input1" type="text" id="source_2" required placeholder="Enter.." />
+                <br />
+
+                <br />
+                <label class="form-name" for="">Destination</label>
+                <br />
+
+                <input class="input1" type="text" id="destnation_2" required placeholder="Enter.." />
+                <br />
 
 
-        <!-- Append the data here -->
+                <label class="form-name" for="">Distance</label>
+                <br />
+                <input class="input1" type="number" id="distance_2" required placeholder="Enter.." />
+                <br />
 
-        <div id="admin-container">
-
-            <!--    <div>Append data here</div> -->
-
-            <div class="upload-product-box" >
-                <h1>Update Route</h1>
-                <form action="" id="form">
-                    <label class="form-name" >Source</label>
-                    <br />
-
-                    <input class="input1" type="text" id="source_2" required placeholder="Enter.." />
-                    <br />
-
-                    <br />
-                    <label class="form-name" for="">Destination</label>
-                    <br />
-
-                    <input class="input1" type="text" id="destnation_2" required placeholder="Enter.." />
-                    <br />
-
-
-                    <label class="form-name" for="">Distance</label>
-                    <br />
-                    <input class="input1" type="number" id="distance_2" required placeholder="Enter.." />
-                    <br />
-              
-                    <button class="btn2" id="updateRoutebtn">Update</button>
-                </form>
-            </div>
+                <button class="btn2" id="updateRoutebtn">Update</button>
+            </form>
         </div>
-
     </div>
 
-
-    </div>
 </body>
 
 </html>
