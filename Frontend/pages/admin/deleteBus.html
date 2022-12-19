@@ -8,14 +8,13 @@
     <title>Routes</title>
     <link rel="stylesheet" href="/style/admin/admindashboard.css">
     <link rel="stylesheet" href="/style/admin/adminNavbar.css">
-    <link rel="stylesheet" href="/style/customerdashboard.css">
+    <link rel="stylesheet" href="/style/admin/routeModule.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
 
     <!-- NavBar -->
-
 
     <div id="navbar" >   
   
@@ -40,8 +39,7 @@
 
             <ul>
 
-                
-                
+               
                 <a href="busModule.html">Add new Bus</a>
                 <a href="updateBus.html" id="update-routes">Update Bus</a>
                 <a href="viewAllBus.html" id="view-routes">View All Bus </a>
@@ -58,32 +56,23 @@
 
             <!--    <div>Append data here</div> -->
 
-           <div class="upload-product-box">
-                <h1>Add a New Bus</h1>
-                <form action="" id="form">
-                    <label class="form-name">Source</label>
-                    <br />
-
-                    <input class="input1" type="text" id="source_1" required placeholder="Enter.." />
-                    <br />
-
-                    <br />
-                    <label class="form-name" for="">Destination</label>
-                    <br />
-
-                    <input class="input1" type="text" id="destnation_1" required placeholder="Enter.." />
-                    <br />
-
-
-                    <label class="form-name" for="">Distance</label>
-                    <br />
-                    <input class="input1" type="number" id="distance_1" required placeholder="Enter.." />
-                    <br />
-
-                    <button class="btn2" id="addRoutebtn">Create</button>
-                   
-                </form>
-            </div> 
+            <div class="table-Dashboard">
+                <h2 id="heading">Update Route Details</h2>
+                <table class="t1">
+                    <thead>
+                        <tr>
+                            <th>Route ID</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Distance</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Append the fetched data  here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
@@ -93,4 +82,4 @@
 </body>
 
 </html>
-<script src=""></script>
+<script src="/script/deleteRoute.js"></script>
