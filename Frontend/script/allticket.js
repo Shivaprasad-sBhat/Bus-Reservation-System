@@ -110,9 +110,12 @@ function appendData(data){
 
         if(flag){
               
-            localStorage.setItem("reservationfeedback",JSON.stringify(el));
+            // localStorage.setItem("reservationfeedback",JSON.stringify(el));
 
-            window.location.href="./updatefeedback.html"
+
+            // window.location.href="./updatefeedback.html"
+
+          alert("You alredy Gave the Feedback");
              
         }
         else{
@@ -125,26 +128,26 @@ function appendData(data){
     })
 
 
-    let blue = JSON.parse(localStorage.getItem("blue"));
+    // let blue = JSON.parse(localStorage.getItem("blue"));
 
-        let flag = false;
+    //     let flag = false;
 
-        if(blue !=null){
+    //     if(blue !=null){
 
-          for(let i in blue){
+    //       for(let i in blue){
 
-              if(blue[i] == el.reservationId ) flag = true;
+    //           if(blue[i] == el.reservationId ) flag = true;
 
-          }
+    //       }
 
-        }
+    //     }
 
-        if(flag){
+    //     if(flag){
        
-            feedback.style.backgroundColor="blue";
-            feedback.style.color = "white";
+    //         feedback.style.backgroundColor="blue";
+    //         feedback.style.color = "white";
 
-        }
+    //     }
 
 
 
