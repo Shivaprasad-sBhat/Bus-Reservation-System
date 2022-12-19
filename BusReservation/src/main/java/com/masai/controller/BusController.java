@@ -63,6 +63,7 @@ public class BusController {
 	}
 	
 	@GetMapping("/viewbus/{id}")
+	@CrossOrigin
 	public ResponseEntity<Bus> viewBus(@PathVariable("id") Integer busId){
 		
 		Bus foundBus = busServices.viewBus(busId);
