@@ -94,6 +94,13 @@ function appendData(data){
     feedback.setAttribute("id","fb");
     feedback.addEventListener("click" , function(){
 
+        if(el.reservationStatus == "Reservation cancelled"){
+
+            alert("Can't Book reservation cancelled")
+
+            return;   
+        }
+
         let blue = JSON.parse(localStorage.getItem("blue"));
 
         let flag = false;
