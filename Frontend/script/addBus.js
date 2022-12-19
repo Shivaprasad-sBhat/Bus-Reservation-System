@@ -17,8 +17,8 @@ document.querySelector("#addBusBtn").addEventListener("click",createBus)
 
     let departureTime = document.getElementById("departureTime1").value
 
-    let seats = document.getElementById("seats1").value
-    let avilableSeats = document.getElementById("avilableSeats").value
+    let seats1 = document.getElementById("seats1").value
+    let avilableSeats = document.getElementById("avilableSeats1").value
  
 
     let obj={};
@@ -28,8 +28,8 @@ document.querySelector("#addBusBtn").addEventListener("click",createBus)
     obj["busType"]= busType
     obj["arrivalTime"]= arrivalTime
     obj["departureTime"]= departureTime
-    obj["seats"]= seats
-    obj["avilableSeats"]= avilableSeats
+    obj["seats"]= seats1
+    obj["availableSeats"]= avilableSeats
     
     console.log(obj)
 

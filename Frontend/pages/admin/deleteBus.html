@@ -15,12 +15,11 @@
 <body>
 
     <!-- NavBar -->
-
-    <div id="navbar" >   
+    <div id="navbar1" >   
   
         <img src="/assests/logo.png" />
     
-    <div id="navbar-items" >
+        <div id="navbar-items1" >
         <a href="admindashboard.html"><h3> Home </h3></a> 
         <a href="busModule.html"><h3> Bus  </h3></a> 
         <a href="routeModule.html"><h3> Route </h3></a> 
@@ -39,11 +38,10 @@
 
             <ul>
 
-               
                 <a href="busModule.html">Add new Bus</a>
-                <a href="updateBus.html" id="update-routes">Update Bus</a>
-                <a href="viewAllBus.html" id="view-routes">View All Bus </a>
-                <a href="deleteBus.html" id="delete-routes">Delete Bus </a>
+                <a href="updateBus.html" id="update-Bus">Update Bus</a>
+                <a href="viewAllBus.html" id="view-Bus">View All Bus </a>
+                <a href="deleteBus.html" id="delete-bus">Delete Bus </a>
                 
 
             </ul>
@@ -52,20 +50,23 @@
 
         <!-- Append the data here -->
 
-        <div id="admin-container">
+        <div id="admin-container" >
 
             <!--    <div>Append data here</div> -->
 
             <div class="table-Dashboard">
-                <h2 id="heading">Update Route Details</h2>
+                <h2 id="heading">All Routes</h2>
                 <table class="t1">
                     <thead>
                         <tr>
-                            <th>Route ID</th>
-                            <th>Source</th>
-                            <th>Destination</th>
-                            <th>Distance</th>
-                            <th>Delete</th>
+                            <th>Bus Id</th>
+                            <th>Bus Name</th>
+                            <th>Driver Name</th>
+                            <th>Type</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Total Seats</th>
+                            <th>Avilable Seats</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">
@@ -82,4 +83,5 @@
 </body>
 
 </html>
-<script src="/script/deleteRoute.js"></script>
+<script src="/script/deleteBus.js"></script>
+<script src="/script/adminLogout.js"></script>

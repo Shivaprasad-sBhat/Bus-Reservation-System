@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routes</title>
+    <link rel="stylesheet" href="/style/admin/admindashboard.css">
+    <link rel="stylesheet" href="/style/admin/adminNavbar.css">
+    <link rel="stylesheet" href="/style/customerdashboard.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+    <!-- NavBar -->
+
+
+    <div id="navbar1" >   
+  
+        <img src="/assests/logo.png" />
+    
+        <div id="navbar-items1" >
+        <a href="admindashboard.html"><h3> Home </h3></a> 
+        <a href="busModule.html"><h3> Bus  </h3></a> 
+        <a href="routeModule.html"><h3> Route </h3></a> 
+        <a href="feadbackModule.html"><h3>Feadbacks</h3> </a>
+        <a id="admin_logout" ><h3> Logout </h3></a> 
+     
+    
+    </div>
+
+    <!-- Left Navbar -->
+    <div>
+
+
+        <div class="sidebar" style="position: fixed ;margin-top: 20px;">
+            <header>Dashboard</header>
+
+            <ul>
+
+                
+                
+                <a href="busModule.html">Add new Bus</a>
+                <a href="updateBus.html" id="update-Bus">Update Bus</a>
+                <a href="viewAllBus.html" id="view-Bus">View All Bus </a>
+                <a href="deleteBus.html" id="delete-bus">Delete Bus </a>
+                
+
+            </ul>
+        </div>
+
+
+        <!-- Append the data here -->
+
+        <div id="admin-container">
+
+            <!--    <div>Append data here</div> -->
+
+           <div class="upload-product-box">
+                <h1>Add a New Bus</h1>
+                <form action="" id="form">
+                    <label class="form-name">Bus Name</label>
+                    <br />
+
+                    <input class="input1" type="text" id="busName2" required placeholder="Enter.." />
+                    <br />
+
+                    <br />
+                    <label class="form-name" for="">Driver Name</label>
+                    <br />
+
+                    <input class="input1" type="text" id="driverName2" required placeholder="Enter.." />
+                    <br />
+
+
+                    <label class="form-name" for="">Bus Type</label>
+                    <br />
+                    <input class="input1" type="text" id="busType2" required placeholder="Enter.." />
+                    <br />
+
+                    <label class="form-name">Arrival Time</label>
+                    <br />
+
+                    <input class="input1" type="text" id="arrivalTime2" required placeholder="Enter.." />
+                    <br />
+                    <label class="form-name">Departure Time</label>
+                    <br />
+
+                    <input class="input1" type="text" id="departureTime2" required placeholder="Enter.." />
+                    <br />
+                    <label class="form-name">Total Bus Seats</label>
+                    <br />
+
+                    <input class="input1" type="number" id="seats2" required placeholder="Enter.." />
+                    <br />
+
+                    <label class="form-name">Available Seats</label>
+                    <br />
+
+                    <input class="input1" type="number" id="avilableSeats2" required placeholder="Enter.." />
+                    <br />
+                    <label class="form-name">Route ID</label>
+                    <br />
+
+                    <input class="input1" type="number" id="routesid2" required placeholder="Enter.." />
+                    <br />
+                    <button class="btn2" id="updateBusDetails">Update</button>
+                   
+                </form>
+            </div> 
+        </div>
+
+    </div>
+
+
+    </div>
+</body>
+
+</html>
+<script src="/script/updateBus.js"></script>
+<script src="/script/adminLogout.js"></script>
