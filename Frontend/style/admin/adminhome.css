@@ -1,0 +1,26 @@
+#data> h1{
+
+    /* font-weight: 100px; */
+    text-align: center;
+    border: 1px solid red;
+    
+    /* margin: auto; */
+}
+#data{
+    text-align: center;
+   
+    
+}
+.tit{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    padding: 15px;
+    width: 550px;
+    margin: auto;
+    margin-top: 30px;
+   
+}
+#data>img{
+margin-top: 25px;
+width: 500px;
+height: 300px;
+}
