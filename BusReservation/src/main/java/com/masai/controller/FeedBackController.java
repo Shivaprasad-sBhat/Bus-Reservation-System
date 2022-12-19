@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,19 +26,20 @@ public class FeedBackController {
 	
 	
 	
-	@PostMapping("/setfeddback/{id}")
-	public ResponseEntity<Feedback> setFeedBack( @PathVariable("id") int userid , @RequestBody Feedback fb ) {
+	@PostMapping("/setfeddback/{uid}/{rid}")
+	@CrossOrigin
+	public ResponseEntity<Feedback> setFeedBack( @PathVariable("uid") int userid ,@PathVariable("rid") int reservid, @RequestBody Feedback fb ) {
 		
 		System.out.println(fb);
-   		Feedback res = fService.addFeedBack(fb, userid);
+   		Feedback res = fService.addFeedBack(fb, userid , reservid);
    		
    		return new ResponseEntity<Feedback>(res, HttpStatus.ACCEPTED);
 		
 	}
 	
 	
-	@PostMapping("/updatefeedback")
-	
+	@PutMapping("/updatefeedback")
+	@CrossOrigin
 	public ResponseEntity<Feedback> updateFeedBack(@RequestBody Feedback fb){
 		
 		
@@ -48,7 +51,7 @@ public class FeedBackController {
 	
 	
 	@GetMapping("/getfeedback/{id}")
-	
+	@CrossOrigin
 	public ResponseEntity<Feedback> getFeedBack(@PathVariable("id") int id){
 		
 		Feedback fb = 	fService.viewFeedBack(id);
@@ -59,7 +62,7 @@ public class FeedBackController {
 	
 	
 	@GetMapping("/getAllFedback{uid}")
-	
+	@CrossOrigin
 	public ResponseEntity<List<Feedback>> getAllFeedBack(@PathVariable("uid") int uid){
 		
 		

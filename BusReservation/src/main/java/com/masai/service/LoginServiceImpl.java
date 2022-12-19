@@ -40,16 +40,16 @@ public class LoginServiceImpl implements LoginService{
 		if(existingUser !=null) {
 			
 			
-		Optional<CurrentSession> curruser = sDao.findById(existingUser.getUserLoginId());
+//		Optional<CurrentSession> curruser = sDao.findById(existingUser.getUserLoginId());
+//		
+//		
+//		if(curruser.isPresent()) {
+//			
+//			throw new UserException("User Already login");
+//						
+//		}
 		
-		
-		if(curruser.isPresent()) {
-			
-			throw new UserException("User Already login");
-						
-		}
-		
-		else {
+//		else {
 			
 
 			if(credential.getPassword().equals(existingUser.getPassword())) {
@@ -68,7 +68,7 @@ public class LoginServiceImpl implements LoginService{
 				throw new UserException("Password is wrong");
 			
 			
-		}
+//		}
 						
 			
 			

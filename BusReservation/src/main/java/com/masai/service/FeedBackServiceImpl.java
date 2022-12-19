@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.FeedBackException;
 import com.masai.model.Feedback;
+import com.masai.model.Reservation;
 import com.masai.model.User;
 import com.masai.repository.FeedBackDao;
+import com.masai.repository.ReservationDao;
 import com.masai.repository.UserDao;
 @Service
 public class FeedBackServiceImpl implements FeedBackService {
@@ -25,18 +28,29 @@ public class FeedBackServiceImpl implements FeedBackService {
 	
 	private FeedBackDao fDao;
 	
+	@Autowired
+	private ReservationDao rDao;
+	
 	
 	@Override
-	public Feedback addFeedBack(Feedback fb, int userId) throws FeedBackException {
+	public Feedback addFeedBack(Feedback fb, int userId , int reservationid) throws FeedBackException {
 	
-		System.out.println(fb);
+		
 		 Optional<User> existing =  uDao.findById(userId);
 		 
 		 if(existing.isPresent()) {
 			 
+			  Optional<Reservation> rs =  rDao.findById(reservationid);
+			  
+			  Reservation reservation = rs.get();
+			 
 			 User us = existing.get();
 			 
 			 fb.setUser(us);
+			 
+			 fb.setReserc(reservation);
+			 
+			 fb.setFeedBackDate(LocalDate.now());
 			 
 			 return fDao.save(fb);
 			 
@@ -59,6 +73,10 @@ public class FeedBackServiceImpl implements FeedBackService {
 	    	  Feedback f = fedbck.get();
 	    	  
 	    	  fb.setUser(f.getUser());
+	    	  
+	    	  fb.setReserc(f.getReserc());
+	    	  
+	    	  fb.setFeedBackDate(LocalDate.now());
 	    	  
 	    	  return fDao.save(fb);
 	    	  
@@ -83,8 +101,7 @@ public class FeedBackServiceImpl implements FeedBackService {
 	      }
 	      else
 	    	  throw new FeedBackException("No feedback is available with this Id");
-		
-		
+	
 		
 	}
 

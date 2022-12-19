@@ -58,7 +58,9 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	
 			bus.setAvailableSeats(bus.getAvailableSeats()-reservation.getSeatQuantity());
-//			Bus updatedBus = bDao.save(bus);
+			
+			
+			Bus updatedBus = bDao.save(bus);
 			
 			reservation.setBus(bus);
 			reservation.setReservationStatus("Reservation Confirmed");

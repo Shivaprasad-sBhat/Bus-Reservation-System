@@ -10,7 +10,7 @@ import com.masai.model.Feedback;
 
 public interface FeedBackService {
 
-	public Feedback addFeedBack(Feedback fb , int userId) throws FeedBackException;
+	public Feedback addFeedBack(Feedback fb , int userId , int reservationid) throws FeedBackException;
 	
 	public Feedback updateFeedBack (Feedback fb) throws FeedBackException;
 	

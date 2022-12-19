@@ -40,7 +40,11 @@ public class Feedback {
 	
 	@OneToOne
 	@JoinColumn(name = "userLoginId")
-	private User user ;
+	private User user;
+	
+	@OneToOne
+	@JoinColumn(name = "reservationId")
+	private Reservation reserc;
 	
 
 	
