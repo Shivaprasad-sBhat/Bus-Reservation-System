@@ -14,7 +14,7 @@
 * MySQL
 * HTML
 * CSS
-* Java
+* JavaScript
 
 
 ## Modules
