@@ -77,7 +77,7 @@ function appendData(data){
 
     let td7 = document.createElement("td");
     td7.innerText = el.reservationStatus;
-    if(el.reservationStatus =="Reservation Canceled."){
+    if(el.reservationStatus =="Reservation cancelled"){
         td7.style.color="red";
     }
     else{
