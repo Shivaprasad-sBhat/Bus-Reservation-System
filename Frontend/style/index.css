@@ -5,7 +5,7 @@ body{
 
 h1{
    
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     margin-top: 100px;
     background-color: teal;
@@ -17,11 +17,11 @@ h1{
 }
 #section{
     width: 100%;
-    margin-top: 180px;
+    margin-top: 140px;
     /* border: 1px solid red ; */
 }
 #section-box{
-    width: 70%;
+    width: 65%;
     height: 400px;
     /* border: 1px  solid blue; */
     display: flex;
