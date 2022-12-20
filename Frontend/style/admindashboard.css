@@ -95,18 +95,6 @@ ul a:hover {
   padding: 70px;
 }
 
-#admin-container {
-  margin: 0% 0% 10% 22%;
-  display: flex;
-  
-}
-#admin-container > div {
-  margin: 8px;
-  padding: 100px;
-  border-radius: 49%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-}
-
 
 
 

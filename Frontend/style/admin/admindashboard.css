@@ -93,26 +93,60 @@ ul a:hover {
 
 /* Home dashboard CSS start */
 
-#admin_home {
-  margin: 0px 0px 50px 650px;
-  padding: 70px;
+#mainheading{
+ 
+   
+  font-size: 35px;
+  text-align: center;
+  margin-top: 100px;
+  background-color: teal;
+  width: 35%;
+  margin: auto;
+  margin-top: 100px;
+  padding: 15px;
+  border-radius: 15px;
+
 }
 
-#admin-container {
-  margin: 0% 0% 10% 22%;
+
+#section{
+  width: 100%;
+  margin-top: 140px;
+  /* border: 1px solid red ; */
+}
+#section-box{
+  width: 65%;
+  height: 350px;
+  /* border: 1px  solid blue; */
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: auto;
+  text-align: center;
+}
+#section-div{
+  width: 30%;
+  height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: fit-content;
+  padding:15px 10px ;
+
+  
 
 }
-#admin-container > div {
-  margin: 8px;
-  padding: 100px;
-  border-radius: 49%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+#section-div>img{
+  width: 300px;
+
+  /* border: 1px solid blue; */
+}
+#section-div .img2{
+  height: 280px;
 }
 
 
-
-
+#section-div:hover{
+  transform: scale(1.2);
+}
 
 
 
@@ -305,3 +339,5 @@ ul a:hover {
     color: rebeccapurple;
     border: 1px solid red;
   }
+
+
