@@ -96,7 +96,7 @@ function appendData(data){
 
         if(el.reservationStatus == "Reservation cancelled"){
 
-            alert("Can't Book reservation cancelled")
+            alert("Can't Give the feedback, reservation cancelled")
 
             return;   
         }
