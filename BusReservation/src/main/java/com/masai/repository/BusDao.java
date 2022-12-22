@@ -10,4 +10,6 @@ public interface BusDao extends JpaRepository<Bus, Integer> {
 
 	public List<Bus> findByBusType(String busType);
 	
+	
+	
 }

@@ -48,6 +48,7 @@ public class Reservation {
 	@NotNull(message = "Can't set as Null")
 	private String destination;
 	
+	
 	@ManyToOne
 	private Bus bus;
 	
