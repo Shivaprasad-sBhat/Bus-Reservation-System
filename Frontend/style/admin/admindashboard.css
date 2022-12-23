@@ -214,10 +214,11 @@ ul a:hover {
     margin: 8px;
     border-radius: 5px;
     width: 100%;
-    height: 30px;
+    height: 50px;
     outline: none;
     border: none;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    border: 1px solid red;
   }
   
   .btn2 {
