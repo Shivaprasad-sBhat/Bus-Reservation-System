@@ -72,7 +72,7 @@ public class Bus {
 
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "routeId")
 	private Route routes;
 }

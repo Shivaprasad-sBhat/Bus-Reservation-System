@@ -5,23 +5,27 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.masai.exception.BusException;
 import com.masai.exception.RouteException;
 import com.masai.model.Bus;
+import com.masai.model.Reservation;
 import com.masai.model.Route;
 import com.masai.repository.BusDao;
+import com.masai.repository.ReservationDao;
 import com.masai.repository.RouteDao;
 
 @Service
 public class BusServiceImpl implements BusService {
 
 	@Autowired
-	BusDao busDao;
+	private BusDao busDao;
 	
 	@Autowired
 	private RouteDao rDao;
+	
+	@Autowired
+	private ReservationDao reservationDao;
 	
 	
 //	Method to save Bus in database.
@@ -87,6 +91,22 @@ public class BusServiceImpl implements BusService {
 //		
 //			route.setBus(route.getBus());
 //			rDao.save(route);
+			
+			System.out.println("hello1");
+
+			List<Reservation> bb = reservationDao.findByBus(bus);
+			System.out.println("hello2");
+
+//			System.out.println(bb);
+			
+			System.out.println("hello3");
+
+//			Passing bus object here and checking if there is some reservation with this bus.
+			if(!bb.isEmpty()) {
+				throw new BusException("Can not delete bus,because some reservations are made.");
+			}
+			
+			
 			busDao.delete(bus);
 			return bus;
 		}else {
