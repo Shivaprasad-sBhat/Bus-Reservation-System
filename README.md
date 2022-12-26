@@ -1,5 +1,6 @@
 
 # Bus Reservation System 
+<img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/banner.png?raw=true"  style = "width:90%; height:450px" />
 
 * Bus Reservation System is a full stack project where REST API's are developed using Java and Spring Boot technologies and UI or frontend is developed using HTML,CSS,     JavaScript
 *  These API's performs all the fundamental CRUD operations of any Bus Reservation Application platform with user validation at every step.
@@ -36,18 +37,46 @@
 ## Features
 
 * Admin Features:
-    * Administrator Role of the entire application
     * Only registered admins with valid credentials can login.
-    * Admin can add/update/delete route and bus from main database
-* User Features:
-    * Registering themselves with application.
-    * Viewing list of available buses and booking a reservation
-    * Only logged in user can access his reservations, profile updation and other features.
+    
+     <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/adminLogin.png?raw=true"  style = "width:90%; height:450px" />
 
+    * Administrator Role of the entire application.   
+          <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/adminhomepage.png?raw=true"  style = "width:90%; height:450px" />
+    
+    * Admin can add/update/delete route and bus from main database.
+         <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/routemodule.png?raw=true"  style = "width:90%; height:450px" />
+              <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/busmodule.png?raw=true"  style = "width:90%; height:450px" />
+              
+              
+* User Features:
+    * User can signup with proper details.
+       <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/usersignup.png?raw=true"  style = "width:90%; height:450px" />
+       
+    * User can login using his credentials.
+      <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/userlogin.png?raw=true"  style = "width:90%; height:450px" />
+    
+    * User can view list of available buses and can book a reservation.
+          <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/booktickets.png?raw=true"  style = "width:90%; height:450px" />
+          
+    * User can view all his tickets,cancel tickets and user can also give feedback.
+    
+    <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/alltickets.png?raw=true" style =
+    "width:90%; height:450px" />
+    
+     <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/feedback.png?raw=true" style =
+    "width:90%; height:450px" />
+    
+    * User can update all his details including username and password.
+    
+     <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/userupdate.png?raw=true" style =
+    "width:90%; height:450px" />
+       
+        
 
 ## Installation & Run
 
-* Before running the API server, you should update the database config inside the [application.properties](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/BusReservation/src/main/resources/application.properties) file. 
+* Before using the web application or running the API server, you should update the database config inside the [application.properties](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/BusReservation/src/main/resources/application.properties) file. 
 * Update the port number, username and password as per your local database config.
 
 ```
@@ -59,49 +88,12 @@
     spring.datasource.password=root
 
 ```
+* Now you can perform all the operations by using either our web application or Swagger.
 
 ## API Root Endpoint
 
-`https://localhost:8818/`
-
-`http://localhost:8818/swagger-ui/`
-
-<!--
-## API Module Endpoints
-
-### Login Module
-
-* `POST //login/admin` : Admin can login with mobile number and password provided at the time of registation
-
-### User Module
-
-
-* `POST /customer/login` : Logging in customer with valid mobile number & password
-* `GET /customer/availablecabs` : Getting the list of all the available cabs
-* `GET /customers/cabs` : Getting All the cabs
-* `GET /customers/checkhistory` : Getting the history of completed tr
-* `PUT /customer/update/{mobile}` : Updates customer details based on mobile number
-* `PATCH /customer/updatepassword/{mobile}` : Updates customer's password based on the given mobile number
-* `POST /customer/booktrip` : Customer can book a cab
-* `POST /customer/updatetrip` : Customer can modify or update the trip
-* `POST /customer/logout` : Logging out customer based on session token
-* `DELETE /customer/delete` : Deletes logged in user 
-* `DELETE /customer/complete/{tripid}` : Completed the trip with the given tripid 
-* `DELETE /customer/canceltrip` : Cancel the trip with the given tripid   
-
-
-### Admin Module
-
-* `POST /admin/register` : Register a new admin with proper data validation and admin session
-* `POST /admin/login` : Admin can login with mobile number and password provided at the time of registation
-* `GET /admin/logout` : Logging out admin based on session token
-* `GET /admin/listoftripsbycustomer` : Get list of trips of by a customer id
-* `GET /admin/listoftrips` : Get list of trips of all the trips
-* `GET /admin/listocustomers` : Get list of all the customers
-* `GET /admin/listodrivers` : Get list of all the drivers
-* `PUT /admin/update/{username}` : Updates admin detaisl by passed user name
-* `DELETE /admin/delete` : Deletes the admin with passed id   -->
-
+`http://localhost:8818/`
+`http://localhost:8818/swagger-ui.html`
 
 
 
