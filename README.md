@@ -1,7 +1,9 @@
 
 # Bus Reservation System 
 
-* We have developed this REST API for a Bus Reservation System Portal Application. This API performs all the fundamental CRUD operations of any Bus Reservation Application platform with user validation at every step.
+* Bus Reservation System is a full stack project where REST API's are developed using Java and Spring Boot technologies and UI or frontend is developed using HTML,CSS,     JavaScript
+*  These API's performs all the fundamental CRUD operations of any Bus Reservation Application platform with user validation at every step.
+*  Our frontend application consumes these API's and allows customer to perform all the operations easily with user friendly UI.
 * This project is developed by team of 4 Back-end Developers during project week in Masai School. 
 
 ## Tech Stack
@@ -27,15 +29,18 @@
 * Reservation Module
 * Feedback Module
 
+## Entity Relationship Diagram
+ ###### ER Diagram for the database tables.
+![App Screenshot](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/Frontend/assests/ER%20Diagram.png?raw=true)
+
 ## Features
 
-* User and Admin authentication & validation with session uuid.
 * Admin Features:
     * Administrator Role of the entire application
-    * Only registered admins with valid session token can add/update/delete route and bus from main database
-    * Admin can access the details of different users and reservations.
+    * Only registered admins with valid credentials can login.
+    * Admin can add/update/delete route and bus from main database
 * User Features:
-    * Registering themselves with application, and logging in to get the valid session token
+    * Registering themselves with application.
     * Viewing list of available buses and booking a reservation
     * Only logged in user can access his reservations, profile updation and other features.
 
@@ -48,7 +53,7 @@
 ```
     server.port=8818
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/busdb
+    spring.datasource.url=jdbc:mysql://localhost:3306/bus_reservation_db
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     spring.datasource.username=root
     spring.datasource.password=root
@@ -98,9 +103,7 @@
 * `DELETE /admin/delete` : Deletes the admin with passed id   -->
 
 
-## Entity Relationship Diagram
- ###### ER Diagram for the database tables.
-![App Screenshot](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/Frontend/assests/ER%20Diagram.png?raw=true)
+
 
 
  
