@@ -22,7 +22,6 @@
 
 ## Modules
 
-* Login, Logout Module
 * Admin Module
 * User Module
 * Route Module
@@ -91,16 +90,43 @@
 * Now you can perform all the operations by using either our web application or Swagger.
 
 ## API Root Endpoint
-
+```
 `http://localhost:8818/`
+```
+
+```
 `http://localhost:8818/swagger-ui.html`
+```
 
 
+## Contributors
 
+* Contact Contributors of this project for any suggestion or feedpack.
+
+    #### Shivprasad Bhat
+    > Github:[Shivaprasad-sBhat](https://github.com/Shivaprasad-sBhat) 
+    
+    > LinkedIn:[shivaprasad-bhat](https://www.linkedin.com/in/shivaprasad-bhat/)
+  
+    #### Avinash Kumar
+    > Github:[avinashkumar-06](https://github.com/avinashkumar-06)
+    
+    > LinkedIn:[avinashkumar06](https://www.linkedin.com/in/avinashkumar06/)
+
+    #### Riyas S 
+    >Github:[RIYAS11](https://github.com/RIYAS11)
+    
+    > LinkedIn:[riyas973](https://www.linkedin.com/in/riyas973/)
+   
+
+    #### Chiranjivi Pattanayak
+    >Github:[chiranjivi-7](https://github.com/chiranjivi-7)
+    
+    > LinkedIn:[chiranjivi-pattanayak-b02784197](https://www.linkedin.com/in/chiranjivi-pattanayak-b02784197/)
+   
 
  
 
 
-# THANK YOU EVERYONE FOR VISITING OUR PROJECT
+# THANK YOU FOR VISITING OUR PROJECT
 
----
