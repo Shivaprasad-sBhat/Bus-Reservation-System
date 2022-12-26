@@ -66,13 +66,13 @@
 
 `http://localhost:8818/swagger-ui/`
 
-
+<!--
 ## API Module Endpoints
 
 ### Login Module
 
 * `POST //login/admin` : Admin can login with mobile number and password provided at the time of registation
-<!--
+
 ### User Module
 
 
