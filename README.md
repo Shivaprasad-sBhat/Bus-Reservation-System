@@ -101,7 +101,7 @@
 
 ## Contributors
 
-* Contact Contributors of this project for any suggestion or feedpack.
+* Contact Contributors of this project for any suggestion or feedback.
 
     #### Shivaprasad Bhat
     > Github:[Shivaprasad-sBhat](https://github.com/Shivaprasad-sBhat) 
