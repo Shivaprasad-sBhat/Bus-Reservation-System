@@ -103,7 +103,7 @@
 
 * Contact Contributors of this project for any suggestion or feedpack.
 
-    #### Shivprasad Bhat
+    #### Shivaprasad Bhat
     > Github:[Shivaprasad-sBhat](https://github.com/Shivaprasad-sBhat) 
     
     > LinkedIn:[shivaprasad-bhat](https://www.linkedin.com/in/shivaprasad-bhat/)
