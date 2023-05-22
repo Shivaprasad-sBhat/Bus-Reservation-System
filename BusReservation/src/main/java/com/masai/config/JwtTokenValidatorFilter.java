@@ -34,7 +34,6 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
            try{
 
                 // remove the Bearer from jwt we need take substring
-
                jwt = jwt.substring(7);
 
 
