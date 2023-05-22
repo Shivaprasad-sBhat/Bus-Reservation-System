@@ -25,7 +25,7 @@ document.querySelector("form").addEventListener("submit",userSignup)
 
     let obj={};
 
-    obj["userName"] = uname
+    obj["name"] = uname
     obj["password"]=pass
     obj["firstName"]= fname
     obj["lastName"]=lname
@@ -75,13 +75,14 @@ async function userSignUpFun(obj){
                 let error=JSON.stringify(data)
 
                 let msg =JSON.parse(error);
-                alert(msg["details"])
+
+                alert(msg["message"])
 
         }
 
     }catch(error){
-        return "Not sucessful"
-
+        
+        console.log(error);
     }
 
 

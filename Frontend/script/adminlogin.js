@@ -8,51 +8,56 @@ document.querySelector("form").addEventListener("submit",checkAdmin)
 
     let uname=document.getElementById("uname")
 
-    let name =uname.value
+    let userName =uname.value
 
-    let password = document.getElementById("password")
+    let pass = document.getElementById("password")
 
-    let pass= password.value
+    let password= pass.value
 
     // console.log(name,pass)
 
-    let obj={};
-    obj["name"] =name;
-    obj["password"] =pass;
 
-    console.log(obj)
     
-    login(obj)
+    login(userName , password)
 
 }
 
 
-async function login(obj){
+async function login(userName , password){
+
+    let auth = btoa(`${userName}:${password}`);
+
     try{
 
-        let res = await fetch("http://localhost:8818/adminlogin",{
-            method:"POST",
-            body:JSON.stringify(obj),
+        let res = await fetch("http://localhost:8818/signIn",{
+            method:"GET",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Basic ${auth}`
             }
-            // body:JSON.stringify(obj)
+            
         })
         console.log(res)
         if(res.ok){
-            console.log("sucesss")
+
+            
+            
+            console.log("ok");
+
+
             let data = await res.json();
 
-            // To get data from response   // admin data
-            // let userData=JSON.stringify(data)
+            if(data.role != "ROLE_ADMIN") {
+                
+                alert("User Can't access Admin DashBoard");
+
+                return;
+            }
+
+            let jwtToken = res.headers.get("Authorization");
 
 
-            console.log(data)
-
-
-            // save user data to session storage
-            sessionStorage.setItem("adminDataStorage",JSON.stringify(data))
-
+            localStorage.setItem("JWTTOKEN" , JSON.stringify(jwtToken));
 
             // Write code here to send user data and user to Admin dashboard
             alert("Login Succesfull. Redirecting  to Admin dashboard.")

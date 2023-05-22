@@ -1,85 +1,65 @@
 package com.masai.controller;
 
+import com.masai.model.Admin;
+import com.masai.model.Customer;
+import com.masai.model.User;
+import com.masai.repository.AdminDao;
+import com.masai.repository.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.web.bind.annotation.*;
 
-import com.masai.model.Admin;
-import com.masai.model.LoginDto;
-import com.masai.model.User;
-import com.masai.service.LoginService;
-
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
 public class LoginController {
 
+
 	@Autowired
-	private LoginService lService;
-	
-	
-	@CrossOrigin
-	@PostMapping("/userlogin")
-	public ResponseEntity<User> loginUser(@RequestBody LoginDto credential) {
-		
-		System.out.println(credential);
-		
-		User res = lService.loginUser(credential);
-						
-			
-		return new ResponseEntity<User>(res, HttpStatus.ACCEPTED);
+	private AdminDao adminDao;
+
+	@Autowired
+	private CustomerDao customerDao;
+
+	@GetMapping("/signIn")
+	public ResponseEntity<User> loginUser(Authentication auth) {
+
+		User user  = null;
+
+
+		List<GrantedAuthority> grantedAuthorityList = (List<GrantedAuthority>) auth.getAuthorities();
+
+		String role = grantedAuthorityList.get(0).toString();
+
+
+		switch (role) {
+
+			case "ROLE_CUSTOMER" :  Optional<Customer> customer =  customerDao.findByName(auth.getName());
+
+			                     user = customer.get();
+
+								 break;
+
+			case "ROLE_ADMIN" : 	Optional<Admin> admin = adminDao.findByName(auth.getName());
+
+								user = admin.get();
+
+								break;
+
+
+			default:
+		}
+
+
+
+
+		return new ResponseEntity<User>(user, HttpStatus.ACCEPTED);
 			
 		}
-	
-	
-	@PostMapping("/userlogout")
-	@CrossOrigin
-	public ResponseEntity<String> logoutuser(@RequestParam("key") String key) {
-		
-		
-		String res = lService.logoutUser(key);
-						
-			
-		return new ResponseEntity<String>(res, HttpStatus.ACCEPTED);
-			
-		}
-	
-	
-	
-	/**************************************************************************************/
-	
-	
-	@CrossOrigin
-	@PostMapping("/adminlogin")
-	public ResponseEntity<Admin> loginAdmin(@RequestBody LoginDto credential) {
-		
-		
-		Admin res = lService.loginAdmin(credential);
-						
-			
-		return new ResponseEntity<Admin>(res, HttpStatus.ACCEPTED);
-			
-		}
-	
-	
-	@PostMapping("/adminlogout")
-	@CrossOrigin
-	public ResponseEntity<String> adminlogout(@RequestParam("key") String key) {
-		
-		
-		String res = lService.logoutAdmin(key);
-						
-			
-		return new ResponseEntity<String>(res, HttpStatus.ACCEPTED);
-			
-		}
-		
-	
-	
-	
+
 }

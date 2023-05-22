@@ -12,15 +12,18 @@ function getBus(event) {
 
 
 async function getAllBus() {
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try {
 
         let res = await fetch("http://localhost:8818/viewallbus", {
             method: "GET",
-            // body:JSON.stringify(obj),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+           
         })
         console.log(res)
         if (res.ok) {

@@ -29,11 +29,10 @@ public class ReservationController {
 	
 	
 	
-	@PostMapping("seatReservation/{busid}/{userId}")
-	@CrossOrigin
-	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("userId") Integer userId) throws ReservationException {
+	@PostMapping("/seatReservation/{busid}")
+	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId) throws ReservationException {
 		
-		Reservation bookedReservation = rService.addReservation(reservation,busId,userId);
+		Reservation bookedReservation = rService.addReservation(reservation,busId);
 		
 		return new ResponseEntity<Reservation>(bookedReservation, HttpStatus.CREATED);
 		
@@ -52,11 +51,10 @@ public class ReservationController {
 	
 	
 	
-	@DeleteMapping ("deleteReservations/{reservationId}/{userId}")
-	@CrossOrigin
-	public ResponseEntity<Reservation>  deleteReservation(@PathVariable("reservationId") Integer reservationId,@PathVariable("userId") Integer userId) throws ReservationException {
+	@DeleteMapping ("/deleteReservations/{reservationId}")
+	public ResponseEntity<Reservation>  deleteReservation(@PathVariable("reservationId") Integer reservationId) throws ReservationException {
 		
-		Reservation deleteReservation = rService.deleteReservation(reservationId,userId);
+		Reservation deleteReservation = rService.deleteReservation(reservationId);
 		
 		return new ResponseEntity<Reservation>(deleteReservation, HttpStatus.ACCEPTED);
 		
@@ -64,11 +62,10 @@ public class ReservationController {
 	
 	
 	
-	@GetMapping("viewReservationsDetails/{reservationId}/{userId}")
-	@CrossOrigin
-	public ResponseEntity<Reservation>  viewReservationDetail(@PathVariable("reservationId") Integer reservationId,@PathVariable("userId") Integer userId) {
+	@GetMapping("/viewReservationsDetails/{reservationId}}")
+	public ResponseEntity<Reservation>  viewReservationDetail(@PathVariable("reservationId") Integer reservationId) {
 		
-			Reservation viewReservation = rService.viewReservationDetail(reservationId,userId);
+			Reservation viewReservation = rService.viewReservationDetail(reservationId);
 		
 		return new ResponseEntity<Reservation>(viewReservation, HttpStatus.ACCEPTED);
 		
@@ -77,11 +74,10 @@ public class ReservationController {
 	
 	
 	
-	@GetMapping("viewReservations/{userId}")
-	@CrossOrigin
-	public ResponseEntity<List<Reservation>>  viewReservations(@PathVariable("userId")Integer userId) {
+	@GetMapping("/viewAllReservations")
+	public ResponseEntity<List<Reservation>>  viewReservations() {
 		
-		List<Reservation> viewReservations = rService.viewReservations(userId);
+		List<Reservation> viewReservations = rService.viewReservations();
 		
 		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
 	}
@@ -89,11 +85,10 @@ public class ReservationController {
 	
 	
 	
-	@GetMapping("viewReservationsbyDate/{userId}/{date}")
-	@CrossOrigin
-	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("userId") Integer userId,@PathVariable("date") String date) {
+	@GetMapping("/viewReservationsbyDate/{date}")
+	public ResponseEntity<List<Reservation>>  viewReservationsByDate(@PathVariable("date") String date) {
 		
-		List<Reservation> viewReservations = rService.viewReservationsByDate(userId,date);
+		List<Reservation> viewReservations = rService.viewReservationsByDate(date);
 		
 		return new ResponseEntity<List<Reservation>>(viewReservations, HttpStatus.ACCEPTED);
 		

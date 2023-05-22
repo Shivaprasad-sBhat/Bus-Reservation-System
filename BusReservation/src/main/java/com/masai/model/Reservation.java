@@ -3,17 +3,12 @@ package com.masai.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,7 +40,7 @@ public class Reservation {
 	@NotNull(message = "Can't set as Null")
 	private String source;
 	
-	@NotNull(message = "Can't set as Null")
+	@NotNull (message = "Can't set as Null")
 	private String destination;
 	
 	
@@ -55,7 +50,7 @@ public class Reservation {
 	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "userLoginId")
-	private User user;
+	@JoinColumn(name = "customerLoginId")
+	private Customer customer;
 	
 }

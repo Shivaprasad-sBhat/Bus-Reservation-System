@@ -1,27 +1,24 @@
 package com.masai.service;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.masai.exception.CustomerException;
+import com.masai.model.Customer;
+import com.masai.repository.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
-import com.masai.exception.BusException;
 import com.masai.exception.ReservationException;
-import com.masai.exception.UserException;
 import com.masai.model.Bus;
-import com.masai.model.CurrentSession;
 import com.masai.model.Reservation;
-import com.masai.model.User;
 import com.masai.repository.BusDao;
 import com.masai.repository.ReservationDao;
 import com.masai.repository.SessionDao;
-import com.masai.repository.UserDao;
 
-import net.bytebuddy.utility.RandomString;
+
 
 @Service
 public class ReservationServiceImpl implements ReservationService{
@@ -33,7 +30,7 @@ public class ReservationServiceImpl implements ReservationService{
 	private	BusDao bDao;
 	
 	@Autowired
-	private UserDao uDao;
+	private CustomerDao cDao;
 
 	
 	
@@ -43,17 +40,16 @@ public class ReservationServiceImpl implements ReservationService{
 
 	// Seat reservation
 	@Override
-	public Reservation addReservation(Reservation reservation,Integer busId, Integer userId) throws ReservationException{
-	
+	public Reservation addReservation(Reservation reservation,Integer busId) throws ReservationException{
+
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+
+		Customer customer = cDao.findByName(auth.getName()).orElseThrow(()-> new CustomerException("customer not found"));
 		
-		
-	Bus bus =	bDao.findById(busId).orElseThrow(() -> new ReservationException("Bus not found."));
-	
-		//	CurrentSession user1 = sDao.findByUuid(uuid);
-	
-			User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
-	
-	
+		Bus bus =	bDao.findById(busId).orElseThrow(() -> new ReservationException("Bus not found."));
+
 	    if(bus.getAvailableSeats()<=0 || bus.getAvailableSeats()- reservation.getSeatQuantity() < 0) throw new ReservationException("All seats are booked.");
 		
 	
@@ -69,12 +65,12 @@ public class ReservationServiceImpl implements ReservationService{
 			reservation.setDestination(bus.getRoutes().getRouteTo());
 			
 			
-			List<Reservation> reservationList = user.getReservationList();
+			List<Reservation> reservationList = customer.getReservationList();
 			reservationList.add(reservation);
+
+			customer.setReservationList(reservationList);
 			
-			user.setReservationList(reservationList);
-			
-			reservation.setUser(user);
+			reservation.setCustomer(customer);
 		
 			return	rDao.save(reservation);
 			
@@ -94,15 +90,17 @@ public class ReservationServiceImpl implements ReservationService{
 //	}
 
 	@Override
-	public Reservation deleteReservation(Integer reservationId,Integer userid) throws ReservationException {
+	public Reservation deleteReservation(Integer reservationId) throws ReservationException {
+
+		Authentication auth  = SecurityContextHolder.getContext().getAuthentication();
+
+		Customer customer = cDao.findByName(auth.getName()).orElseThrow(()-> new CustomerException("Customer not found"));
 		
 		Reservation reservations = rDao.findById(reservationId).orElseThrow(() -> new ReservationException("Reservation details not found."));
 
-		
 //		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(userid).orElseThrow(()-> new UserException("User not found"));
 		
-		List<Reservation> reservationList =user.getReservationList();
+		List<Reservation> reservationList = customer.getReservationList();
 		
 		boolean flag = false;
 		for(int i=0;i<reservationList.size();i++) {
@@ -120,9 +118,9 @@ public class ReservationServiceImpl implements ReservationService{
 				
 				//update status and adding to list again
 				reservations.setReservationStatus("Reservation cancelled");
-				user.setReservationList(reservationList);
+				customer.setReservationList(reservationList);
 				
-				uDao.save(user);
+				cDao.save(customer);
 			}
 			
 		}
@@ -139,12 +137,14 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public Reservation viewReservationDetail(Integer reservationId,Integer userId) throws ReservationException {
+	public Reservation viewReservationDetail(Integer reservationId) throws ReservationException {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	
 		
-		User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
-		
-		List<Reservation> rList = user.getReservationList();
+		Customer customer = cDao.findByName(auth.getName()).orElseThrow(()-> new CustomerException("Customer not found"));
+
+		List<Reservation> rList = customer.getReservationList();
 		
 		Reservation resrvation=null;
 		boolean flag=true;
@@ -165,14 +165,16 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public List<Reservation> viewReservations(Integer userID) throws ReservationException {
+	public List<Reservation> viewReservations() throws ReservationException {
 		
-//		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(userID).orElseThrow(()-> new UserException("User not found"));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		Customer customer = cDao.findByName(auth.getName()).orElseThrow(()-> new CustomerException("Customer not found"));
 	
-		List<Reservation> reservationsList = user.getReservationList();
+		List<Reservation> reservationsList = customer.getReservationList();
 		
 		if(reservationsList.isEmpty()) {
+
 			throw new ReservationException("Reservation details not found.");
 		}
 		else
@@ -185,13 +187,14 @@ public class ReservationServiceImpl implements ReservationService{
 	
 
 	@Override
-	public List<Reservation> viewReservationsByDate(Integer userId ,String date) throws ReservationException {
+	public List<Reservation> viewReservationsByDate(String date) throws ReservationException {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 //		CurrentSession user1 = sDao.findByUuid(uuid);
-		User user = uDao.findById(userId).orElseThrow(()-> new UserException("User not found"));
-		
-	
-		List<Reservation> reservationsList = user.getReservationList();
+		Customer customer = cDao.findByName(auth.getName()).orElseThrow(()-> new CustomerException("Customer not found"));
+
+		List<Reservation> reservationsList = customer.getReservationList();
 		
 		if(reservationsList.isEmpty()) {
 			throw new ReservationException("Reservation details not found.");

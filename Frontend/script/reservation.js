@@ -2,14 +2,51 @@
 
 let resdata = JSON.parse(localStorage.getItem("reservation"));
 
-let userdata = JSON.parse(localStorage.getItem("userDataStorage"));
 
-reservation(resdata , userdata);
+reservation(resdata );
 //printing reservation page 
-function reservation(data , userData){
+async function reservation(data ){
 
-    
+   let userData;
 
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
+    try{
+      let res = await fetch(`http://localhost:8818/getCurrentUser`,{
+          method:"GET",
+          headers:{
+              "Content-Type":"application/json",
+              "Authorization":`Bearer ${jwtToken}`
+          }
+          // body:JSON.stringify(obj)
+      })
+      
+      if(res.ok){
+          console.log("sucesss")
+          
+          userData= await res.json();
+          // To get data from response   // admin data
+          // let userData=JSON.stringify(data)
+         
+          // Write code here to send user data and user to user dashboard
+          
+
+          //printing reservation page 
+
+          // window.location.href="."
+
+   
+
+      }else{
+              let data = await res.json();
+              let error=JSON.stringify(data)
+              let msg =JSON.parse(error);
+              alert("No User found .. !")
+      }
+  }catch(error){
+      alert(error)
+      return "Not sucessful"
+  }
 
    let x = document.querySelector(".reser");
   
@@ -44,7 +81,7 @@ function reservation(data , userData){
 
   x.append(p1 , p2 ,p3 , p4 , p5 ,p6 ,p7 ,p8 ,p9);
   
-console.log(data , userData);
+
 //   console.log(x);
 
 }
@@ -56,7 +93,6 @@ function logoutUser(){
 
    event.preventDefault();
 
-    localStorage.removeItem("userDataStorage")
 
 
     alert("You are Logged Out.")

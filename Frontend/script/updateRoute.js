@@ -12,15 +12,19 @@ function getRoutes(event) {
 
 
 async function getAllRoutes() {
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
+
     try {
 
         let res = await fetch("http://localhost:8818/viewAllRoute", {
             method: "GET",
-            // body:JSON.stringify(obj),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+            
         })
         console.log(res)
         if (res.ok) {
@@ -79,9 +83,13 @@ let distance1 = document.createElement("td");
 distance1.innerText = el.distance
  
 let update = document.createElement("td");
+
 update.innerText = "Update"
+
 update.setAttribute("id","updateBtn")
+
 update.addEventListener("click",function(){
+
     console.log("inside addRoute ")
     updateRoute1(el);
     
@@ -148,15 +156,19 @@ document.querySelector("#updateRoutebtn").addEventListener("click",updateRoute)
 }
 
 async function upRouteFun(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
 
         let res = await fetch("http://localhost:8818/updateRoute",{
             method:"PUT",
             body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+            
         })
         console.log(res)
         if(res.ok){

@@ -1,18 +1,20 @@
 
-let userdata = JSON.parse(localStorage.getItem("userDataStorage"));
 
-allTicket(userdata);
+allTicket();
 
-async function allTicket(userdata){
+async function allTicket(){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
 
 
     try{
-        let res = await fetch(`http://localhost:8818/viewReservations/${userdata.userLoginId}`,{
+        let res = await fetch(`http://localhost:8818/viewAllReservations`,{
             method:"GET",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+           
         })
         
         if(res.ok){
@@ -135,6 +137,9 @@ function appendData(data){
     })
 
 
+    
+
+
     // let blue = JSON.parse(localStorage.getItem("blue"));
 
     //     let flag = false;
@@ -182,16 +187,17 @@ function appendData(data){
 // remove the ticket
 async function removes(data){
     
-
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
 
 
     try{
-        let res = await fetch(`http://localhost:8818/deleteReservations/${data.reservationId}/${userdata.userLoginId}`,{
+        let res = await fetch(`http://localhost:8818/deleteReservations/${data.reservationId}`,{
             method:"DELETE",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+           
         })
         
         if(res.ok){
@@ -233,7 +239,6 @@ function logoutUser(){
 
    event.preventDefault();
 
-    localStorage.removeItem("userDataStorage")
 
 
     alert("You are Logged Out.")

@@ -2,7 +2,6 @@ package com.masai.exception;
 
 import java.time.LocalDateTime;
 
-import javax.validation.NoProviderFoundException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,9 +71,9 @@ public class GlobalExceptionHandlerClass {
 	}
 	
 	
-//	Exception handler for User  Exception
-	@ExceptionHandler(UserException.class)
-	public ResponseEntity<ErrorDetails> userException(UserException us, WebRequest req){
+//	Exception handler for CustomerException  Exception
+	@ExceptionHandler(CustomerException.class)
+	public ResponseEntity<ErrorDetails> userException(CustomerException us, WebRequest req){
 		
 		ErrorDetails err = new ErrorDetails(LocalDateTime.now(), us.getMessage(), req.getDescription(false));
 		

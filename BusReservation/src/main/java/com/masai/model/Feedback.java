@@ -3,13 +3,10 @@ package com.masai.model;
 import java.time.LocalDate;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Feedback {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer feedBackId;
 	
 	@NotNull(message = "can't set as null")
@@ -39,8 +36,8 @@ public class Feedback {
 	
 	
 	@OneToOne
-	@JoinColumn(name = "userLoginId")
-	private User user;
+	@JoinColumn (name = "customerLoginId")
+	private Customer customer;
 	
 	@OneToOne
 	@JoinColumn(name = "reservationId")

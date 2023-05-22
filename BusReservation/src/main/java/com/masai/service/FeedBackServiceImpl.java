@@ -4,24 +4,24 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import com.masai.model.Customer;
+import com.masai.repository.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import com.masai.exception.FeedBackException;
 import com.masai.model.Feedback;
 import com.masai.model.Reservation;
-import com.masai.model.User;
 import com.masai.repository.FeedBackDao;
 import com.masai.repository.ReservationDao;
-import com.masai.repository.UserDao;
+
 @Service
 public class FeedBackServiceImpl implements FeedBackService {
 
 	
 	@Autowired
-	
-	private UserDao uDao;
+	private CustomerDao cDao;
 	
 	
 	@Autowired
@@ -33,32 +33,32 @@ public class FeedBackServiceImpl implements FeedBackService {
 	
 	
 	@Override
-	public Feedback addFeedBack(Feedback fb, int userId , int reservationid) throws FeedBackException {
-	
+	public Feedback addFeedBack(Feedback fb, int reservationid) throws FeedBackException {
+
+		 Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
 		
-		 Optional<User> existing =  uDao.findById(userId);
-		 
-		 if(existing.isPresent()) {
+		 Optional<Customer> customerExisting =  cDao.findByName(auth.getName());
 			 
-			  Optional<Reservation> rs =  rDao.findById(reservationid);
-			  
-			  Reservation reservation = rs.get();
-			 
-			 User us = existing.get();
-			 
-			 fb.setUser(us);
-			 
+		 Optional<Reservation> reservationExist =  rDao.findById(reservationid);
+
+		 if(reservationExist.isPresent()){
+
+			 Reservation reservation = reservationExist.get();
+
+			 Customer customer = customerExisting.get();
+
+			 fb.setCustomer(customer);
+
 			 fb.setReserc(reservation);
-			 
+
 			 fb.setFeedBackDate(LocalDate.now());
-			 
+
 			 return fDao.save(fb);
-			 
 		 }
-		 
-		 else
-			 
-			 throw new FeedBackException("User not found");
+
+		 else throw new FeedBackException("No reservation found on this Id");
+			  
+
 
 	}
 
@@ -66,13 +66,13 @@ public class FeedBackServiceImpl implements FeedBackService {
 	@Override
 	public Feedback updateFeedBack(Feedback fb) throws FeedBackException {
 		
-	      Optional<Feedback> fedbck = 	fDao.findById(fb.getFeedBackId());
+	      Optional<Feedback> feedback = fDao.findById(fb.getFeedBackId());
 	      
-	      if(fedbck.isPresent()) {
+	      if(feedback.isPresent()) {
 	    	  
-	    	  Feedback f = fedbck.get();
+	    	  Feedback f = feedback.get();
 	    	  
-	    	  fb.setUser(f.getUser());
+	    	  fb.setCustomer(f.getCustomer());
 	    	  
 	    	  fb.setReserc(f.getReserc());
 	    	  
@@ -92,7 +92,7 @@ public class FeedBackServiceImpl implements FeedBackService {
 	public Feedback viewFeedBack(int fedbackid) throws FeedBackException {
 		
 		
-		Optional<Feedback> fedbck = 	fDao.findById(fedbackid);
+		Optional<Feedback> fedbck = fDao.findById(fedbackid);
 	      
 	      if(fedbck.isPresent()) {
 	    	  
@@ -107,22 +107,28 @@ public class FeedBackServiceImpl implements FeedBackService {
 
 
 	@Override
-	public List<Feedback> viewAllFeedBack( int userid) throws FeedBackException {
-		
-		
+	public List<Feedback> viewAllFeedBackOfUser() throws FeedBackException {
+
+
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+			Optional<Customer> customerExist =  cDao.findByName(auth.getName());
+
+			Customer customer = customerExist.get();
+
 		    List<Feedback> allFb = fDao.findAll();
 		    
 		    if(!allFb.isEmpty()) {
 		    	
 		    	
-		    	List<Feedback> userFeedBack = new ArrayList<>();
+		    	List<Feedback> customerFeedBack = new ArrayList<>();
 		    	
 		    	allFb.forEach(el ->{
 		    		
 		    		
-		    		if(el.getUser().getUserLoginId() == userid) {
-		    		
-		    			userFeedBack.add(el);
+		    		if(el.getCustomer().getCustomerLoginId() == customer.getCustomerLoginId()) {
+
+						customerFeedBack.add(el);
 		    			
 		    		}
 		    		
@@ -130,9 +136,9 @@ public class FeedBackServiceImpl implements FeedBackService {
 		    	});
 		    	
 		    	
-		    	if(!userFeedBack.isEmpty()) {
+		    	if(!customerFeedBack.isEmpty()) {
 		    		
-		    		return userFeedBack;
+		    		return customerFeedBack;
 		    	}
 		    	
 		    	else 
@@ -143,7 +149,7 @@ public class FeedBackServiceImpl implements FeedBackService {
 		    }
 		    
 		    else
-		    	throw new FeedBackException("No FeedBackAvialbale");
+		    	throw new FeedBackException("No FeedBack Available");
 		
 	}
 	
@@ -161,7 +167,7 @@ public class FeedBackServiceImpl implements FeedBackService {
 		    }
 		    
 		    else
-		    	throw new FeedBackException("No FeedBackAvialbale");
+		    	throw new FeedBackException("No FeedBack Available ");
 		
 	}
 

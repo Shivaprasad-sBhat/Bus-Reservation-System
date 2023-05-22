@@ -40,6 +40,9 @@ document.querySelector("#addBusBtn").addEventListener("click",createBus)
 }
 
 async function addBusFun(obj){
+
+    let jwtToken =JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
 
     let routeid = document.getElementById("routesid1").value
@@ -48,7 +51,8 @@ async function addBusFun(obj){
             method:"POST",
             body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })

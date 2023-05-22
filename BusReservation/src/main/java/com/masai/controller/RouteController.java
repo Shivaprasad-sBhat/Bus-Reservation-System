@@ -2,8 +2,8 @@ package com.masai.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.RouteException;
-import com.masai.exception.UserException;
 import com.masai.model.Bus;
 import com.masai.model.Route;
 import com.masai.service.RouteServiceImpl;
@@ -30,8 +29,7 @@ public class RouteController {
 	private RouteServiceImpl rService;
 
 	@PostMapping("/addRoute")
-	@CrossOrigin
-	public ResponseEntity<Route> addRouteHandler(@Valid @RequestBody Route route)throws RouteException, UserException {
+	public ResponseEntity<Route> addRouteHandler(@Valid @RequestBody Route route) {
 
 		Route rot = rService.addRoute(route);
 
@@ -39,9 +37,7 @@ public class RouteController {
 	}
 
 	@PutMapping("/updateRoute")
-	@CrossOrigin
-	public ResponseEntity<Route> updateRouteHandler(@Valid @RequestBody Route route)
-			throws RouteException, UserException {
+	public ResponseEntity<Route> updateRouteHandler(@Valid @RequestBody Route route) {
 
 		Route rot = rService.updateRoute(route);
 
@@ -50,9 +46,7 @@ public class RouteController {
 	}
 
 	@DeleteMapping("/deleteRoute/{routeId}")
-	@CrossOrigin
-	public ResponseEntity<Route> deleteRouteHandler(@PathVariable("routeId") Integer routeId)
-			throws RouteException, UserException {
+	public ResponseEntity<Route> deleteRouteHandler(@PathVariable("routeId") Integer routeId) {
 
 		Route rot = rService.deleteRoute(routeId);
 
@@ -62,8 +56,7 @@ public class RouteController {
 	
 
 	@GetMapping("/viewRoute/{routeId}")
-	@CrossOrigin
-	public ResponseEntity<Route> viewRouteHandler(@PathVariable("routeId") Integer routeId) throws RouteException, UserException {
+	public ResponseEntity<Route> viewRouteHandler(@PathVariable("routeId") Integer routeId) {
 
 		Route rot = rService.viewRoute(routeId);
 
@@ -72,8 +65,7 @@ public class RouteController {
 
 	
 	@GetMapping("/viewAllRoute")
-	@CrossOrigin
-	public ResponseEntity<List<Route>> viewAllRouteHandler() throws RouteException, UserException {
+	public ResponseEntity<List<Route>> viewAllRouteHandler() {
 
 		List<Route> rot = rService.viewAllRoute();
 
@@ -83,8 +75,7 @@ public class RouteController {
 	
 	
 	@GetMapping("/viewBusByRoute/{source}/{destination}")
-	@CrossOrigin
-	public ResponseEntity<List<Bus>> viewBusByRoute(@PathVariable("source") String soure,@PathVariable("destination") String destination) throws RouteException{
+	public ResponseEntity<List<Bus>> viewBusByRoute(@PathVariable("source") String soure,@PathVariable("destination") String destination) {
 		
 		List<Bus> busList =	rService.viewBusByRoute(soure, destination);
 	

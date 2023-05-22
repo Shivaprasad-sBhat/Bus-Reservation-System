@@ -1,6 +1,4 @@
 
-let userData= JSON.parse(localStorage.getItem("userDataStorage"))
-console.log(userData)
 let obj={};
 
 
@@ -62,13 +60,17 @@ function findBuses(event){
 }
 
 async function getAllBus(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
             //new api
         let res = await fetch(`http://localhost:8818/viewBusByRoute/${obj.source}/${obj.destination}`,{
             method:"GET",
             // body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -152,7 +154,7 @@ async function getAllBus(obj){
             btn.setAttribute("id","bookbtn")
     
             btn.addEventListener("click",function(){
-                bookTicket(elem,userData);
+                bookTicket(elem);
             })
     
     
@@ -168,7 +170,7 @@ async function getAllBus(obj){
     }
 
 
-async function bookTicket(elem,userData){
+async function bookTicket(elem){
     console.log("Inside book ticket function")
 
     let seatQuantity=prompt("Please enter how many seats you want: ");
@@ -177,7 +179,6 @@ async function bookTicket(elem,userData){
 
     console.log(elem) 
     // busdetails
-    console.log(userData)
     //userdata
     console.log(obj)
     //user input
@@ -186,18 +187,21 @@ async function bookTicket(elem,userData){
 
     let reservationObj={}
     
- reservationObj["travelDate"]=obj.date;
- reservationObj["seatQuantity"]=seatQuantity;
- reservationObj["reservationType"] = elem.busType;
+        reservationObj["travelDate"]=obj.date;
+        reservationObj["seatQuantity"]=seatQuantity;
+        reservationObj["reservationType"] = elem.busType;
+
+        let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
 
 
         try{
             console.log(elem.busId)
-            let res = await fetch(`http://localhost:8818/seatReservation/${elem.busId}/${userData.userLoginId}`,{
+            let res = await fetch(`http://localhost:8818/seatReservation/${elem.busId}`,{
                 method:"POST",
                 body:JSON.stringify(reservationObj),
                 headers:{
-                    "Content-Type":"application/json"
+                    "Content-Type":"application/json",
+                    "Authorization":`Bearer ${jwtToken}`
                 }
                 // body:JSON.stringify(obj)
             })
@@ -220,13 +224,6 @@ async function bookTicket(elem,userData){
                 window.location.href="./reservation.html"
                  
                 localStorage.setItem("reservation",JSON.stringify(data))
-
-   
-
-
-
-
-
 
                 console.log("end");
 
@@ -264,7 +261,6 @@ function logoutUser(){
 
    event.preventDefault();
 
-    localStorage.removeItem("userDataStorage")
 
 
     alert("You are Logged Out.")

@@ -1,6 +1,6 @@
 package com.masai.exception;
 
-public class RouteException extends Exception {
+public class RouteException extends RuntimeException {
 
 	public RouteException() {
 		super();
