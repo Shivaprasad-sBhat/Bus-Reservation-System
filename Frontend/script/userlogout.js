@@ -9,7 +9,7 @@ function logoutUser(){
 
    
 
-    localStorage.removeItem("userDataStorage")
+    localStorage.removeItem("JWTTOKEN")
 
     alert("You are Logged Out.")
 

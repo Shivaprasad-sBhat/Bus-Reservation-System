@@ -26,12 +26,10 @@ public class FeedBackController {
 	
 	
 	
-	@PostMapping("/setfeddback/{uid}/{rid}")
-	@CrossOrigin
-	public ResponseEntity<Feedback> setFeedBack( @PathVariable("uid") int userid ,@PathVariable("rid") int reservid, @RequestBody Feedback fb ) {
-		
-		System.out.println(fb);
-   		Feedback res = fService.addFeedBack(fb, userid , reservid);
+	@PostMapping("/setfeedback/{rid}")
+	public ResponseEntity<Feedback> setFeedBack(@PathVariable("rid") int reservid, @RequestBody Feedback fb ) {
+
+   		Feedback res = fService.addFeedBack(fb, reservid);
    		
    		return new ResponseEntity<Feedback>(res, HttpStatus.ACCEPTED);
 		
@@ -39,7 +37,6 @@ public class FeedBackController {
 	
 	
 	@PutMapping("/updatefeedback")
-	@CrossOrigin
 	public ResponseEntity<Feedback> updateFeedBack(@RequestBody Feedback fb){
 		
 		
@@ -51,7 +48,6 @@ public class FeedBackController {
 	
 	
 	@GetMapping("/getfeedback/{id}")
-	@CrossOrigin
 	public ResponseEntity<Feedback> getFeedBack(@PathVariable("id") int id){
 		
 		Feedback fb = 	fService.viewFeedBack(id);
@@ -61,12 +57,11 @@ public class FeedBackController {
 	}
 	
 	
-	@GetMapping("/getAllFedback{uid}")
-	@CrossOrigin
-	public ResponseEntity<List<Feedback>> getAllFeedBack(@PathVariable("uid") int uid){
+	@GetMapping("/getAllFeedbackOfUser")
+	public ResponseEntity<List<Feedback>> getAllFeedBackOfUser(){
 		
 		
-	  List<Feedback> fb = 	fService.viewAllFeedBack(uid);
+	  List<Feedback> fb = 	fService.viewAllFeedBackOfUser();
 		
 	  
 	  return new ResponseEntity<List<Feedback>>(fb, HttpStatus.ACCEPTED);
@@ -74,8 +69,7 @@ public class FeedBackController {
 	}
 	
 	
-	@GetMapping("/getAllFedbacks")
-	@CrossOrigin
+	@GetMapping("/getAllFeedbacks")
 	public ResponseEntity<List<Feedback>> getAllFeedBacks(){
 		
 		

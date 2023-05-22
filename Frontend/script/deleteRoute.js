@@ -12,15 +12,18 @@ function getRoutes(event) {
 
 
 async function getAllRoutes() {
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try {
 
         let res = await fetch("http://localhost:8818/viewAllRoute", {
             method: "GET",
-            // body:JSON.stringify(obj),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+           
         })
         console.log(res)
         if (res.ok) {
@@ -97,15 +100,18 @@ document.querySelector("#tbody").append(tr);
 
 
 async function deleteRoute(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
 
         let res = await fetch(`http://localhost:8818/deleteRoute/${obj.routeId}`,{
             method:"DELETE",
-            //body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
-            // body:JSON.stringify(obj)
+        
         })
         console.log(res)
         if(res.ok){

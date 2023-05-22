@@ -12,13 +12,16 @@ function deleteBus(event) {
 
 
 async function deleteBuses() {
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try {
 
         let res = await fetch("http://localhost:8818/viewallbus", {
             method: "GET",
-            // body:JSON.stringify(obj),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -108,13 +111,17 @@ document.querySelector("#tbody").append(tr);
 
 
 async function deleteBusFun(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
         console.log(obj.busId)
         let res = await fetch(`http://localhost:8818/deletebus/${obj.busId}`,{
             method:"DELETE",
-            //body:JSON.stringify(obj),
+            
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })

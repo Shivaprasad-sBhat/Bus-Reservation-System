@@ -35,13 +35,17 @@ document.querySelector("form").addEventListener("submit",createRoute)
 }
 
 async function addRouteFun(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
 
         let res = await fetch("http://localhost:8818/addRoute",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })

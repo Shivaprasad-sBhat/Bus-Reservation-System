@@ -1,7 +1,5 @@
 
 
-let userdata = JSON.parse(localStorage.getItem("userDataStorage"));
-
 let reservationfdback = JSON.parse(localStorage.getItem("reservationfeedback"));
 
 
@@ -31,15 +29,16 @@ async function invoke(event){
    
 
 
-
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
 
 
     try{
-        let res = await fetch(`http://localhost:8818/setfeddback/${userdata.userLoginId}/${reservationfdback.reservationId}`,{
+        let res = await fetch(`http://localhost:8818/setfeedback/${reservationfdback.reservationId}`,{
             method:"POST",
             body:JSON.stringify(feedback),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -95,7 +94,7 @@ function logoutUser(){
 
    event.preventDefault();
 
-    localStorage.removeItem("userDataStorage")
+
 
 
     alert("You are Logged Out.")

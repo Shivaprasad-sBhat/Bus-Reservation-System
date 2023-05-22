@@ -10,13 +10,13 @@ import com.masai.model.Feedback;
 
 public interface FeedBackService {
 
-	public Feedback addFeedBack(Feedback fb , int userId , int reservationid) throws FeedBackException;
+	public Feedback addFeedBack(Feedback fb ,  int reservationid) throws FeedBackException;
 	
 	public Feedback updateFeedBack (Feedback fb) throws FeedBackException;
 	
 	public Feedback viewFeedBack( int fedbackid) throws FeedBackException;
 	
-	public List<Feedback> viewAllFeedBack(int userid) throws FeedBackException;
+	public List<Feedback> viewAllFeedBackOfUser() throws FeedBackException;
 	
 	public List<Feedback> viewAllFeedBacks() throws FeedBackException;
 }

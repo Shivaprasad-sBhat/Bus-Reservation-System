@@ -1,25 +1,13 @@
 package com.masai.model;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
-import org.apache.tomcat.jni.Time;
-import org.springframework.data.jpa.repository.Temporal;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,19 +39,20 @@ public class Bus {
 	
 	
 	
-	@javax.persistence.Temporal(TemporalType.TIME)
+	@jakarta.persistence.Temporal(TemporalType.TIME)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
 	private java.util.Date arrivalTime;
 	
 	
 
-	@javax.persistence.Temporal(TemporalType.TIME)
+	@jakarta.persistence.Temporal(TemporalType.TIME)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
 	private java.util.Date departureTime;
 	
 	
 	@Min(value = 10 , message = "seat min 10")
 	@Max(value = 100 , message = "seat max 100")
+	@NotNull(message = "Can't Set as null")
 	private Integer seats;
 
 	@Min( value = 0 , message = "not availabel seat")
