@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.masai.exception.CustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.masai.exception.RouteException;
-import com.masai.exception.UserException;
 import com.masai.model.Bus;
 import com.masai.model.Route;
 import com.masai.repository.RouteDao;
@@ -25,7 +24,7 @@ public class RouteServiceImpl implements RouteService {
 	private SessionDao sDao;
 
 	@Override
-	public Route addRoute(Route route) throws RouteException, UserException {
+	public Route addRoute(Route route) throws RouteException, CustomerException {
 		
 		
 		Route newRoute = rDao.findByRouteFromAndRouteTo(route.getRouteFrom(), route.getRouteTo());
@@ -41,7 +40,7 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public Route updateRoute(Route route) throws RouteException, UserException {
+	public Route updateRoute(Route route) throws RouteException, CustomerException {
 		
 		Optional<Route> opt = rDao.findById(route.getRouteId());
 		
@@ -67,7 +66,7 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public Route deleteRoute(Integer routeId) throws RouteException, UserException {
+	public Route deleteRoute(Integer routeId) throws RouteException, CustomerException {
 		
 		Optional<Route> opt =	rDao.findById(routeId);
 		
@@ -89,7 +88,7 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public Route viewRoute(Integer routeId) throws RouteException, UserException {
+	public Route viewRoute(Integer routeId) throws RouteException, CustomerException {
 		
 		Optional<Route> opt =rDao.findById(routeId);
 		
@@ -103,7 +102,7 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public List<Route> viewAllRoute() throws RouteException, UserException {
+	public List<Route> viewAllRoute() throws RouteException, CustomerException {
 		
 		List<Route> routeList = rDao.findAll();
 		

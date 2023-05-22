@@ -12,13 +12,16 @@ function getBuses(event) {
 
 
 async function getAllBuses() {
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try {
 
         let res = await fetch("http://localhost:8818/viewallbus", {
             method: "GET",
-            // body:JSON.stringify(obj),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -162,6 +165,9 @@ function updateBusDetails1(event){
 }
 
 async function updateBus1(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
 
         let routeID = document.getElementById("routeID12").value
@@ -170,7 +176,8 @@ async function updateBus1(obj){
             method:"PUT",
             body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })

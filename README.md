@@ -1,6 +1,6 @@
 
 # Bus Reservation System 
-<img src="./Frontend/assests/banner.png"  style = "width:90%; height:450px" />
+<img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/banner.png?raw=true"  style = "width:90%; height:450px" />
 
 * Bus Reservation System is a full stack project where REST API's are developed using Java and Spring Boot technologies and UI or frontend is developed using HTML,CSS,     JavaScript
 *  These API's performs all the fundamental CRUD operations of any Bus Reservation Application platform with user validation at every step.
@@ -32,44 +32,44 @@
 ## Entity Relationship Diagram
  ###### ER Diagram for the database tables.
 <!-- ![App Screenshot](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/Frontend/assests/ER%20Diagram.png?raw=true) -->
-![App Screenshot](./Frontend/assests/er-diagram.png)
+![App Screenshot](https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/main/Frontend/assests/er-diagram.png)
 
 ## Features
 
 * Admin Features:
     * Only registered admins with valid credentials can login.
     
-     <img src="./Frontend/assests/adminLogin.png"  style = "width:90%; height:450px" />
+     <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/adminLogin.png?raw=true"  style = "width:90%; height:450px" />
 
     * Administrator Role of the entire application.   
-          <img src="./Frontend/assests/adminhomepage.png"  style = "width:90%; height:450px" />
+          <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/adminhomepage.png?raw=true"  style = "width:90%; height:450px" />
     
     * Admin can add/update/delete route and bus from main database.
-         <img src="./Frontend/assests/routemodule.png"  style = "width:90%; height:450px" />
-              <img src="./Frontend/assests/busmodule.png"  style = "width:90%; height:450px" />
+         <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/routemodule.png?raw=true"  style = "width:90%; height:450px" />
+              <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/busmodule.png?raw=true"  style = "width:90%; height:450px" />
               
               
 * User Features:
     * User can signup with proper details.
-       <img src="./Frontend/assests/usersignup.png"  style = "width:90%; height:450px" />
+       <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/usersignup.png?raw=true"  style = "width:90%; height:450px" />
        
     * User can login using his credentials.
-      <img src="./Frontend/assests/userlogin.png"  style = "width:90%; height:450px" />
+      <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/userlogin.png?raw=true"  style = "width:90%; height:450px" />
     
     * User can view list of available buses and can book a reservation.
-          <img src="./Frontend/assests/booktickets.png"  style = "width:90%; height:450px" />
+          <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/booktickets.png?raw=true"  style = "width:90%; height:450px" />
           
     * User can view all his tickets,cancel tickets and user can also give feedback.
     
-    <img src="./Frontend/assests/alltickets.png" style =
+    <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/alltickets.png?raw=true" style =
     "width:90%; height:450px" />
     
-     <img src="./Frontend/assests/feedback.png" style =
+     <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/feedback.png?raw=true" style =
     "width:90%; height:450px" />
     
     * User can update all his details including username and password.
     
-     <img src="./Frontend/assests/userupdate.png" style =
+     <img src="https://github.com/Shivaprasad-sBhat/posh-fact-2211/blob/avinash-readme-update/Frontend/assests/userupdate.png?raw=true" style =
     "width:90%; height:450px" />
        
         

@@ -1,4 +1,4 @@
-let userdata = JSON.parse(localStorage.getItem("userDataStorage"));
+
 
 let reservationfdback = JSON.parse(localStorage.getItem("reservationfeedback"));
 
@@ -29,6 +29,7 @@ async function invoke(event){
    
 
 
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
 
 
 
@@ -37,7 +38,8 @@ async function invoke(event){
             method:"PUT",
             body:JSON.stringify(feedback),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -84,7 +86,6 @@ function logoutUser(){
 
    event.preventDefault();
 
-    localStorage.removeItem("userDataStorage")
 
 
     alert("You are Logged Out.")

@@ -1,6 +1,4 @@
 
-let userData= JSON.parse(localStorage.getItem("userDataStorage"))
-console.log(userData)
 
 
 document.querySelector("form").addEventListener("submit",userUpdate)
@@ -29,7 +27,6 @@ document.querySelector("form").addEventListener("submit",userUpdate)
 
 
     let obj={};
-    obj["userLoginId"]=userData.userLoginId
     obj["userName"] = uname
     obj["password"]=pass
     obj["firstName"]= fname
@@ -46,13 +43,17 @@ document.querySelector("form").addEventListener("submit",userUpdate)
 }
 
 async function userUpdateFun(obj){
+
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"));
+
     try{
 
         let res = await fetch("http://localhost:8818/updateUser",{
             method:"PUT",
             body:JSON.stringify(obj),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -72,7 +73,6 @@ async function userUpdateFun(obj){
             // Write code here to send user data and user to user dashboard
             alert(`Your profile is updated ${data.firstName}.`)
 
-            localStorage.setItem("userDataStorage",JSON.stringify(data))
             
              window.location.href="/pages/customerdashboard.html"
 
@@ -82,7 +82,7 @@ async function userUpdateFun(obj){
                 let error=JSON.stringify(data)
 
                 let msg =JSON.parse(error);
-                alert(msg["details"])
+                alert(msg["message"])
 
         }
 
@@ -103,7 +103,6 @@ function logoutUser(){
 
    event.preventDefault();
 
-    localStorage.removeItem("userDataStorage")
 
 
     alert("You are Logged Out.")

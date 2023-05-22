@@ -3,12 +3,14 @@ allTicket();
 
 async function allTicket(){
 
+    let jwtToken = JSON.parse(localStorage.getItem("JWTTOKEN"))
 
     try{
-        let res = await fetch(`http://localhost:8818/getAllFedbacks`,{
+        let res = await fetch(`http://localhost:8818/getAllFeedbacks`,{
             method:"GET",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${jwtToken}`
             }
             // body:JSON.stringify(obj)
         })
@@ -54,7 +56,7 @@ function appendData(data){
     let tr = document.createElement("tr");
 
     let td1 = document.createElement("td");
-    td1.innerText = el.user.firstName;
+    td1.innerText = el.customer.firstName;
 
     let td2 = document.createElement("td");
     td2.innerText = el.feedBackId;

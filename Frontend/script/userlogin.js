@@ -10,48 +10,56 @@ document.querySelector("form").addEventListener("submit",checkUser)
 
     let uname=document.getElementById("uname")
 
-    let name =uname.value
+    let userName =uname.value
 
-    let password = document.getElementById("password")
+    let pass = document.getElementById("password")
 
-    let pass= password.value
+    let password= pass.value
 
     // console.log(name,pass)
 
-    let obj={};
-    obj["name"] =name;
-    obj["password"] =pass;
+   
 
-    login(obj)
+    login(userName , password);
 
 }
 
 
-async function login(obj){
+async function login(userName , password){
+
+
+    let auth = btoa(`${userName}:${password}`);
+
     try{
 
-        let res = await fetch("http://localhost:8818/userlogin",{
-            method:"POST",
-            body:JSON.stringify(obj),
+        let res = await fetch("http://localhost:8818/signIn",{
+            method:"GET",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization":`Basic ${auth}`
             }
             // body:JSON.stringify(obj)
         })
         console.log(res)
+
         if(res.ok){
             console.log("sucesss")
+            
+
             let data = await res.json();
 
-            // To get data from response   // user data
-            // let userData=JSON.stringify(data)
+            if(data.role != "ROLE_CUSTOMER") {
 
+                alert("Admin can't access User DashBoard");
 
-            console.log(data)
+                return;
+            }
+
+            let jwtToken = res.headers.get("Authorization");
 
 
             // save user data to session storage
-            localStorage.setItem("userDataStorage",JSON.stringify(data))
+            localStorage.setItem("JWTTOKEN",JSON.stringify(jwtToken))
 
 
             // Write code here to send user data and user to user dashboard
@@ -67,7 +75,8 @@ async function login(obj){
         }
 
     }catch(error){
-        return "Not sucessful"
+
+        alert(error);
 
     }
 
