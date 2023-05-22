@@ -11,6 +11,7 @@
 
 * Java
 * Spring Framework
+* Spring Security(JWT)
 * Spring Boot
 * Spring Data JPA
 * Hibernate
