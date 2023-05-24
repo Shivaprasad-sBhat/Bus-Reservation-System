@@ -1,5 +1,6 @@
 package com.masai.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -72,12 +73,16 @@ public class RouteController {
 		return new ResponseEntity<List<Route>>(rot, HttpStatus.OK);
 
 	}
+
 	
-	
-	@GetMapping("/viewBusByRoute/{source}/{destination}")
-	public ResponseEntity<List<Bus>> viewBusByRoute(@PathVariable("source") String soure,@PathVariable("destination") String destination) {
-		
-		List<Bus> busList =	rService.viewBusByRoute(soure, destination);
+	@GetMapping("/viewBusByRoute/{source}/{destination}/{date}")
+	public ResponseEntity<List<Bus>> viewBusByRoute(@PathVariable("source") String soure,@PathVariable("destination") String destination , @PathVariable("date") String date) {
+
+		System.out.println(date);
+
+		LocalDate localDate = LocalDate.parse(date);
+
+		List<Bus> busList =	rService.viewBusByRoute(soure, destination , localDate);
 	
 		return new ResponseEntity<List<Bus>>(busList,HttpStatus.OK);
 	}

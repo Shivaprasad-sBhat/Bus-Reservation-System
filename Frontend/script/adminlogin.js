@@ -73,8 +73,8 @@ async function login(userName , password){
         }
 
     }catch(error){
-        return "Not sucessful"
 
+        alert(error);
     }
 
 

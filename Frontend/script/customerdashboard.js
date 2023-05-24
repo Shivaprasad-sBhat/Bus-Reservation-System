@@ -65,7 +65,7 @@ async function getAllBus(obj){
 
     try{
             //new api
-        let res = await fetch(`http://localhost:8818/viewBusByRoute/${obj.source}/${obj.destination}`,{
+        let res = await fetch(`http://localhost:8818/viewBusByRoute/${obj.source}/${obj.destination}/${obj.date}`,{
             method:"GET",
             // body:JSON.stringify(obj),
             headers:{

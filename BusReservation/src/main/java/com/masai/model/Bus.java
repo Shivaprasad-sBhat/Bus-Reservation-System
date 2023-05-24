@@ -17,6 +17,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -48,6 +50,9 @@ public class Bus {
 	@jakarta.persistence.Temporal(TemporalType.TIME)
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
 	private java.util.Date departureTime;
+
+	@NotNull(message = "Can't set date as null")
+	private LocalDate date;
 	
 	
 	@Min(value = 10 , message = "seat min 10")
@@ -57,6 +62,7 @@ public class Bus {
 
 	@Min( value = 0 , message = "not availabel seat")
 	private Integer availableSeats;
+
 	
 
 	

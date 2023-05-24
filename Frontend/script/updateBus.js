@@ -88,6 +88,9 @@ departureTime.innerText = el.departureTime
 let arrivalTime = document.createElement("td");
 arrivalTime.innerText = el.arrivalTime
 
+let date = document.createElement("td");
+date.innerText = el.date
+
 let seats = document.createElement("td");
 seats.innerText = el.seats
 
@@ -103,7 +106,7 @@ update.addEventListener("click",function(){
     
 })
 
-tr.append(busId, busName, driverName,busType,departureTime,arrivalTime,seats,avilableSeats,update);
+tr.append(busId, busName, driverName,busType,departureTime,arrivalTime,date , seats,avilableSeats,update);
 
 document.querySelector("#tbody").append(tr);
 });
@@ -143,6 +146,8 @@ function updateBusDetails1(event){
     let seats1 = document.getElementById("seats2").value
 
     let avilableSeats = document.getElementById("avilableSeats2").value
+
+    let date = document.getElementById("date").value;
    
 
     let obj={};
@@ -156,6 +161,7 @@ function updateBusDetails1(event){
     obj["departureTime"]= departureTime
     obj["seats"]= seats1
     obj["availableSeats"]= avilableSeats
+    obj["date"] = date;
    
     console.log(obj)
 

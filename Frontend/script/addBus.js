@@ -19,6 +19,8 @@ document.querySelector("#addBusBtn").addEventListener("click",createBus)
 
     let seats1 = document.getElementById("seats1").value
     let avilableSeats = document.getElementById("avilableSeats1").value
+
+    let date = document.getElementById("date").value;
  
 
     let obj={};
@@ -30,6 +32,7 @@ document.querySelector("#addBusBtn").addEventListener("click",createBus)
     obj["departureTime"]= departureTime
     obj["seats"]= seats1
     obj["availableSeats"]= avilableSeats
+    obj["date"] = date;
     
     console.log(obj)
 

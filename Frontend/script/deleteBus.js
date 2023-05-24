@@ -88,6 +88,9 @@ departureTime.innerText = el.departureTime
 let arrivalTime = document.createElement("td");
 arrivalTime.innerText = el.arrivalTime
 
+let date = document.createElement("td");
+date.innerText = el.date
+
 let seats = document.createElement("td");
 seats.innerText = el.seats
 
@@ -103,7 +106,7 @@ delete1.addEventListener("click",function(){
     
 })
 
-tr.append(busId, busName, driverName,busType,departureTime,arrivalTime,seats,avilableSeats,delete1);
+tr.append(busId, busName, driverName,busType,departureTime,arrivalTime,date , seats,avilableSeats,delete1);
 
 document.querySelector("#tbody").append(tr);
 });
