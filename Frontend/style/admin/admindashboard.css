@@ -252,7 +252,7 @@ ul a:hover {
   /* Dashboard upload product menu start */
   
   .table-Dashboard {
-    width: 55%;
+    width: 90%;
     height: 650px;
     margin: 0% 0% 3% 7%;
   }
@@ -260,11 +260,14 @@ ul a:hover {
   .table-Dashboard h2 {
     padding: 40px;
     margin-left: 270px;
+    text-align: center;
+    /* border: 1px solid red; */
   }
   
   .t1 {
-    margin-left: 100px;
+    margin-left: 10px;
     width: 100%;
+
     text-transform: uppercase;
   }
   
@@ -286,7 +289,7 @@ ul a:hover {
         text-align: center;
         border: 1px solid rgb(190, 236, 138);
         font-weight: 1000px;
-        font-size: 25px;
+        font-size:  22px;
         margin-bottom: 10px;
         border-radius: 10px;
         /* border: 1px solid red; */
@@ -296,7 +299,7 @@ ul a:hover {
 
   #heading{
     margin-top: -110px;
-    margin-left: 220px;
+    margin-left: 11px;
     margin-bottom: -10px;
    
   }

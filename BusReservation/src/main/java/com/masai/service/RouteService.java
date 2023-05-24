@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.masai.exception.CustomerException;
@@ -19,6 +20,6 @@ public interface RouteService {
 	
 	public List<Route> viewAllRoute() throws RouteException, CustomerException;
 	
-	public List<Bus> viewBusByRoute(String soure,String destination) throws RouteException;
+	public List<Bus> viewBusByRoute(String soure, String destination , LocalDate date) throws RouteException;
 
 }

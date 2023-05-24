@@ -1,8 +1,10 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.masai.exception.CustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,7 +118,7 @@ public class RouteServiceImpl implements RouteService {
 	
 	
 	@Override 
-	public List<Bus> viewBusByRoute(String soure,String destination) throws RouteException{
+	public List<Bus> viewBusByRoute(String soure, String destination , LocalDate date) throws RouteException{
 		
 		
 		Route route =	rDao.findByRouteFromAndRouteTo(soure, destination) ;
@@ -124,12 +126,14 @@ public class RouteServiceImpl implements RouteService {
 		Route routes =rDao.findById(route.getRouteId()).orElseThrow(() -> new RouteException("Route not found"));
 		
 		List<Bus> busList =	routes.getBus();
+
+		List<Bus> bus = busList.stream().filter(el -> el.getDate().isEqual(date)).collect(Collectors.toList());
 		
-		if(busList.isEmpty()) {
+		if(bus.isEmpty()) {
 			throw new RouteException("Buses not available in this route");
 		}
 		else {
-			return busList;
+			return bus;
 		}
 	}
 
